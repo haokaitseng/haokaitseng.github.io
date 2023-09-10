@@ -211,18 +211,19 @@ Within this rental market, individuals seeking short-term accommodations encount
 <li>Strategies to find your property.</li>
 </ol>
 </blockquote>
-<p><img src="https://unsplash.com/photos/iSZJxklblkw" alt="Photo by João Barbosa on Unsplash"></p>
+<p><img src="/images/20230909rent_london/p0.jpg" alt="Photo by João Barbosa on Unsplash">
+<em><a href="https://unsplash.com/photos/iSZJxklblkw">Photo by João Barbosa on Unsplash</a></em></p>
 <h2 id="trade-off-between-comunicating-time-and-rent">Trade-off Between Comunicating Time and Rent</h2>
 <p>We browsed websites such as OpenRent, RightMove, Spotahome, and Zoopla during our search. We documented the features of 174 properties, capturing details including price per calendar month, tenancy, number of bedrooms, number of bathrooms, maximum number of tenants, location (zone), and comunicating time to my School (London School of Hygiene and Tropical Medicine) measured using Google Maps.</p>
 <p>First, the majority of rental properties in the market typically require a minimum one-year tenancy commitment, whereas our preference is for a shorter-term tenancy of more or less 6 months, with the option to extend if everything proceeds smoothly. Hence, among the targeted properties that specified their tenancy requirements, 81% state their acceptance of a minimum 6-month tenancy.</p>
 <p>Here I provide a overview of our data by price, communicating time, and the number of bedrooms. The range of rent is between £1,850 to £4,500, while the range of communicating time is from 17 to 67 minutes.</p>
-<p>![Scatter Plot of Price and Communicating Time](/images/20230909rent in london/p1.png)</p>
+<p><img src="/images/20230909rent_london/p1.png" alt="Scatter Plot of Price and Communicating Time"></p>
 <p>If you are also sensitive to both cost and time, you can observe a noticeable pattern through simple linear regression. It suggests that you need to invest approximately £19 in order to gain an additional minute of time saved on your commute to school.</p>
-<p>![Linear Regression](/images/20230909rent in london/p2.png)</p>
+<p><img src="/images/20230909rent_london/p2.png" alt="Linear Regression"></p>
 <p>To validate the assumption of normality and homoscedasticity in the regression model, I make QQ-plot and random clouds. They seem pretty good.</p>
-<p>![QQ-plot and random clouds](/images/20230909rent in london/p3.png)</p>
+<p><img src="/images/20230909rent_london/p3.png" alt="QQ-plot and random clouds"></p>
 <p>I also use K-means clustering algorithm to find the most suitable number of clusters according to rental costs. There is a substantial disparity between the outcome obtained using the elbow method and the Silhouette Score. The elbow method indicates that 4 clusters would be optimal, aligning somewhat with the established property zones. In contrast, the Silhouette Score suggests for a more fine-grained segmentation into 9 groups.</p>
-<p>![K-means](/images/20230909rent in london/p5_kmeans.png)</p>
+<p><img src="/images/20230909rent_london/p5_kmeans.png" alt="K-means"></p>
 <h2 id="key-factors-that-determine-rent">Key Factors That Determine Rent</h2>
 <p>Aside from communicating time, many factors also contribute to our living qualities. When conducting a multiple linear regression analysis, I identify that several variables significantly impact rent:</p>
 <ul>
