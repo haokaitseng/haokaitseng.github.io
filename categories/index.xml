@@ -6,31 +6,22 @@
     <description>Recent content in Categories on Kai Bar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Thu, 31 Aug 2023 22:11:12 +0800</lastBuildDate><atom:link href="https://haokaitseng.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 09 Sep 2023 22:11:12 +0800</lastBuildDate><atom:link href="https://haokaitseng.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Data Science</title>
+      <link>https://haokaitseng.github.io/categories/data-science/</link>
+      <pubDate>Sat, 09 Sep 2023 22:11:12 +0800</pubDate>
+      
+      <guid>https://haokaitseng.github.io/categories/data-science/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Essay</title>
       <link>https://haokaitseng.github.io/categories/essay/</link>
       <pubDate>Thu, 31 Aug 2023 22:11:12 +0800</pubDate>
       
       <guid>https://haokaitseng.github.io/categories/essay/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Guide</title>
-      <link>https://haokaitseng.github.io/categories/guide/</link>
-      <pubDate>Thu, 16 Feb 2023 18:58:11 +0800</pubDate>
-      
-      <guid>https://haokaitseng.github.io/categories/guide/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Test</title>
-      <link>https://haokaitseng.github.io/categories/test/</link>
-      <pubDate>Thu, 16 Feb 2023 18:58:11 +0800</pubDate>
-      
-      <guid>https://haokaitseng.github.io/categories/test/</guid>
       <description></description>
     </item>
     
