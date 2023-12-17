@@ -1,0 +1,362 @@
+
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Assessing the Non-inferiority of the Single-dose Human Papillomavirus Vaccination Schedule: A Hypothetical Multi-country Cohort Study | Kai Bar</title>
+    <meta name="description"
+        content="What can you learn from this article?
+A experimental cohort study design for policy evaluation, where countries are making the move from a two-dose to single-dose schedule for HPV vaccine. Introduction Since the first licensing of the Human Papillomavirus (HPV) vaccine in 2006, evidence has been emerging showing that single-dose schedules provide comparable efficacy to the conditional regimens, i.e. two or three doses. In 2022, a review of World Health Organization (WHO) Strategic Advisory Group of Experts on Immunization (SAGE) concluded that a single-dose HPV vaccine delivers solid protection against HPV.">
+    <link rel="canonical" href="https://haokaitseng.github.io/post/20231216-hpv-single-dose-vaccination/" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    
+    <link rel="stylesheet" href="https://haokaitseng.github.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
+
+    <meta property="og:title" content="Assessing the Non-inferiority of the Single-dose Human Papillomavirus Vaccination Schedule: A Hypothetical Multi-country Cohort Study" />
+<meta property="og:description" content="What can you learn from this article?
+A experimental cohort study design for policy evaluation, where countries are making the move from a two-dose to single-dose schedule for HPV vaccine. Introduction Since the first licensing of the Human Papillomavirus (HPV) vaccine in 2006, evidence has been emerging showing that single-dose schedules provide comparable efficacy to the conditional regimens, i.e. two or three doses. In 2022, a review of World Health Organization (WHO) Strategic Advisory Group of Experts on Immunization (SAGE) concluded that a single-dose HPV vaccine delivers solid protection against HPV." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://haokaitseng.github.io/post/20231216-hpv-single-dose-vaccination/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-12-15T22:11:12+08:00" />
+<meta property="article:modified_time" content="2023-12-15T22:11:12+08:00" /><meta property="og:site_name" content="Kai Bar" />
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Assessing the Non-inferiority of the Single-dose Human Papillomavirus Vaccination Schedule: A Hypothetical Multi-country Cohort Study"/>
+<meta name="twitter:description" content="What can you learn from this article?
+A experimental cohort study design for policy evaluation, where countries are making the move from a two-dose to single-dose schedule for HPV vaccine. Introduction Since the first licensing of the Human Papillomavirus (HPV) vaccine in 2006, evidence has been emerging showing that single-dose schedules provide comparable efficacy to the conditional regimens, i.e. two or three doses. In 2022, a review of World Health Organization (WHO) Strategic Advisory Group of Experts on Immunization (SAGE) concluded that a single-dose HPV vaccine delivers solid protection against HPV."/>
+
+    
+    
+    
+
+</head><body><nav class="navbar is-light" role="navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a href="/" title="home" class="navbar-item">
+                <span class="logo">
+                    <h1>Kai Bar</h1>
+                </span>
+            </a>
+
+            
+            <a id="theme-toggle" class="theme-toggle" href="#">
+                <img src="https://haokaitseng.github.io/svg/sun.svg" alt="sun icon" class="theme-icon" />
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                
+                <a href="/about" class="navbar-item">About</a>
+                
+                <a href="/post" class="navbar-item">Blog</a>
+                
+                <a href="/categories" class="navbar-item">Categories</a>
+                
+            </div>
+
+        </div>
+        <div class="search">
+            <div id="fastSearch">
+                <input id="searchInput" tabindex="0" placeholder="Search..">
+                <ul id="searchResults">
+
+                </ul>
+            </div>
+            <a id="search-btn" style="display: inline-block;" href="# ">
+                <div class="icon-search"><svg class="search-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+            </a>
+        </div>
+
+        <script src="/js/fuse.min.js"></script> 
+        <script src="/js/fastsearch.js"></script>
+
+    </div>
+</nav>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var burger = document.querySelector('.navbar-burger');
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('is-active');
+            document.querySelector('.navbar-menu').classList.toggle('is-active');
+        });
+    });
+
+    
+    function setTheme(theme) {
+        let body = document.body;
+        let themeIcon = document.querySelector(".theme-icon");
+        if (theme === "dark") {
+            body.classList.add("dark-mode");
+            themeIcon.src = "https:\/\/haokaitseng.github.io\/svg/moon.svg";
+            themeIcon.alt = "moon icon";
+        } else {
+            body.classList.remove("dark-mode");
+            themeIcon.src = "https:\/\/haokaitseng.github.io\/svg/sun.svg";
+            themeIcon.alt = "sun icon";
+        }
+        
+        localStorage.setItem("theme", theme);
+    }
+
+    
+    let theme = localStorage.getItem("theme") || "light";
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDarkMode) {
+        
+        setTheme('dark');
+
+    } else {
+        
+        setTheme('light');
+    }
+    setTheme(theme);
+
+    
+    document.getElementById("theme-toggle").addEventListener("click", function() {
+        if (theme === "light") {
+            theme = "dark";
+        } else {
+            theme = "light";
+        }
+        setTheme(theme);
+    });
+
+
+
+</script>
+
+</header><main>
+<div class="single-container">
+    <div class="archive">
+        <h1 class="title is-1">Assessing the Non-inferiority of the Single-dose Human Papillomavirus Vaccination Schedule: A Hypothetical Multi-country Cohort Study</h1>
+        <div class="title subtitle heading is-6">
+            <div class="author-info columns is-vcentered">
+                <div class="column">
+                    <div class="columns is-vcentered is-mobile">
+                        
+                        <div class="column is-narrow">
+                            <img src="/images/profile.jpg" class="author-image">
+                        </div>
+                        
+                        <div class="column">
+                            <p>Kai</p>
+                            <p><time>December 15, 2023</time>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="small-categories-container">
+                    <a href="/categories/vaccine">Vaccine</a>
+                </div>
+            </div>
+        </div>
+        <div class="content article-content">
+            <div class="toc-container">
+                
+    <div class="post-toc">
+        
+            <aside>
+                <button id="tocButton" ><h4 id="contents" style="margin-left: 1vw;color:rgb(96, 134, 180);margin-bottom: 0;">CONTENTS</h4></button>
+                <div id="hide"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#method">Method</a>
+      <ul>
+        <li><a href="#source-population">Source Population</a></li>
+        <li><a href="#exposure">Exposure</a></li>
+        <li><a href="#outcome">Outcome</a></li>
+        <li><a href="#data-collection">Data Collection</a></li>
+        <li><a href="#statistical-analysis">Statistical Analysis</a></li>
+      </ul>
+    </li>
+    <li><a href="#result-hypothetical">RESULT <em>(HYPOTHETICAL)</em></a></li>
+    <li><a href="#disscusion">DISSCUSION</a>
+      <ul>
+        <li><a href="#strengths">Strengths</a></li>
+        <li><a href="#limitations-and-bias">Limitations and bias</a></li>
+        <li><a href="#trade-offs">Trade-offs</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion-hypothetical">CONCLUSION <em>(HYPOTHETICAL)</em></a></li>
+  </ul>
+</nav></div>
+            </aside>
+        
+    </div><script>
+    
+        let button = document.getElementById('tocButton');
+        let hide = document.getElementById("hide");
+        let contents=document.getElementById("contents");
+        button.addEventListener("click", function() {
+        if (hide.style.display!='block') {
+            hide.style.display='block'
+        } else {
+            hide.style.display='none'
+            contents.style.color='rgb(96, 134, 180)'
+        }
+        });
+    
+
+
+
+
+</script>
+            </div>
+            <blockquote>
+<p>What can you learn from this article?</p>
+<ul>
+<li>A experimental cohort study design for policy evaluation, where countries are making the move from a two-dose to single-dose schedule for HPV vaccine.</li>
+</ul>
+</blockquote>
+<h2 id="introduction">Introduction</h2>
+<p>Since the first licensing of the Human Papillomavirus (HPV) vaccine in 2006, <a href="https://evidence.nejm.org/doi/full/10.1056/EVIDoa2100056">evidence</a> has been emerging showing that single-dose schedules provide comparable efficacy to the conditional regimens, i.e. two or three doses. In 2022, a <a href="https://www.who.int/news/item/11-04-2022-one-dose-human-papillomavirus-(hpv)-vaccine-offers-solid-protection-against-cervical-cancer">review</a> of World Health Organization (WHO) Strategic Advisory Group of Experts on Immunization (SAGE) concluded that a single-dose HPV vaccine delivers solid protection against HPV. Consequently, there have been 16 countries that adopt SAGE&rsquo;s recommendation of single-dose schedule in their national immunization programmes in 2023, including the <a href="https://www.gov.uk/government/news/hpv-vaccination-programme-moves-to-single-dose-from-september-2023">UK</a> [Figure 1].</p>
+<p>This study aims to assess the non-inferiority of the real-world impacts in single-dose HPV vaccination programmes with regard of herd immunity and paradigm shift.
+<img src="/images/20231216hpv_vaccine/world.jpg" alt="Figure 1. Countries"></p>
+<h2 id="method">Method</h2>
+<blockquote>
+<p>This research is designed as a prospective and closed cohort study with a 20-year follow-up.</p>
+</blockquote>
+<h3 id="source-population">Source Population</h3>
+<ul>
+<li>Age: adolescent females aged 12 to 13 in 2023-24 in 16 study countries, i.e. age eligible to their national HPV vaccine program.</li>
+<li>Inclusion: get at least one dose of HPV vaccination and undergo screening in the follow-up period.</li>
+<li>Exclusion: those who migrate out of the study countries.</li>
+</ul>
+<h3 id="exposure">Exposure</h3>
+<ul>
+<li>The final vaccination status, categorized into two and three doses of HPV vaccines, is considered as two distinct exposures.</li>
+<li>Single-dose HPV vaccination serves as the reference group (non-exposure).</li>
+</ul>
+<h3 id="outcome">Outcome</h3>
+<p>Regarding the disease progression [Figure 2], in the first decade, this study defines precancer as the preliminary outcome, including Cervical intraepithelial neoplasia (CIN) 2+ and Adenocarcinoma in situ (AIS).</p>
+<p>Cervical cancer is investigated as the secondary outcome over the last decade. Three kinds of methods are used for screening testing, including pap smear test, liquid based cytology (LBC) test, and visual inspection with acetic acid (VIA).
+<img src="/images/20231216hpv_vaccine/progression.jpg" alt="Figure 2. Progression of cervical cancer"></p>
+<h3 id="data-collection">Data Collection</h3>
+<p>Follow-up continues until the diagnosis of cervical cancer (or precancer), death, or the end of 2043. The rationale for 20-year follow-up is the <a href="https://www.cancerresearchuk.org/health-professional/cancer-statistics/statistics-by-cancer-type/cervical-cancer/incidence">highest incidence rates</a> being in the 30 to 34 age group in the UK.</p>
+<p>Data integration is streamlined through annual data linkage across five sources from each country, including population immunization registry, cervical screening registry, death registry, national migration record, and regional socio-economic status.</p>
+<h3 id="statistical-analysis">Statistical Analysis</h3>
+<p>The demographic characteristics are depicted through the mean (± standard deviation) and counts (percentage).</p>
+<p>This study uses Cox proportional-hazard regression, adjusted for sexual orientation and socio-economic index, with age as the time axis to estimate hazard ratios (with 95% Confidence Intervals, CIs) of cervical cancer (or precancer) stratified by country according to their vaccine doses.</p>
+<p><strong>Non-inferiority</strong> is defined when the difference in hazard ratios is less than a 5% deviation from 1.</p>
+<h2 id="result-hypothetical">RESULT <em>(HYPOTHETICAL)</em></h2>
+<p>Take UK for instance, the cohort include 305,307 vaccinated females. Of these, 259,511 (85%) received single dose, 39,690 (13%) received two doese, and 6,106 (2%) received three doses. Their mean age completed vaccination is 12.6, 13.8, and 15.3, respectively.</p>
+<p>Overall, the average number of screens is more than 2. The years between complete vaccination and screening, sexual orentation, and socio-economic index are presented in Table 1.</p>
+<p><img src="/images/20231216hpv_vaccine/table1.jpg" alt="Table 1."></p>
+<p>The difference in the incidence rate ratio of three subgroups is negligible (1 dose 6.84, 2 doses 6.51, and 3 doses 6.42, per 100,000 person-years).
+The adjusted hazard ratio was not significantly lower for 2+ dose groups compared to single-dose women (2 doses 0.96 (95% CI 0.87-1.05) and 3 doses 0.95 (0.86-1.05)), indicating the non-inferiority of single-dose schedule [Table 2].</p>
+<p>Of 16 study countries, 14 single-dose HPV vaccination programmes achieve non-inferiority.
+<img src="/images/20231216hpv_vaccine/table2.jpg" alt="Table 2."></p>
+<h2 id="disscusion">DISSCUSION</h2>
+<h3 id="strengths">Strengths</h3>
+<p>This research exhibits four <strong>strengths</strong>. First, the substantial sample size enhances the generalizability of findings. Second, Geographical comparisons are attainable thanks to multi-country data sources. <br>
+Third, data are reliably obtained, as they are routinely updated in country&rsquo;s immunization and screening programs. Last but not least, the final disease outcome, i.e. cervical cancer, is used as the study measurement, surpassing <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9638030/">previous studies</a> reliant on short-term outcomes, such as HPV persistent infection.</p>
+<h3 id="limitations-and-bias">Limitations and bias</h3>
+<p>However, this research is constrained by its assumptions of not stratifying results according to vaccine brands or screening methods, the later may lead to misclassification due to diverse sensitivity and specificity. <br>
+Unregistered or incorrect record of doses may also cause non-differential misclassification of the exposure. Such information bias is towards the null.</p>
+<p>With regard to selection bias, the willingness of screening may be influenced by the final vaccination status. Notably, the exclusion of females who have not been vaccinated in the defined source population is essential to prevent selection bias.</p>
+<h3 id="trade-offs">Trade-offs</h3>
+<p>When it comes to inferiority, the emphasis lies in the trade-offs aspect. On the side of single dose, better immunization coverage can be obtained, which is conducive to herd immunity. Besides, the number of cases averted will be more appealing to policy makers from a prospective of public health. Not to mention the benefit of efficient implementation and reduced costs.</p>
+<p>On the side of 2+ doses, relative risks are lower.With regard of the waning immunogenicity, some <a href="https://bmcmedicine.biomedcentral.com/articles/10.1186/s12916-023-02988-3">modelling studies</a> suggest that some of the single dose girls need to have a catch-up dose to obtain sufficient immunity projection in population.
+<img src="/images/20231216hpv_vaccine/tradeoff.jpg" alt="Figure 3. Trade-off"></p>
+<h2 id="conclusion-hypothetical">CONCLUSION <em>(HYPOTHETICAL)</em></h2>
+<p>Single-dose HPV vaccination demonstrates comparable efficacy compared to 2+ doses in 14 out of the 16 study countries&rsquo; programmes, suggesting that a shift to single-dose schedule is suitable for cervical cancer prevention.</p>
+<p><em>This article has been adapted from the <a href="https://docs.google.com/document/d/1YfK63UCR5E3xI6bIzbs6gtT8e7nPocXIzCzUsKOG6_I/edit?usp=sharing">poster</a>, originally created as part of the assessment for the Methods and Concepts of Epidemiology module at LSHTM. I express sincere gratitude to Neil Pearce for his exceptional teaching.</em></p>
+
+        </div>
+    </div>
+    <a href="#" id="scrollToTopButton">
+        <svg t="1686753152588" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            p-id="3988" width="48" height="48">
+            <path
+                d="M518.5 360.3c-3.2-4.4-9.7-4.4-12.9 0l-178 246c-3.8 5.3 0 12.7 6.5 12.7H381c10.2 0 19.9-4.9 25.9-13.2L512 460.4l105.2 145.4c6 8.3 15.6 13.2 25.9 13.2H690c6.5 0 10.3-7.4 6.5-12.7l-178-246z"
+                p-id="3989" fill="#363636"></path>
+            <path
+                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                p-id="3990" fill="#363636"></path>
+        </svg>
+    </a><hr style="border-top: 1px solid #EEEEEE;">
+<div id="comment"></div>
+<script>
+    const getStoredTheme = () => localStorage.getItem("theme") === "dark" ? "dark" : "light";
+
+    const setGiscusTheme = () => {
+        const sendMessage = (message) => {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (iframe) {
+                iframe.contentWindow.postMessage({giscus: message}, 'https://giscus.app');
+            }
+        }
+        sendMessage({setConfig: {theme: getStoredTheme()}})
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const giscusAttributes = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "hotjuicew\/blog",
+            "data-repo-id": "R_kgDOHHQOuw",
+            "data-category": "Announcements",
+            "data-category-id": "DIC_kwDOHHQOu84CWCQ3",
+            "data-mapping": "og:title",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-input-position": "bottom",
+            "data-theme": getStoredTheme(),
+            "data-lang": "en",
+            "data-loading": "lazy",
+            "crossorigin": "anonymous",
+        };
+
+        
+        const giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(
+            ([key, value]) => giscusScript.setAttribute(key, value));
+        document.getElementById("comment").appendChild(giscusScript);
+
+        
+        const themeToggle = document.querySelector(".theme-toggle");
+        if (themeToggle) {
+            themeToggle.addEventListener("click", setGiscusTheme);
+        }
+    });
+
+</script>
+
+
+<div class="pp-container">
+        <section class="pre-and-post">
+            <div class="has-text-left">
+                
+                <p>Previous post</p>
+                <a href="https://haokaitseng.github.io/post/20230907london-rent-cost/">Navigating Short-Term Accommodation Search in London</a>
+                
+            </div>
+            <div class="has-text-right">
+                
+            </div>
+        </section>
+    </div>
+
+</div>
+
+        </main><footer class="footer">
+    <div class="content has-text-centered">
+    <span>&copy; 2023 <a href="https://haokaitseng.github.io/">Kai Bar</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" target="_blank">Hugo</a> &
+        <a href="https://github.com/hotjuicew/hugo-JuiceBar" target="_blank">JuiceBar</a>
+    </span>
+    </div>
+  </footer></body>
+</html>
+
