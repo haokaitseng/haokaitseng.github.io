@@ -8,6 +8,17 @@
     <language>zh-tw</language>
     <lastBuildDate>Fri, 15 Dec 2023 22:11:12 +0800</lastBuildDate><atom:link href="https://haokaitseng.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>About Me</title>
+      <link>https://haokaitseng.github.io/about/</link>
+      <pubDate>Thu, 21 Dec 2023 20:18:54 +0300</pubDate>
+      
+      <guid>https://haokaitseng.github.io/about/</guid>
+      <description>Hi! My name is Hao Kai Tseng. I am currently a graduate student of Health Data Science Programme at the London School of Hygiene &amp;amp; Tropical Medicine (LSHTM).
+I acquired my BSc Public Health from the National Taiwan University in 2016. I have gained experience in the field of infectious diseases through my work in both a research institute and a governmental health sector Taiwan.
+I am interested in policy implementation and evaluation related to infectious diseases.</description>
+    </item>
+    
+    <item>
       <title>Assessing the Non-inferiority of the Single-dose Human Papillomavirus Vaccination Schedule: A Hypothetical Multi-country Cohort Study</title>
       <link>https://haokaitseng.github.io/post/20231216-hpv-single-dose-vaccination/</link>
       <pubDate>Fri, 15 Dec 2023 22:11:12 +0800</pubDate>
@@ -49,18 +60,6 @@ Within this rental market, individuals seeking short-term accommodations encount
 結語 透過SCOTCH框架調查發現，兩岸媒體以及非國家行動者使用Youtube、Facebook、X(Twitter)、微博、Tiktok等社群平台，引用台媒的獨家報導及台灣的實驗室相關圖資，通過標籤劫持來吸引注意，以及在有共同理念(Shared-Interest)的Facebook社團中複製貼上分享貼文。 試圖在中國群眾及台灣反對民進黨的群眾中，植入美方籲台建造P4實驗室研發生物戰劑的謠言，這謠言帶有部分真實性，但滲入不實資訊或過度解讀，以植入民進黨政府犧牲民眾安全的疑美論，不但破壞台灣民眾對國家生物安全政策的信任，也令中國群眾感受到來自台灣的生化威脅。
 本文使用的工具及分析方法感謝台灣民主實驗室的課程。
 本文同步發表於Medium。</description>
-    </item>
-    
-    <item>
-      <title>About Me</title>
-      <link>https://haokaitseng.github.io/about/</link>
-      <pubDate>Wed, 23 Aug 2023 20:18:54 +0300</pubDate>
-      
-      <guid>https://haokaitseng.github.io/about/</guid>
-      <description>Hi! My name is Hao-Kai Tseng.
-Currently a graduate student of Health Data Science Programme at the London School of Hygiene &amp;amp; Tropical Medicine.
-Based on my public health background, I have put in efforts in survey, control, and prevention of infectious diseases, such as COVID-19, tuberculosis, and influenza, for 5+ years.
-In an attempt to demonstrate course and self-learning projects in the cloud, I am posting to give the push you need to learn public health and data science.</description>
     </item>
     
     <item>
