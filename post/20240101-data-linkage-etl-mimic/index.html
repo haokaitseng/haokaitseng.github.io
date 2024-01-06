@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>Coping data linkage error in a ETL pipeline: mering MIMIC III with ODK database | Infectious Perspectives</title>
+    <title>Minimizing data linkage error in a ETL data pipeline using R: an intersection of MIMIC III and ODK database | Infectious Perspectives</title>
     <meta name="description"
         content="What can you learn from this article?
 Understand the concept of data linkage, especially deterministic linakge. Use Extract, Transform, and Load (ETL) skills to process data from MIMIC III and ODK databases and address linkage error. Emlploy R, postgreSQL, and Quarto to generate a reproducible and flexible report in PDF format. Concepts of Data Linkage In a data scientist&rsquo;s typical day, the merge/join function is an inevitable task. Data quality must be secured through linkage within one dataset (&lsquo;internal linkage&rsquo;) or across multiple datasets.">
@@ -13,7 +13,7 @@ Understand the concept of data linkage, especially deterministic linakge. Use Ex
     
     <link rel="stylesheet" href="https://haokaitseng.github.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
 
-    <meta property="og:title" content="Coping data linkage error in a ETL pipeline: mering MIMIC III with ODK database" />
+    <meta property="og:title" content="Minimizing data linkage error in a ETL data pipeline using R: an intersection of MIMIC III and ODK database" />
 <meta property="og:description" content="What can you learn from this article?
 Understand the concept of data linkage, especially deterministic linakge. Use Extract, Transform, and Load (ETL) skills to process data from MIMIC III and ODK databases and address linkage error. Emlploy R, postgreSQL, and Quarto to generate a reproducible and flexible report in PDF format. Concepts of Data Linkage In a data scientist&rsquo;s typical day, the merge/join function is an inevitable task. Data quality must be secured through linkage within one dataset (&lsquo;internal linkage&rsquo;) or across multiple datasets." />
 <meta property="og:type" content="article" />
@@ -22,7 +22,7 @@ Understand the concept of data linkage, especially deterministic linakge. Use Ex
 <meta property="article:modified_time" content="2024-01-06T22:11:12+08:00" /><meta property="og:site_name" content="Infectious Perspectives" />
 
 
-    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Coping data linkage error in a ETL pipeline: mering MIMIC III with ODK database"/>
+    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Minimizing data linkage error in a ETL data pipeline using R: an intersection of MIMIC III and ODK database"/>
 <meta name="twitter:description" content="What can you learn from this article?
 Understand the concept of data linkage, especially deterministic linakge. Use Extract, Transform, and Load (ETL) skills to process data from MIMIC III and ODK databases and address linkage error. Emlploy R, postgreSQL, and Quarto to generate a reproducible and flexible report in PDF format. Concepts of Data Linkage In a data scientist&rsquo;s typical day, the merge/join function is an inevitable task. Data quality must be secured through linkage within one dataset (&lsquo;internal linkage&rsquo;) or across multiple datasets."/>
 
@@ -138,7 +138,7 @@ Understand the concept of data linkage, especially deterministic linakge. Use Ex
 </header><main>
 <div class="single-container">
     <div class="archive">
-        <h1 class="title is-1">Coping data linkage error in a ETL pipeline: mering MIMIC III with ODK database</h1>
+        <h1 class="title is-1">Minimizing data linkage error in a ETL data pipeline using R: an intersection of MIMIC III and ODK database</h1>
         <div class="title subtitle heading is-6">
             <div class="author-info columns is-vcentered">
                 <div class="column">
@@ -170,10 +170,10 @@ Understand the concept of data linkage, especially deterministic linakge. Use Ex
                 <div id="hide"><nav id="TableOfContents">
   <ul>
     <li><a href="#concepts-of-data-linkage">Concepts of Data Linkage</a></li>
-    <li><a href="#an-scenario-of-data-linkage">An scenario of data linkage</a>
+    <li><a href="#a-scenario-during-covid-pandemic">A scenario during COVID pandemic</a>
       <ul>
         <li><a href="#dbi">DBI</a></li>
-        <li><a href="#data-linkage-in-practical">Data linkage in practical</a></li>
+        <li><a href="#linkage-in-practical">Linkage in practical</a></li>
         <li><a href="#quarto">Quarto</a></li>
       </ul>
     </li>
@@ -242,7 +242,7 @@ Understand the concept of data linkage, especially deterministic linakge. Use Ex
 </table>
 <p><em>Source: <a href="https://cros-legacy.ec.europa.eu/system/files/s-dwh-m_4.2_methodology_data_linkage_v2.pdf">Collaboration in Research and Methodology for Official Statistics, European Commission</a></em></p>
 <p>We will apply the deterministic linkage method in this article. A set of predetermined rules is used to identify patterns as links or non-links. For instance, the high degree of certainty/agreement required for deterministic linkage is achieved through a unique identifier for an entity, such as NHS number. This method may allow a small amount of preconceived typographical error; however, the limitations of this method lie in the event of lower quality matching variables or handling large numbers of matching variables.</p>
-<h2 id="an-scenario-of-data-linkage">An scenario of data linkage</h2>
+<h2 id="a-scenario-during-covid-pandemic">A scenario during COVID pandemic</h2>
 <p>Let&rsquo;s dive into a practical scenario where data linkage proves invaluable. Suppose you are a data analyst in a UK hospital, where data is captured in the MIMIC III database and ODK database. Your hospital management has asked you to generate an executive report synthesising recent patient data from MIMIC III, survey data from ODK, and national statistics for COVID-19.</p>
 <p>Besdies, to address surges in COVID-19 cases, you should be able to regularly generate this report, with potential changes to the prototype. What&rsquo;s your strategy on this mission?</p>
 <h3 id="dbi">DBI</h3>
@@ -253,10 +253,10 @@ Understand the concept of data linkage, especially deterministic linakge. Use Ex
 <p><img src="/images/20240101_HDM_data_linkage_ETL/odk_connection.png" alt="mimic connection"></p>
 <p>As for national statistics, I use the <em>download.file()</em> function in base R to get a CSV file from the <a href="https://www.data.gov.uk/dataset/992f3d28-d917-485f-8c7e-8fd47594a554/coronavirus-covid-19-weekly-update">data.gov.uk</a>.</p>
 <p>See. We&rsquo;ve built a solid fundation of data for this project. We&rsquo;ve gathered data from different servers into local R.</p>
-<h3 id="data-linkage-in-practical">Data linkage in practical</h3>
+<h3 id="linkage-in-practical">Linkage in practical</h3>
 <p>Now, we are about to merge the data from MIMIC III and ODK for further cleaning, transforming, and filtering, and analysis. Based on deterministic linkage method, we assume/regard the <strong>subject_id</strong> as our reliable agreement for matching between two datasets.</p>
 <p>After utilizing R&rsquo;s <em>merge()</em> for an inner join, we proceed to examine the quaity of the data linkage by introducing two additional matching variables: age at admission and gender.</p>
-<h4 id="difference-in-ages-between-mimic-iii-and-odk">Difference in ages between MIMIC III and ODK</h4>
+<p><strong>Difference in ages between MIMIC III and ODK:</strong></p>
 <table>
 <thead>
 <tr>
@@ -282,7 +282,7 @@ Understand the concept of data linkage, especially deterministic linakge. Use Ex
 <p>Substantial variation in differnce in ages is noted following the linkage. The distribution of age difference for 25% to 75% of patients shows a deviation of within one year, which is deemed acceptable owing to rounding. Nevertheless, noticeable errors are evident in the minimum (-39) and maximum (303) age differences.</p>
 <p>To address this issue, we can exclude observations that surpass the expected lifespan. Subsequently, consult the data provider to determine which data source is more reliable regarding age entry. You can either rely on a single dataset as the definitive age or eliminate observations with significant deviations in ages.</p>
 <p>Let&rsquo;s move on to the gender. There seems a bit mismatches, such as &ldquo;Female-Man&rdquo; and &ldquo;Male-Woman&rdquo;. Again, you can decide either omit all observations with mismatches in genders, or rely on a single dataset as the definitive gender.</p>
-<h4 id="comparison-of-gender-categories-between-mimic-iii-and-odk">Comparison of gender categories between MIMIC III and ODK</h4>
+<p><strong>Comparison of gender categories between MIMIC III and ODK:</strong></p>
 <table>
 <thead>
 <tr>
