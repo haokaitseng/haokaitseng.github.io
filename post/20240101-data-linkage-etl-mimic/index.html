@@ -4,27 +4,27 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>Minimizing data linkage error in a ETL data pipeline using R: an intersection of MIMIC III and ODK database | Infectious Perspectives</title>
+    <title>Minimizing data linkage error in an ETL pipeline using R: an intersection of MIMIC III and ODK database | Infectious Perspectives</title>
     <meta name="description"
         content="What can you learn from this article?
-Understand the concept of data linkage, especially deterministic linakge. Use Extract, Transform, and Load (ETL) skills to process data from MIMIC III and ODK databases and address linkage error. Emlploy R, postgreSQL, and Quarto to generate a reproducible and flexible report in PDF format. Concepts of Data Linkage In a data scientist&rsquo;s typical day, the merge/join function is an inevitable task. Data quality must be secured through linkage within one dataset (&lsquo;internal linkage&rsquo;) or across multiple datasets.">
+Understand the concepts of data linkage, especially deterministic linakge. Address linkage error in the conjunction of MIMIC III (served in a postgreSQL database) and ODK database. Employ R to design the Extract, Transform, and Load (ETL) pipeline. Use Quarto document to generate a report in PDF format. Concepts of Data Linkage In a data scientist&rsquo;s typical day, the merge/join function is an inevitable task.">
     <link rel="canonical" href="https://haokaitseng.github.io/post/20240101-data-linkage-etl-mimic/" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
     
     <link rel="stylesheet" href="https://haokaitseng.github.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
 
-    <meta property="og:title" content="Minimizing data linkage error in a ETL data pipeline using R: an intersection of MIMIC III and ODK database" />
+    <meta property="og:title" content="Minimizing data linkage error in an ETL pipeline using R: an intersection of MIMIC III and ODK database" />
 <meta property="og:description" content="What can you learn from this article?
-Understand the concept of data linkage, especially deterministic linakge. Use Extract, Transform, and Load (ETL) skills to process data from MIMIC III and ODK databases and address linkage error. Emlploy R, postgreSQL, and Quarto to generate a reproducible and flexible report in PDF format. Concepts of Data Linkage In a data scientist&rsquo;s typical day, the merge/join function is an inevitable task. Data quality must be secured through linkage within one dataset (&lsquo;internal linkage&rsquo;) or across multiple datasets." />
+Understand the concepts of data linkage, especially deterministic linakge. Address linkage error in the conjunction of MIMIC III (served in a postgreSQL database) and ODK database. Employ R to design the Extract, Transform, and Load (ETL) pipeline. Use Quarto document to generate a report in PDF format. Concepts of Data Linkage In a data scientist&rsquo;s typical day, the merge/join function is an inevitable task." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://haokaitseng.github.io/post/20240101-data-linkage-etl-mimic/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2024-01-06T22:11:12+08:00" />
-<meta property="article:modified_time" content="2024-01-06T22:11:12+08:00" /><meta property="og:site_name" content="Infectious Perspectives" />
+<meta property="article:modified_time" content="2024-01-06T22:11:12+08:00" /><meta property="og:site_name" content="Kai&#39;s Blog" />
 
 
-    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Minimizing data linkage error in a ETL data pipeline using R: an intersection of MIMIC III and ODK database"/>
+    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Minimizing data linkage error in an ETL pipeline using R: an intersection of MIMIC III and ODK database"/>
 <meta name="twitter:description" content="What can you learn from this article?
-Understand the concept of data linkage, especially deterministic linakge. Use Extract, Transform, and Load (ETL) skills to process data from MIMIC III and ODK databases and address linkage error. Emlploy R, postgreSQL, and Quarto to generate a reproducible and flexible report in PDF format. Concepts of Data Linkage In a data scientist&rsquo;s typical day, the merge/join function is an inevitable task. Data quality must be secured through linkage within one dataset (&lsquo;internal linkage&rsquo;) or across multiple datasets."/>
+Understand the concepts of data linkage, especially deterministic linakge. Address linkage error in the conjunction of MIMIC III (served in a postgreSQL database) and ODK database. Employ R to design the Extract, Transform, and Load (ETL) pipeline. Use Quarto document to generate a report in PDF format. Concepts of Data Linkage In a data scientist&rsquo;s typical day, the merge/join function is an inevitable task."/>
 
     
     
@@ -138,7 +138,7 @@ Understand the concept of data linkage, especially deterministic linakge. Use Ex
 </header><main>
 <div class="single-container">
     <div class="archive">
-        <h1 class="title is-1">Minimizing data linkage error in a ETL data pipeline using R: an intersection of MIMIC III and ODK database</h1>
+        <h1 class="title is-1">Minimizing data linkage error in an ETL pipeline using R: an intersection of MIMIC III and ODK database</h1>
         <div class="title subtitle heading is-6">
             <div class="author-info columns is-vcentered">
                 <div class="column">
@@ -173,11 +173,13 @@ Understand the concept of data linkage, especially deterministic linakge. Use Ex
     <li><a href="#a-scenario-during-covid-pandemic">A scenario during COVID pandemic</a>
       <ul>
         <li><a href="#dbi">DBI</a></li>
-        <li><a href="#linkage-in-practical">Linkage in practical</a></li>
+        <li><a href="#data-linkage">Data Linkage</a></li>
+        <li><a href="#linkage-error-in-age">Linkage error in age</a></li>
+        <li><a href="#linkage-error-in-gender">Linkage error in gender</a></li>
         <li><a href="#quarto">Quarto</a></li>
       </ul>
     </li>
-    <li><a href="#summary">Summary</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
   </ul>
 </nav></div>
             </aside>
@@ -205,9 +207,10 @@ Understand the concept of data linkage, especially deterministic linakge. Use Ex
             <blockquote>
 <p>What can you learn from this article?</p>
 <ul>
-<li>Understand the concept of data linkage, especially deterministic linakge.</li>
-<li>Use Extract, Transform, and Load (ETL) skills to process data from MIMIC III and ODK databases and address linkage error.</li>
-<li>Emlploy R, postgreSQL, and Quarto to generate a reproducible and flexible report in PDF format.</li>
+<li>Understand the concepts of data linkage, especially deterministic linakge.</li>
+<li>Address linkage error in the conjunction of MIMIC III  (served in a postgreSQL database) and ODK database.</li>
+<li>Employ R to design the Extract, Transform, and Load (ETL) pipeline.</li>
+<li>Use Quarto document to generate a report in PDF format.</li>
 </ul>
 </blockquote>
 <h2 id="concepts-of-data-linkage">Concepts of Data Linkage</h2>
@@ -217,7 +220,7 @@ Understand the concept of data linkage, especially deterministic linakge. Use Ex
 </blockquote>
 <p>In situations of uncertainty, there might be an linkage error, i.e. misidentifying relationships that belong to the same entity. Notably, linkage error doesn&rsquo;t adhere to an binomial distribution (0 or 1); rather, it resembles a spectrum ranging from high agreement to high disagreement, along with matching possibilities influenced by quality of matching variables.</p>
 <p><img src="/images/20240101_HDM_data_linkage_ETL/matching_curve.jpg" alt="Source: James Doidge">
-<em>Source: James Doidge</em></p>
+<em>Source: <a href="https://www.linkedin.com/in/james-doidge-2a492938/?originalSubdomain=uk">James Doidge, 2023</a></em></p>
 <p>In order to evaluate the performance of data linkage, we can build a matrix for the link-match classification. In theory, we wish our data to achieve a ~100% sensitivity (proportion of matches that are linked), or recall, while in parralel keeping the specificity (proportion of non-matches that are not linked) high as well. To achieve these goals, three methods for data linkage are widely used, including deterministic linakge, probalistic linkage, and machine learning.</p>
 <table>
 <thead>
@@ -241,22 +244,23 @@ Understand the concept of data linkage, especially deterministic linakge. Use Ex
 </tbody>
 </table>
 <p><em>Source: <a href="https://cros-legacy.ec.europa.eu/system/files/s-dwh-m_4.2_methodology_data_linkage_v2.pdf">Collaboration in Research and Methodology for Official Statistics, European Commission</a></em></p>
-<p>We will apply the deterministic linkage method in this article. A set of predetermined rules is used to identify patterns as links or non-links. For instance, the high degree of certainty/agreement required for deterministic linkage is achieved through a unique identifier for an entity, such as NHS number. This method may allow a small amount of preconceived typographical error; however, the limitations of this method lie in the event of lower quality matching variables or handling large numbers of matching variables.</p>
+<p>I will apply the deterministic linkage method in this article. A set of predetermined rules is used to identify patterns as links or non-links. For instance, the high degree of certainty/agreement required for deterministic linkage is achieved through a unique identifier for an entity, such as NHS number. This method may allow a small amount of preconceived typographical error; however, the limitations of this method lie in the event of lower quality matching variables or handling large numbers of matching variables.</p>
 <h2 id="a-scenario-during-covid-pandemic">A scenario during COVID pandemic</h2>
-<p>Let&rsquo;s dive into a practical scenario where data linkage proves invaluable. Suppose you are a data analyst in a UK hospital, where data is captured in the MIMIC III database and ODK database. Your hospital management has asked you to generate an executive report synthesising recent patient data from MIMIC III, survey data from ODK, and national statistics for COVID-19.</p>
-<p>Besdies, to address surges in COVID-19 cases, you should be able to regularly generate this report, with potential changes to the prototype. What&rsquo;s your strategy on this mission?</p>
+<p>Let&rsquo;s dive into a practical scenario where data linkage proves invaluable. Suppose you are a data analyst in a UK hospital, where data is captured in the <a href="https://mimic.mit.edu/">MIMIC III</a> database and <a href="https://getodk.org/">ODK</a> database. Your hospital management has asked you to generate an executive report synthesising recent patient data from MIMIC III, survey data from ODK, and national statistics for COVID-19. Besdies, to address surges in COVID-19 cases, you should be able to regularly generate this report, with potential changes to the prototype.</p>
+<p>What&rsquo;s your strategy on this mission?</p>
 <h3 id="dbi">DBI</h3>
-<p>First, a database interface (DBI) is required to initialize the extract, transform, load(ETL) workflow. <em>DBI</em> package can help connect my R environment to database management systems (DBMS).</p>
-<p>As MIMIC III is served in a PostgreSQL database, I chose <em>RPostgres</em> package to help me build the connection from the PostgreSQL to R. <em>RPostgres</em> package can better capture the variables with timestmaps, comepared to the <em>PostgreSQL</em> package.</p>
+<p>First, a database interface (DBI) is required to initialize the extract, transform, load (ETL) workflow. <em>DBI</em> package can help connect my R to database management systems (DBMS).</p>
+<p>As MIMIC III is served in a PostgreSQL database, I chose <em>RPostgres</em> package to help me build the connection from PostgreSQL to R. Notably, <em>RPostgres</em> package can better capture the variables with timestmaps, comepared to the <em>PostgreSQL</em> package. A few lines of postgreSQL code are executed here to retrieve the specific data I need.</p>
 <p><img src="/images/20240101_HDM_data_linkage_ETL/mimic_connection.png" alt="mimic connection"></p>
 <p>I then use <a href="https://docs.ropensci.org/ruODK/">ruODK</a> package to configure  and download data from ODK Central to R.</p>
 <p><img src="/images/20240101_HDM_data_linkage_ETL/odk_connection.png" alt="mimic connection"></p>
 <p>As for national statistics, I use the <em>download.file()</em> function in base R to get a CSV file from the <a href="https://www.data.gov.uk/dataset/992f3d28-d917-485f-8c7e-8fd47594a554/coronavirus-covid-19-weekly-update">data.gov.uk</a>.</p>
-<p>See. We&rsquo;ve built a solid fundation of data for this project. We&rsquo;ve gathered data from different servers into local R.</p>
-<h3 id="linkage-in-practical">Linkage in practical</h3>
-<p>Now, we are about to merge the data from MIMIC III and ODK for further cleaning, transforming, and filtering, and analysis. Based on deterministic linkage method, we assume/regard the <strong>subject_id</strong> as our reliable agreement for matching between two datasets.</p>
-<p>After utilizing R&rsquo;s <em>merge()</em> for an inner join, we proceed to examine the quaity of the data linkage by introducing two additional matching variables: age at admission and gender.</p>
-<p><strong>Difference in ages between MIMIC III and ODK:</strong></p>
+<h3 id="data-linkage">Data Linkage</h3>
+<p>Now, I are about to merge the data from MIMIC III and ODK for further cleaning, transforming, filtering, and analysis. Based on deterministic linkage method, I assume/regard the <strong>subject_id</strong> as our reliable agreement for matching between two datasets.</p>
+<p>After utilizing R&rsquo;s <em>merge()</em> for an inner join, I want to examine the quaity of the data linkage by introducing two additional matching variables: age at admission and gender.</p>
+<h3 id="linkage-error-in-age">Linkage error in age</h3>
+<p>Substantial variation in differnce in ages is noted following the linkage. The distribution of age difference for 25% to 75% of patients shows a deviation of within one year, which is deemed acceptable owing to rounding. Nevertheless, noticeable errors are evident in the minimum (-39) and maximum (303) age differences.</p>
+<p><em><strong>Difference in ages between MIMIC III and ODK:</strong></em></p>
 <table>
 <thead>
 <tr>
@@ -279,9 +283,9 @@ Understand the concept of data linkage, especially deterministic linakge. Use Ex
 </tr>
 </tbody>
 </table>
-<p>Substantial variation in differnce in ages is noted following the linkage. The distribution of age difference for 25% to 75% of patients shows a deviation of within one year, which is deemed acceptable owing to rounding. Nevertheless, noticeable errors are evident in the minimum (-39) and maximum (303) age differences.</p>
 <p>To address this issue, we can exclude observations that surpass the expected lifespan. Subsequently, consult the data provider to determine which data source is more reliable regarding age entry. You can either rely on a single dataset as the definitive age or eliminate observations with significant deviations in ages.</p>
-<p>Let&rsquo;s move on to the gender. There seems a bit mismatches, such as &ldquo;Female-Man&rdquo; and &ldquo;Male-Woman&rdquo;. Again, you can decide either omit all observations with mismatches in genders, or rely on a single dataset as the definitive gender.</p>
+<h3 id="linkage-error-in-gender">Linkage error in gender</h3>
+<p>Let&rsquo;s move on to the gender variable. There seems a bit mismatches, such as &ldquo;Female-Man&rdquo; and &ldquo;Male-Woman&rdquo;. Again, you can decide either omit all observations with mismatches in genders, or rely on a single dataset as the definitive gender.</p>
 <p><strong>Comparison of gender categories between MIMIC III and ODK:</strong></p>
 <table>
 <thead>
@@ -311,15 +315,16 @@ Understand the concept of data linkage, especially deterministic linakge. Use Ex
 </tbody>
 </table>
 <p>It is also noteworthy that individuals identifying as trans and non-binary are retained in my merged data frame. This inclusion is crucial as gender minority groups may feel uncomfortable when presented with a table offering only binary options for female and male. In other words, for me, they are not linkage error; instead, &lsquo;it&rsquo;s a defect in the gender variable of MIMIC III.</p>
-<p>After handling the linkage erros, we then apply some exploratory data analysis (EDA) to privde summary satatistics for our patients. This processing is not covered in this article.</p>
+<p>After handling the linkage error, I then apply some exploratory data analysis (EDA) to privde summary satatistics for our patients. This data processing is not covered in this article.</p>
 <h3 id="quarto">Quarto</h3>
-<p>Finally, following data anaylsis, we can use <a href="https://quarto.org/">Quarto</a>, the next generation of R Markdown released in 2022, to play as our publishing system.</p>
-<p>You can smoothly do all the programming in a singel qmd file for Quarto document. Alternatively, you can also save your output from your previous R scripts somewhere, then open a new qmd file to read and print your outputs. <a href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_pdf.pdf"><em>Knitr::kable and kableExtra package</em></a> is recommended for generating decent LaTeX tables in a PDF format.</p>
-<h2 id="summary">Summary</h2>
+<p>Finally, following data anaylsis, I use <a href="https://quarto.org/">Quarto</a>, the next generation of R Markdown released in 2022, to play as our publishing system.</p>
+<p>You can smoothly do all the programming in a single qmd file for Quarto document. Alternatively, you can also save your output from your previous R scripts somewhere, and then open a new qmd file to read and print your outputs. <a href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_pdf.pdf"><em>Knitr::kable and kableExtra package</em></a> is highly recommended for generating decent LaTeX tables in a PDF format.</p>
+<h2 id="conclusion">Conclusion</h2>
 <p><img src="/images/20240101_HDM_data_linkage_ETL/HDM_structure.png" alt="Project Overview"></p>
-<p>In short, investigating the matching variables may provide an indication of confidence in the link. By agreeing on subject_id, and stepwisely and partially agreeing on age and gender, we can minimize data linkage error.</p>
-<p>With regard to the ETL data pipeline, we can process data from divsere sources in an environment, and ensure an auditable and reproducible workflow.</p>
-<p><em>This article has been adapted from a report for the Health Data Management module at LSHTM. With thanks from <a href="https://www.linkedin.com/in/james-doidge-2a492938/?originalSubdomain=uk">James Doidge</a> who introduced the data linkage topic in the Thinking Lika A Health Data Scientist module</em></p>
+<p>In short, investigating the matching variables may provide an indication of confidence in the link. In my scenario, I minimized data linkage error by initially agreeing on subject_id, and then stepwisely and partially agreeing on age and gender.<br>
+Additionally, processing data from various sources is achieved by using R to execute the ETL pipeline, ensuring a reproducible workflow for synthesizing a report as below.</p>
+<p><img src="/images/20240101_HDM_data_linkage_ETL/report.png" alt="report"></p>
+<p><em>This article has been adapted from the assessment of the Health Data Management module at LSHTM. With thanks from <a href="https://www.linkedin.com/in/james-doidge-2a492938/?originalSubdomain=uk">James Doidge</a> who introduced the data linkage topic in the Thinking Lika A Health Data Scientist module</em></p>
 
         </div>
     </div>
