@@ -1,0 +1,498 @@
+
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Machine Learning Approaches for Predicting Remission Status: Lasso, Random Forest &amp; Adaboost | Infectious Perspectives</title>
+    <meta name="description"
+        content="What can you learn from this article?
+Using regularized methods (Lasso) for predictive variable selection Tuning hyperparameters for tree-based methods Applying weak learner for sequnectial Comparing prediction performances and predictor importance across learners Basic Methods Inmagine you possess a dataset comprising 30 biomarker varaibles. How would you use it to predict patient&rsquo;s remission status, i.e. remission or active diseae? One common approach that may cross your mind is the logistic regression, as illustrated below:">
+    <link rel="canonical" href="https://haokaitseng.github.io/post/20240210-machine-learning-lasso-random-forest/" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    
+    <link rel="stylesheet" href="https://haokaitseng.github.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
+
+    <meta property="og:title" content="Machine Learning Approaches for Predicting Remission Status: Lasso, Random Forest &amp; Adaboost" />
+<meta property="og:description" content="What can you learn from this article?
+Using regularized methods (Lasso) for predictive variable selection Tuning hyperparameters for tree-based methods Applying weak learner for sequnectial Comparing prediction performances and predictor importance across learners Basic Methods Inmagine you possess a dataset comprising 30 biomarker varaibles. How would you use it to predict patient&rsquo;s remission status, i.e. remission or active diseae? One common approach that may cross your mind is the logistic regression, as illustrated below:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://haokaitseng.github.io/post/20240210-machine-learning-lasso-random-forest/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-02-10T22:11:12+08:00" />
+<meta property="article:modified_time" content="2024-02-10T22:11:12+08:00" /><meta property="og:site_name" content="Kai&#39;s Blog" />
+
+
+    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Machine Learning Approaches for Predicting Remission Status: Lasso, Random Forest &amp; Adaboost"/>
+<meta name="twitter:description" content="What can you learn from this article?
+Using regularized methods (Lasso) for predictive variable selection Tuning hyperparameters for tree-based methods Applying weak learner for sequnectial Comparing prediction performances and predictor importance across learners Basic Methods Inmagine you possess a dataset comprising 30 biomarker varaibles. How would you use it to predict patient&rsquo;s remission status, i.e. remission or active diseae? One common approach that may cross your mind is the logistic regression, as illustrated below:"/>
+
+    
+    
+    
+
+</head><body><nav class="navbar is-light" role="navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a href="/" title="home" class="navbar-item">
+                <span class="logo">
+                    <h1>Infectious Perspectives</h1>
+                </span>
+            </a>
+
+            
+            <a id="theme-toggle" class="theme-toggle" href="#">
+                <img src="https://haokaitseng.github.io/svg/sun.svg" alt="sun icon" class="theme-icon" />
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                
+                <a href="/about" class="navbar-item">About</a>
+                
+                <a href="/post" class="navbar-item">Blog</a>
+                
+                <a href="/categories" class="navbar-item">Categories</a>
+                
+            </div>
+
+        </div>
+        <div class="search">
+            <div id="fastSearch">
+                <input id="searchInput" tabindex="0" placeholder="Search..">
+                <ul id="searchResults">
+
+                </ul>
+            </div>
+            <a id="search-btn" style="display: inline-block;" href="# ">
+                <div class="icon-search"><svg class="search-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+            </a>
+        </div>
+
+        <script src="/js/fuse.min.js"></script> 
+        <script src="/js/fastsearch.js"></script>
+
+    </div>
+</nav>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var burger = document.querySelector('.navbar-burger');
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('is-active');
+            document.querySelector('.navbar-menu').classList.toggle('is-active');
+        });
+    });
+
+    
+    function setTheme(theme) {
+        let body = document.body;
+        let themeIcon = document.querySelector(".theme-icon");
+        if (theme === "dark") {
+            body.classList.add("dark-mode");
+            themeIcon.src = "https:\/\/haokaitseng.github.io\/svg/moon.svg";
+            themeIcon.alt = "moon icon";
+        } else {
+            body.classList.remove("dark-mode");
+            themeIcon.src = "https:\/\/haokaitseng.github.io\/svg/sun.svg";
+            themeIcon.alt = "sun icon";
+        }
+        
+        localStorage.setItem("theme", theme);
+    }
+
+    
+    let theme = localStorage.getItem("theme") || "light";
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDarkMode) {
+        
+        setTheme('dark');
+
+    } else {
+        
+        setTheme('light');
+    }
+    setTheme(theme);
+
+    
+    document.getElementById("theme-toggle").addEventListener("click", function() {
+        if (theme === "light") {
+            theme = "dark";
+        } else {
+            theme = "light";
+        }
+        setTheme(theme);
+    });
+
+
+
+</script>
+
+</header><main>
+<div class="single-container">
+    <div class="archive">
+        <h1 class="title is-1">Machine Learning Approaches for Predicting Remission Status: Lasso, Random Forest &amp; Adaboost</h1>
+        <div class="title subtitle heading is-6">
+            <div class="author-info columns is-vcentered">
+                <div class="column">
+                    <div class="columns is-vcentered is-mobile">
+                        
+                        <div class="column is-narrow">
+                            <img src="/images/profile.jpg" class="author-image">
+                        </div>
+                        
+                        <div class="column">
+                            <p>Kai</p>
+                            <p><time>February 10, 2024</time>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="small-categories-container">
+                    <a href="/categories/data-science">Data Science</a>, <a href="/categories/machine-learning">Machine Learning</a>
+                </div>
+            </div>
+        </div>
+        <div class="content article-content">
+            <div class="toc-container">
+                
+    <div class="post-toc">
+        
+            <aside>
+                <button id="tocButton" ><h4 id="contents" style="margin-left: 1vw;color:rgb(96, 134, 180);margin-bottom: 0;">CONTENTS</h4></button>
+                <div id="hide"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#basic-methods">Basic Methods</a></li>
+    <li><a href="#regularized-mothod">Regularized Mothod</a></li>
+    <li><a href="#tree-based-method">Tree-based method</a>
+      <ul>
+        <li><a href="#cart">CART</a></li>
+        <li><a href="#bagging">Bagging</a></li>
+        <li><a href="#random-forest">Random forest</a></li>
+        <li><a href="#adaboost">Adaboost</a></li>
+      </ul>
+    </li>
+    <li><a href="#comparing-models">Comparing models</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav></div>
+            </aside>
+        
+    </div><script>
+    
+        let button = document.getElementById('tocButton');
+        let hide = document.getElementById("hide");
+        let contents=document.getElementById("contents");
+        button.addEventListener("click", function() {
+        if (hide.style.display!='block') {
+            hide.style.display='block'
+        } else {
+            hide.style.display='none'
+            contents.style.color='rgb(96, 134, 180)'
+        }
+        });
+    
+
+
+
+
+</script>
+            </div>
+            <blockquote>
+<p>What can you learn from this article?</p>
+<ul>
+<li>Using regularized methods (Lasso) for predictive variable selection</li>
+<li>Tuning hyperparameters for tree-based methods</li>
+<li>Applying weak learner for sequnectial</li>
+<li>Comparing prediction performances and predictor importance across learners</li>
+</ul>
+</blockquote>
+<h2 id="basic-methods">Basic Methods</h2>
+<p>Inmagine you  possess a dataset comprising 30 biomarker varaibles. How would you use it to predict patient&rsquo;s remission status, i.e. remission or active diseae? One common approach that may cross your mind is the logistic regression, as illustrated below:</p>
+<blockquote>
+<p>logit(p) = β0​+β1<em>​X1​+β2</em>​X2 ​+…+β30*​X30</p>
+</blockquote>
+<p>In addition to logistic regression, we can apply t-test to inform the normalised difference between remission&rsquo;s binary outcome.</p>
+<p><img src="/images/20240210_machinelaerning_lasso_tree/1_ttest_scatterplot.png" alt="t-test"></p>
+<p>Also, regarding collinearity, it worths looking into the correlations across the predictive variables. Through visual inspection, we can identify some strong correlations, such as alt &amp; ast, ymph_percent * neut_percent in the correlations plot.</p>
+<p><img src="/images/20240210_machinelaerning_lasso_tree/1_correlation.png" alt="correlation"></p>
+<h2 id="regularized-mothod">Regularized Mothod</h2>
+<p>Lasso regression is a regularized method in machin learning that performs both variable selection and regularization. It can identify the insignificant or unimportant variables as zero coefficients. The variable selection and shrinkage effect are strong with the penalty parameter λ. With the increase of λ in the below, the number of non-zero coefficients reduces from 30 to 0, where the lines are shrinkage paths.</p>
+<p><img src="/images/20240210_machinelaerning_lasso_tree/2_1_lasso_beta_coefficients.png" alt="lasso_shrinkage"></p>
+<p>To find an optimal hyperparameter λ, I used an automated 10-fold cross validation on Lasso. The lowest error is observed at the log λ of -8.11. However, I want to choose the λ at which error is within 1 standard error of the minimal error, i.e. the 1 se criterion. To balance the bias-variance trade-offs, log λ of -4.66 is preferred because it provides similar predictive performance compared to log λ of -8.11. This is also much easier to interpret with less variables, and less likely to overfit to noise in the training data.</p>
+<p><img src="/images/20240210_machinelaerning_lasso_tree/2_1_cv_lambda_1se.png" alt="tune_lasso_"></p>
+<p>After tuning the λ, there are 12 no-zero beta coefficients remaining in the Lasso laerner. The complexity of the model is hence reduced.</p>
+<h2 id="tree-based-method">Tree-based method</h2>
+<h3 id="cart">CART</h3>
+<p>As a supervised learning approach, a single Classification And Regression Trees (CART) is a useful algorithm, which is used as a predictive model to draw conclusions about a set of observations. At each node, the tree grows in a binary direction, initiating the first split based on whether the hgb is less than 13 or not. In the node where hgb &lt; 13, it is calssified that 67% of the patients has a status of remission.</p>
+<p><img src="/images/20240210_machinelaerning_lasso_tree/3_1_single_tree_visual.png" alt="single_tree"></p>
+<h3 id="bagging">Bagging</h3>
+<p>With more than one decision trees, our learning model can be become ensemble, which means the kearning process is made up of a set of classifiers. The bootstrap aggregation, also known as bagging, is the most well-known ensemble method. Using bagging, a random sample of data in the training set is selected with replacement and then trained independently. Finally, taking the average or majority of those estimates yield a more accurate prediction.</p>
+<p>In our training data, I loop over 10 to 500 trees for bagging. This help me to determine the number of trees required to sufficiently stabilize the Root Mean Squared Error (RMSE). With 340 trees, the model achieves the lowest RMSE and demonstrates a tendency to stabilize thereafter.</p>
+<p><img src="/images/20240210_machinelaerning_lasso_tree/3_bagging.png" alt="bagging"></p>
+<h3 id="random-forest">Random forest</h3>
+<p>Random forest algorithm is an extension of bagging, as it uses both bagging and feature randomness to create an uncorrelated forest of decision trees. In random forest, a selection of a subset of features ensures low correlation among decision trees, which can reduce over fitting and increase accuracy.</p>
+<blockquote>
+<p>To training a random forest algorithm, five hyperparameters should be considered:</p>
+<ul>
+<li>Splitting rule</li>
+<li>Maximum tree depth/ Minimum node size</li>
+<li>Number of trees in the forest</li>
+<li>Sampling fraction</li>
+<li>Number of predictors to consider at any given split (mtry)</li>
+</ul>
+</blockquote>
+<p>To find an optimal mtry, here I utilize 10-fold cross validation for random search and grid search. In random search, when you have 8 predictors to consider at any given split, you have the highest accuracy. In grid search, the optimal mtry is 10, with a higher Kappa, indicating a better classifier, considering the marginal distribution of the remission status.</p>
+<p><img src="/images/20240210_machinelaerning_lasso_tree/3_4_randomsearch.png" alt="randomserach">
+<img src="/images/20240210_machinelaerning_lasso_tree/3_4_gridsearch.png" alt="gridserach"></p>
+<p>With regard to sampling fraction, reducing the sample size can help minimize between-tree correlation. As different sets of sampling fractions are tried, either with or without sampling replacement, the minimal out-of-bag (OOB) RMSE is observed at 90%. This suggests that optimizing predictions can be achieved by drawing 90% of observations for the training of each tree.</p>
+<p><img src="/images/20240210_machinelaerning_lasso_tree/3_5_rf_sample_fraction.png" alt="sample"></p>
+<p>Going through these searches of hyperparameters with minimal OOB RMSE, the tuned random forest requires at least 340 trees to grow, with 10 mtry and 90% sampling fraction (with replacement). Gini impurity is adopted for the split rule, which is suitable for the scope of classification.</p>
+<table>
+<thead>
+<tr>
+<th>mtry</th>
+<th>10</th>
+<th>10</th>
+<th>8</th>
+<th>8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sampling fraction</td>
+<td>OOB RMSE (replacement)</td>
+<td>OOB RMSE (non-replacement)</td>
+<td>OOB RMSE (replacement)</td>
+<td>OOB RMSE (non-replacement)</td>
+</tr>
+<tr>
+<td>100%</td>
+<td>0.5175449</td>
+<td>0.5165891</td>
+<td>0.5139516</td>
+<td>0.5237148</td>
+</tr>
+<tr>
+<td>90%</td>
+<td>0.5137112</td>
+<td>0.5173061</td>
+<td>0.5165891</td>
+<td>0.5194512</td>
+</tr>
+<tr>
+<td>60%</td>
+<td>0.5192133</td>
+<td>0.5144322</td>
+<td>0.5192133</td>
+<td>0.5170672</td>
+</tr>
+</tbody>
+</table>
+<p>Overall, in evaluating prediction performance, it is evident that the tuned random forest exhibits the lowest RMSEs among the tree-based methods.</p>
+<table>
+<thead>
+<tr>
+<th>Learner</th>
+<th style="text-align:center">OOB misclassification error</th>
+<th style="text-align:center">RMSE (validation set)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Single CART</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">0.58809</td>
+</tr>
+<tr>
+<td>340 bagged trees</td>
+<td style="text-align:center">0.2641463</td>
+<td style="text-align:center">0.5058941</td>
+</tr>
+<tr>
+<td>Random forest (default)</td>
+<td style="text-align:center">0.2661</td>
+<td style="text-align:center">0.5049165</td>
+</tr>
+<tr>
+<td>Random forest (tuned)</td>
+<td style="text-align:center">0.2639</td>
+<td style="text-align:center">0.5058941</td>
+</tr>
+</tbody>
+</table>
+<p>Here the importance of the predictors are presented. The feature with the highest importance in the random forest is lymph_percent.</p>
+<p><img src="/images/20240210_machinelaerning_lasso_tree/3_7_importance_tree_methods.png" alt="rf_importance"></p>
+<h3 id="adaboost">Adaboost</h3>
+<p>Adaptive boosting, known as adaboost, is also an ensemble learning method that combines multiple weak learners sequentially to adjust the weights of training instances based on their classification accuracy. Adaboost is usually applied in binary classification, where misclassified instances are given higher weights.</p>
+<p>With a step size of 0.1, my optimal number of boosting iterations are 323, remainining 19 predictors in the generalized linear   model.</p>
+<p><img src="/images/20240210_machinelaerning_lasso_tree/5_adaboost.png" alt="adaboosting"></p>
+<h2 id="comparing-models">Comparing models</h2>
+<p>The specificity, sensitivity, Positive Predictive Value (PPV), Negative Predictive Value (NPV) of the tuned random forest model are all higher than the Logistic, LASSO, and Adaboost in the validation set, i.e. 20% of the data that is not used for training. The Kappa of 48% as of random forest means a fair agreement.</p>
+<table>
+<thead>
+<tr>
+<th>Leaner</th>
+<th>Accuracy</th>
+<th>Kappa</th>
+<th>Sensitivity</th>
+<th>Spedificity</th>
+<th>PPV</th>
+<th>NPV</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Logistic Regression</td>
+<td>69.27%</td>
+<td>37.67%</td>
+<td>78.11%</td>
+<td>59.20%</td>
+<td>68.57%</td>
+<td>70.35%</td>
+</tr>
+<tr>
+<td>Lasso</td>
+<td>68.77%</td>
+<td>36.43%</td>
+<td>80.33%</td>
+<td>55.60%</td>
+<td>67.34%</td>
+<td>71.27%</td>
+</tr>
+<tr>
+<td>Random forest</td>
+<td>74.41%</td>
+<td>48.33%</td>
+<td>79.59%</td>
+<td>68.50%</td>
+<td>74.22%</td>
+<td>74.65%</td>
+</tr>
+<tr>
+<td>Adaboost</td>
+<td>68.97%</td>
+<td>36.91%</td>
+<td>79.59%</td>
+<td>56.87%</td>
+<td>67.77%</td>
+<td>70.98%</td>
+</tr>
+</tbody>
+</table>
+<p>We particularly investigate the area underneath the ROC (AUC) of Lasso and random forest. For random forest, the AUC of 0.808 suggests a reasonable ability to discriminate between the remission status, better than lasso’s AUC of 0.741. Moreover, there are statistical difference (Z = 6.6253, P&lt;0.05).</p>
+<p><img src="/images/20240210_machinelaerning_lasso_tree/6_2_ROC_curves.png" alt="AUC"></p>
+<p>Finally, let&rsquo;s dive into the importance of the predictors. There are 6 common predictors selected by Lasso and Random forest. Hbg, mch, lympch_percent are the most impactful among five methods, where mch hgb and lymph percent had large normalised differences in the previous T-test analysis.
+Underlined predictors that are unique to either Lasso or random forest exhibit a distinct pattern in the previous correlation pairs.This is a characteristic of Lasso penalty:
+it will typically pick only one of a group of correlated predictor variables to explain the variation in the outcome.</p>
+<p><img src="/images/20240210_machinelaerning_lasso_tree/6_predictor_table.png" alt="predictors"></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Random forest (74.41%) has better accuracy on the prediction for the validation data, surpassing logistic regression, Lasso, adn Adaboost.
+Besides, regarding AUC, random forest (0.741) has a good ability to discriminate between the remission and active disease.</p>
+<p>In terms of predictor importance, among the 12 predictors selected by Lasso learner, 6 of them are also selected in the top 12 predictors identified by the random forest.
+Hence, by using the <strong>important predictors</strong>, fitting a tuned random forest model on their biomarkers can support the predicting of remission status.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+</table>
+<p>*Co-working with ChatGPT, this article has been adapted from the assessment of the Machine Learning module at LSHTM.</p>
+
+        </div>
+    </div>
+    <a href="#" id="scrollToTopButton">
+        <svg t="1686753152588" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            p-id="3988" width="48" height="48">
+            <path
+                d="M518.5 360.3c-3.2-4.4-9.7-4.4-12.9 0l-178 246c-3.8 5.3 0 12.7 6.5 12.7H381c10.2 0 19.9-4.9 25.9-13.2L512 460.4l105.2 145.4c6 8.3 15.6 13.2 25.9 13.2H690c6.5 0 10.3-7.4 6.5-12.7l-178-246z"
+                p-id="3989" fill="#363636"></path>
+            <path
+                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                p-id="3990" fill="#363636"></path>
+        </svg>
+    </a><hr style="border-top: 1px solid #EEEEEE;">
+<div id="comment"></div>
+<script>
+    const getStoredTheme = () => localStorage.getItem("theme") === "dark" ? "dark" : "light";
+
+    const setGiscusTheme = () => {
+        const sendMessage = (message) => {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (iframe) {
+                iframe.contentWindow.postMessage({giscus: message}, 'https://giscus.app');
+            }
+        }
+        sendMessage({setConfig: {theme: getStoredTheme()}})
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const giscusAttributes = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "hotjuicew\/blog",
+            "data-repo-id": "R_kgDOHHQOuw",
+            "data-category": "Announcements",
+            "data-category-id": "DIC_kwDOHHQOu84CWCQ3",
+            "data-mapping": "og:title",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-input-position": "bottom",
+            "data-theme": getStoredTheme(),
+            "data-lang": "en",
+            "data-loading": "lazy",
+            "crossorigin": "anonymous",
+        };
+
+        
+        const giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(
+            ([key, value]) => giscusScript.setAttribute(key, value));
+        document.getElementById("comment").appendChild(giscusScript);
+
+        
+        const themeToggle = document.querySelector(".theme-toggle");
+        if (themeToggle) {
+            themeToggle.addEventListener("click", setGiscusTheme);
+        }
+    });
+
+</script>
+
+
+<div class="pp-container">
+        <section class="pre-and-post">
+            <div class="has-text-left">
+                
+                <p>Previous post</p>
+                <a href="https://haokaitseng.github.io/post/20240101-data-linkage-etl-mimic/">Minimizing data linkage error in an ETL pipeline using R: an intersection of MIMIC III and ODK database</a>
+                
+            </div>
+            <div class="has-text-right">
+                
+            </div>
+        </section>
+    </div>
+
+</div>
+
+        </main><footer class="footer">
+    <div class="content has-text-centered">
+    <span>&copy; 2024 <a href="https://haokaitseng.github.io/">Infectious Perspectives</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" target="_blank">Hugo</a> &
+        <a href="https://github.com/hotjuicew/hugo-JuiceBar" target="_blank">JuiceBar</a>
+    </span>
+    </div>
+  </footer></body>
+</html>
+

@@ -6,8 +6,15 @@
     <description>Recent content in Data Science on Infectious Perspectives</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sat, 06 Jan 2024 22:11:12 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 10 Feb 2024 22:11:12 +0800</lastBuildDate>
     <atom:link href="https://haokaitseng.github.io/categories/data-science/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Machine Learning Approaches for Predicting Remission Status: Lasso, Random Forest &amp; Adaboost</title>
+      <link>https://haokaitseng.github.io/post/20240210-machine-learning-lasso-random-forest/</link>
+      <pubDate>Sat, 10 Feb 2024 22:11:12 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/post/20240210-machine-learning-lasso-random-forest/</guid>
+      <description>What can you learn from this article?&#xA;Using regularized methods (Lasso) for predictive variable selection Tuning hyperparameters for tree-based methods Applying weak learner for sequnectial Comparing prediction performances and predictor importance across learners Basic Methods Inmagine you possess a dataset comprising 30 biomarker varaibles. How would you use it to predict patient&amp;rsquo;s remission status, i.e. remission or active diseae? One common approach that may cross your mind is the logistic regression, as illustrated below:</description>
+    </item>
     <item>
       <title>Minimizing data linkage error in an ETL pipeline using R: an intersection of MIMIC III and ODK database</title>
       <link>https://haokaitseng.github.io/post/20240101-data-linkage-etl-mimic/</link>
