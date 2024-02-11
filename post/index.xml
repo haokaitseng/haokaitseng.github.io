@@ -9,11 +9,11 @@
     <lastBuildDate>Sat, 10 Feb 2024 22:11:12 +0800</lastBuildDate>
     <atom:link href="https://haokaitseng.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Machine Learning Approaches for Predicting Remission Status: Lasso, Random Forest &amp; Adaboost</title>
+      <title>Predicting Remission Status in Healthcare: A Comparative Analysis of Lasso, Random Forest, and Adaboost Machine Learning Models</title>
       <link>https://haokaitseng.github.io/post/20240210-machine-learning-lasso-random-forest/</link>
       <pubDate>Sat, 10 Feb 2024 22:11:12 +0800</pubDate>
       <guid>https://haokaitseng.github.io/post/20240210-machine-learning-lasso-random-forest/</guid>
-      <description>What can you learn from this article?&#xA;Using regularized methods (Lasso) for predictive variable selection Tuning hyperparameters for tree-based methods Applying weak learner for sequnectial Comparing prediction performances and predictor importance across learners Basic Methods Inmagine you possess a dataset comprising 30 biomarker varaibles. How would you use it to predict patient&amp;rsquo;s remission status, i.e. remission or active diseae? One common approach that may cross your mind is the logistic regression, as illustrated below:</description>
+      <description>In this article, we will explore the following topics:&#xA;Using regularized method (Lasso) for predictive variable selection Tuning hyperparameters for tree-based methods Employing the weighted sum of weak learners for boosted classifier Comparing prediction performances and predictors importance Basic Methods Inmagine you possess a dataset comprising 30 biomarker varaibles with 5000+. How would you use it to predict patient&amp;rsquo;s remission status, i.e. remission or active disease? One common approach that may cross your mind is the logistic regression, as illustrated below:</description>
     </item>
     <item>
       <title>Minimizing data linkage error in an ETL pipeline using R: an intersection of MIMIC III and ODK database</title>

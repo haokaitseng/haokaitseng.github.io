@@ -4,27 +4,27 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>Machine Learning Approaches for Predicting Remission Status: Lasso, Random Forest &amp; Adaboost | Infectious Perspectives</title>
+    <title>Predicting Remission Status in Healthcare: A Comparative Analysis of Lasso, Random Forest, and Adaboost Machine Learning Models | Infectious Perspectives</title>
     <meta name="description"
-        content="What can you learn from this article?
-Using regularized methods (Lasso) for predictive variable selection Tuning hyperparameters for tree-based methods Applying weak learner for sequnectial Comparing prediction performances and predictor importance across learners Basic Methods Inmagine you possess a dataset comprising 30 biomarker varaibles. How would you use it to predict patient&rsquo;s remission status, i.e. remission or active diseae? One common approach that may cross your mind is the logistic regression, as illustrated below:">
+        content="In this article, we will explore the following topics:
+Using regularized method (Lasso) for predictive variable selection Tuning hyperparameters for tree-based methods Employing the weighted sum of weak learners for boosted classifier Comparing prediction performances and predictors importance Basic Methods Inmagine you possess a dataset comprising 30 biomarker varaibles with 5000&#43;. How would you use it to predict patient&rsquo;s remission status, i.e. remission or active disease? One common approach that may cross your mind is the logistic regression, as illustrated below:">
     <link rel="canonical" href="https://haokaitseng.github.io/post/20240210-machine-learning-lasso-random-forest/" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
     
     <link rel="stylesheet" href="https://haokaitseng.github.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
 
-    <meta property="og:title" content="Machine Learning Approaches for Predicting Remission Status: Lasso, Random Forest &amp; Adaboost" />
-<meta property="og:description" content="What can you learn from this article?
-Using regularized methods (Lasso) for predictive variable selection Tuning hyperparameters for tree-based methods Applying weak learner for sequnectial Comparing prediction performances and predictor importance across learners Basic Methods Inmagine you possess a dataset comprising 30 biomarker varaibles. How would you use it to predict patient&rsquo;s remission status, i.e. remission or active diseae? One common approach that may cross your mind is the logistic regression, as illustrated below:" />
+    <meta property="og:title" content="Predicting Remission Status in Healthcare: A Comparative Analysis of Lasso, Random Forest, and Adaboost Machine Learning Models" />
+<meta property="og:description" content="In this article, we will explore the following topics:
+Using regularized method (Lasso) for predictive variable selection Tuning hyperparameters for tree-based methods Employing the weighted sum of weak learners for boosted classifier Comparing prediction performances and predictors importance Basic Methods Inmagine you possess a dataset comprising 30 biomarker varaibles with 5000&#43;. How would you use it to predict patient&rsquo;s remission status, i.e. remission or active disease? One common approach that may cross your mind is the logistic regression, as illustrated below:" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://haokaitseng.github.io/post/20240210-machine-learning-lasso-random-forest/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2024-02-10T22:11:12+08:00" />
-<meta property="article:modified_time" content="2024-02-10T22:11:12+08:00" /><meta property="og:site_name" content="Kai&#39;s Blog" />
+<meta property="article:modified_time" content="2024-02-10T22:11:12+08:00" /><meta property="og:site_name" content="Kai&#39;s Data Science Blog" />
 
 
-    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Machine Learning Approaches for Predicting Remission Status: Lasso, Random Forest &amp; Adaboost"/>
-<meta name="twitter:description" content="What can you learn from this article?
-Using regularized methods (Lasso) for predictive variable selection Tuning hyperparameters for tree-based methods Applying weak learner for sequnectial Comparing prediction performances and predictor importance across learners Basic Methods Inmagine you possess a dataset comprising 30 biomarker varaibles. How would you use it to predict patient&rsquo;s remission status, i.e. remission or active diseae? One common approach that may cross your mind is the logistic regression, as illustrated below:"/>
+    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Predicting Remission Status in Healthcare: A Comparative Analysis of Lasso, Random Forest, and Adaboost Machine Learning Models"/>
+<meta name="twitter:description" content="In this article, we will explore the following topics:
+Using regularized method (Lasso) for predictive variable selection Tuning hyperparameters for tree-based methods Employing the weighted sum of weak learners for boosted classifier Comparing prediction performances and predictors importance Basic Methods Inmagine you possess a dataset comprising 30 biomarker varaibles with 5000&#43;. How would you use it to predict patient&rsquo;s remission status, i.e. remission or active disease? One common approach that may cross your mind is the logistic regression, as illustrated below:"/>
 
     
     
@@ -138,7 +138,7 @@ Using regularized methods (Lasso) for predictive variable selection Tuning hyper
 </header><main>
 <div class="single-container">
     <div class="archive">
-        <h1 class="title is-1">Machine Learning Approaches for Predicting Remission Status: Lasso, Random Forest &amp; Adaboost</h1>
+        <h1 class="title is-1">Predicting Remission Status in Healthcare: A Comparative Analysis of Lasso, Random Forest, and Adaboost Machine Learning Models</h1>
         <div class="title subtitle heading is-6">
             <div class="author-info columns is-vcentered">
                 <div class="column">
@@ -171,7 +171,7 @@ Using regularized methods (Lasso) for predictive variable selection Tuning hyper
   <ul>
     <li><a href="#basic-methods">Basic Methods</a></li>
     <li><a href="#regularized-mothod">Regularized Mothod</a></li>
-    <li><a href="#tree-based-method">Tree-based method</a>
+    <li><a href="#tree-based-methods">Tree-based Methods</a>
       <ul>
         <li><a href="#cart">CART</a></li>
         <li><a href="#bagging">Bagging</a></li>
@@ -179,7 +179,7 @@ Using regularized methods (Lasso) for predictive variable selection Tuning hyper
         <li><a href="#adaboost">Adaboost</a></li>
       </ul>
     </li>
-    <li><a href="#comparing-models">Comparing models</a></li>
+    <li><a href="#models-comparison">Models Comparison</a></li>
     <li><a href="#conclusion">Conclusion</a></li>
   </ul>
 </nav></div>
@@ -206,16 +206,16 @@ Using regularized methods (Lasso) for predictive variable selection Tuning hyper
 </script>
             </div>
             <blockquote>
-<p>What can you learn from this article?</p>
+<p>In this article, we will explore the following topics:</p>
 <ul>
-<li>Using regularized methods (Lasso) for predictive variable selection</li>
+<li>Using regularized method (Lasso) for predictive variable selection</li>
 <li>Tuning hyperparameters for tree-based methods</li>
-<li>Applying weak learner for sequnectial</li>
-<li>Comparing prediction performances and predictor importance across learners</li>
+<li>Employing the weighted sum of weak learners for boosted classifier</li>
+<li>Comparing prediction performances and predictors importance</li>
 </ul>
 </blockquote>
 <h2 id="basic-methods">Basic Methods</h2>
-<p>Inmagine you  possess a dataset comprising 30 biomarker varaibles. How would you use it to predict patient&rsquo;s remission status, i.e. remission or active diseae? One common approach that may cross your mind is the logistic regression, as illustrated below:</p>
+<p>Inmagine you  possess a dataset comprising 30 biomarker varaibles with 5000+. How would you use it to predict patient&rsquo;s remission status, i.e. remission or active disease? One common approach that may cross your mind is the logistic regression, as illustrated below:</p>
 <blockquote>
 <p>logit(p) = β0​+β1<em>​X1​+β2</em>​X2 ​+…+β30*​X30</p>
 </blockquote>
@@ -229,7 +229,7 @@ Using regularized methods (Lasso) for predictive variable selection Tuning hyper
 <p>To find an optimal hyperparameter λ, I used an automated 10-fold cross validation on Lasso. The lowest error is observed at the log λ of -8.11. However, I want to choose the λ at which error is within 1 standard error of the minimal error, i.e. the 1 se criterion. To balance the bias-variance trade-offs, log λ of -4.66 is preferred because it provides similar predictive performance compared to log λ of -8.11. This is also much easier to interpret with less variables, and less likely to overfit to noise in the training data.</p>
 <p><img src="/images/20240210_machinelaerning_lasso_tree/2_1_cv_lambda_1se.png" alt="tune_lasso_"></p>
 <p>After tuning the λ, there are 12 no-zero beta coefficients remaining in the Lasso laerner. The complexity of the model is hence reduced.</p>
-<h2 id="tree-based-method">Tree-based method</h2>
+<h2 id="tree-based-methods">Tree-based Methods</h2>
 <h3 id="cart">CART</h3>
 <p>As a supervised learning approach, a single Classification And Regression Trees (CART) is a useful algorithm, which is used as a predictive model to draw conclusions about a set of observations. At each node, the tree grows in a binary direction, initiating the first split based on whether the hgb is less than 13 or not. In the node where hgb &lt; 13, it is calssified that 67% of the patients has a status of remission.</p>
 <p><img src="/images/20240210_machinelaerning_lasso_tree/3_1_single_tree_visual.png" alt="single_tree"></p>
@@ -331,10 +331,10 @@ Using regularized methods (Lasso) for predictive variable selection Tuning hyper
 <p>Here the importance of the predictors are presented. The feature with the highest importance in the random forest is lymph_percent.</p>
 <p><img src="/images/20240210_machinelaerning_lasso_tree/3_7_importance_tree_methods.png" alt="rf_importance"></p>
 <h3 id="adaboost">Adaboost</h3>
-<p>Adaptive boosting, known as adaboost, is also an ensemble learning method that combines multiple weak learners sequentially to adjust the weights of training instances based on their classification accuracy. Adaboost is usually applied in binary classification, where misclassified instances are given higher weights.</p>
-<p>With a step size of 0.1, my optimal number of boosting iterations are 323, remainining 19 predictors in the generalized linear   model.</p>
-<p><img src="/images/20240210_machinelaerning_lasso_tree/5_adaboost.png" alt="adaboosting"></p>
-<h2 id="comparing-models">Comparing models</h2>
+<p>Adaptive boosting, known as adaboost, is also an ensemble learning method that combines multiple weak learners sequentially to adjust the weights of training instances based on their classification accuracy. Adaboost is usually applied in binary classification, where misclassified instances are given higher weights. These weak models are generated sequentially to ensurethat the mistakes of previous models are learned by their successors.</p>
+<p>With a step size of 0.1, my optimal number of boosting iterations are 323, remainining 19 predictors in the generalized linear model. This number indicates the best balance between model performance (error) and computational efficiency.</p>
+<p><img src="/images/20240210_machinelaerning_lasso_tree/5_adaboosting.png" alt="adaboosting"></p>
+<h2 id="models-comparison">Models Comparison</h2>
 <p>The specificity, sensitivity, Positive Predictive Value (PPV), Negative Predictive Value (NPV) of the tuned random forest model are all higher than the Logistic, LASSO, and Adaboost in the validation set, i.e. 20% of the data that is not used for training. The Kappa of 48% as of random forest means a fair agreement.</p>
 <table>
 <thead>
@@ -387,17 +387,15 @@ Using regularized methods (Lasso) for predictive variable selection Tuning hyper
 </tr>
 </tbody>
 </table>
-<p>We particularly investigate the area underneath the ROC (AUC) of Lasso and random forest. For random forest, the AUC of 0.808 suggests a reasonable ability to discriminate between the remission status, better than lasso’s AUC of 0.741. Moreover, there are statistical difference (Z = 6.6253, P&lt;0.05).</p>
+<p>We particularly investigate the area underneath the ROC (AUC) of Lasso and random forest. For random forest, the AUC of 0.808 suggests a reasonable ability to discriminate between the remission status, better than Lasso’s AUC of 0.741. Moreover, there are statistical difference (Z = 6.6253, P &lt; 0.05).</p>
 <p><img src="/images/20240210_machinelaerning_lasso_tree/6_2_ROC_curves.png" alt="AUC"></p>
 <p>Finally, let&rsquo;s dive into the importance of the predictors. There are 6 common predictors selected by Lasso and Random forest. Hbg, mch, lympch_percent are the most impactful among five methods, where mch hgb and lymph percent had large normalised differences in the previous T-test analysis.
-Underlined predictors that are unique to either Lasso or random forest exhibit a distinct pattern in the previous correlation pairs.This is a characteristic of Lasso penalty:
+In the figure below, the underlined predictors that are unique to either Lasso or random forest exhibit a distinct pattern in the previous correlation pairs.This is a characteristic of Lasso penalty:
 it will typically pick only one of a group of correlated predictor variables to explain the variation in the outcome.</p>
 <p><img src="/images/20240210_machinelaerning_lasso_tree/6_predictor_table.png" alt="predictors"></p>
 <h2 id="conclusion">Conclusion</h2>
-<p>Random forest (74.41%) has better accuracy on the prediction for the validation data, surpassing logistic regression, Lasso, adn Adaboost.
-Besides, regarding AUC, random forest (0.741) has a good ability to discriminate between the remission and active disease.</p>
-<p>In terms of predictor importance, among the 12 predictors selected by Lasso learner, 6 of them are also selected in the top 12 predictors identified by the random forest.
-Hence, by using the <strong>important predictors</strong>, fitting a tuned random forest model on their biomarkers can support the predicting of remission status.</p>
+<p>Random forest (74.41%) has better accuracy on the prediction for the validation data, surpassing logistic regression, Lasso, adn Adaboost. Besides, regarding AUC, random forest (0.741) has a good ability to discriminate between the remission and active disease.</p>
+<p>In terms of predictor importance, among the 12 predictors selected by Lasso learner, 6 of them are also selected in the top 12 predictors identified by the random forest, indicating their importance. Therefore, through using these <em><strong>important predictors</strong></em>, fitting a tuned random forest model on their biomarkers can support the predicting of remission status.</p>
 <table>
 <thead>
 <tr>
@@ -406,7 +404,7 @@ Hence, by using the <strong>important predictors</strong>, fitting a tuned rando
 </tr>
 </thead>
 </table>
-<p>*Co-working with ChatGPT, this article has been adapted from the assessment of the Machine Learning module at LSHTM.</p>
+<p><em>In collaboration with ChatGPT, this article has been adapted from the assessment of the Machine Learning module at LSHTM, with thanks to lecturers Pierre Masselot, Alex Lewin, and Sudhir Venkatesan.</em></p>
 
         </div>
     </div>
