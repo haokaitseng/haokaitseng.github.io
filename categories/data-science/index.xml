@@ -23,6 +23,13 @@
       <description>What can you learn from this article?&#xA;Understand the concepts of data linkage, especially deterministic linakge. Address linkage error in the conjunction of MIMIC III (served in a postgreSQL database) and ODK database. Employ R to design the Extract, Transform, and Load (ETL) pipeline. Use Quarto document to generate a report in PDF format. Concepts of Data Linkage In a data scientist&amp;rsquo;s typical day, the merge/join function is an inevitable task.</description>
     </item>
     <item>
+      <title>Optimizing Data Protection: Leveraging Information Governance Principles from GDPR into Research Planning</title>
+      <link>https://haokaitseng.github.io/post/20231030-data-governance/</link>
+      <pubDate>Mon, 30 Oct 2023 22:11:12 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/post/20231030-data-governance/</guid>
+      <description>This article delivers two key insights: Advantages of applying UK GDPR in research planning. Approaches to safeguard data protection in lung cancer patient interviews.&#xA;Setting th Scene The need of assessing the Quality of Life (QoL) in patients with lung cancer undergoing chemotherapy has been increasing(1). After treatment, patients may experience breathlessness or fatigue(2), along with potential challenges in their daily and occupational functioning. These side effects of chemotherapy consistently rank as a common complaint among patients.</description>
+    </item>
+    <item>
       <title>Navigating Short-Term Accommodation Search in London</title>
       <link>https://haokaitseng.github.io/post/20230907london-rent-cost/</link>
       <pubDate>Sat, 09 Sep 2023 22:11:12 +0800</pubDate>

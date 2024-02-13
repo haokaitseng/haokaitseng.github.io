@@ -176,9 +176,9 @@ Using regularized method (Lasso) for predictive variable selection Tuning hyperp
         <li><a href="#cart">CART</a></li>
         <li><a href="#bagging">Bagging</a></li>
         <li><a href="#random-forest">Random forest</a></li>
-        <li><a href="#adaboost">Adaboost</a></li>
       </ul>
     </li>
+    <li><a href="#adaboost">Adaboost</a></li>
     <li><a href="#models-comparison">Models Comparison</a></li>
     <li><a href="#conclusion">Conclusion</a></li>
   </ul>
@@ -330,7 +330,7 @@ Using regularized method (Lasso) for predictive variable selection Tuning hyperp
 </table>
 <p>Here the importance of the predictors are presented. The feature with the highest importance in the random forest is lymph_percent.</p>
 <p><img src="/images/20240210_machinelaerning_lasso_tree/3_7_importance_tree_methods.png" alt="rf_importance"></p>
-<h3 id="adaboost">Adaboost</h3>
+<h2 id="adaboost">Adaboost</h2>
 <p>Adaptive boosting, known as adaboost, is also an ensemble learning method that combines multiple weak learners sequentially to adjust the weights of training instances based on their classification accuracy. Adaboost is usually applied in binary classification, where misclassified instances are given higher weights. These weak models are generated sequentially to ensurethat the mistakes of previous models are learned by their successors.</p>
 <p>With a step size of 0.1, my optimal number of boosting iterations are 323, remainining 19 predictors in the generalized linear model. This number indicates the best balance between model performance (error) and computational efficiency.</p>
 <p><img src="/images/20240210_machinelaerning_lasso_tree/5_adaboosting.png" alt="adaboosting"></p>

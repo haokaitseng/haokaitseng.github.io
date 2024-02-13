@@ -1,0 +1,390 @@
+
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Optimizing Data Protection: Leveraging Information Governance Principles from GDPR into Research Planning | Infectious Perspectives</title>
+    <meta name="description"
+        content="This article delivers two key insights: Advantages of applying UK GDPR in research planning. Approaches to safeguard data protection in lung cancer patient interviews.
+Setting th Scene The need of assessing the Quality of Life (QoL) in patients with lung cancer undergoing chemotherapy has been increasing(1). After treatment, patients may experience breathlessness or fatigue(2), along with potential challenges in their daily and occupational functioning. These side effects of chemotherapy consistently rank as a common complaint among patients.">
+    <link rel="canonical" href="https://haokaitseng.github.io/post/20231030-data-governance/" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    
+    <link rel="stylesheet" href="https://haokaitseng.github.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
+
+    <meta property="og:title" content="Optimizing Data Protection: Leveraging Information Governance Principles from GDPR into Research Planning" />
+<meta property="og:description" content="This article delivers two key insights: Advantages of applying UK GDPR in research planning. Approaches to safeguard data protection in lung cancer patient interviews.
+Setting th Scene The need of assessing the Quality of Life (QoL) in patients with lung cancer undergoing chemotherapy has been increasing(1). After treatment, patients may experience breathlessness or fatigue(2), along with potential challenges in their daily and occupational functioning. These side effects of chemotherapy consistently rank as a common complaint among patients." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://haokaitseng.github.io/post/20231030-data-governance/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-10-30T22:11:12+08:00" />
+<meta property="article:modified_time" content="2023-10-30T22:11:12+08:00" /><meta property="og:site_name" content="Kai&#39;s Data Science Blog" />
+
+
+    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Optimizing Data Protection: Leveraging Information Governance Principles from GDPR into Research Planning"/>
+<meta name="twitter:description" content="This article delivers two key insights: Advantages of applying UK GDPR in research planning. Approaches to safeguard data protection in lung cancer patient interviews.
+Setting th Scene The need of assessing the Quality of Life (QoL) in patients with lung cancer undergoing chemotherapy has been increasing(1). After treatment, patients may experience breathlessness or fatigue(2), along with potential challenges in their daily and occupational functioning. These side effects of chemotherapy consistently rank as a common complaint among patients."/>
+
+    
+    
+    
+
+</head><body><nav class="navbar is-light" role="navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a href="/" title="home" class="navbar-item">
+                <span class="logo">
+                    <h1>Infectious Perspectives</h1>
+                </span>
+            </a>
+
+            
+            <a id="theme-toggle" class="theme-toggle" href="#">
+                <img src="https://haokaitseng.github.io/svg/sun.svg" alt="sun icon" class="theme-icon" />
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                
+                <a href="/about" class="navbar-item">About</a>
+                
+                <a href="/post" class="navbar-item">Blog</a>
+                
+                <a href="/categories" class="navbar-item">Categories</a>
+                
+            </div>
+
+        </div>
+        <div class="search">
+            <div id="fastSearch">
+                <input id="searchInput" tabindex="0" placeholder="Search..">
+                <ul id="searchResults">
+
+                </ul>
+            </div>
+            <a id="search-btn" style="display: inline-block;" href="# ">
+                <div class="icon-search"><svg class="search-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+            </a>
+        </div>
+
+        <script src="/js/fuse.min.js"></script> 
+        <script src="/js/fastsearch.js"></script>
+
+    </div>
+</nav>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var burger = document.querySelector('.navbar-burger');
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('is-active');
+            document.querySelector('.navbar-menu').classList.toggle('is-active');
+        });
+    });
+
+    
+    function setTheme(theme) {
+        let body = document.body;
+        let themeIcon = document.querySelector(".theme-icon");
+        if (theme === "dark") {
+            body.classList.add("dark-mode");
+            themeIcon.src = "https:\/\/haokaitseng.github.io\/svg/moon.svg";
+            themeIcon.alt = "moon icon";
+        } else {
+            body.classList.remove("dark-mode");
+            themeIcon.src = "https:\/\/haokaitseng.github.io\/svg/sun.svg";
+            themeIcon.alt = "sun icon";
+        }
+        
+        localStorage.setItem("theme", theme);
+    }
+
+    
+    let theme = localStorage.getItem("theme") || "light";
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDarkMode) {
+        
+        setTheme('dark');
+
+    } else {
+        
+        setTheme('light');
+    }
+    setTheme(theme);
+
+    
+    document.getElementById("theme-toggle").addEventListener("click", function() {
+        if (theme === "light") {
+            theme = "dark";
+        } else {
+            theme = "light";
+        }
+        setTheme(theme);
+    });
+
+
+
+</script>
+
+</header><main>
+<div class="single-container">
+    <div class="archive">
+        <h1 class="title is-1">Optimizing Data Protection: Leveraging Information Governance Principles from GDPR into Research Planning</h1>
+        <div class="title subtitle heading is-6">
+            <div class="author-info columns is-vcentered">
+                <div class="column">
+                    <div class="columns is-vcentered is-mobile">
+                        
+                        <div class="column is-narrow">
+                            <img src="/images/profile.jpg" class="author-image">
+                        </div>
+                        
+                        <div class="column">
+                            <p>Kai</p>
+                            <p><time>October 30, 2023</time>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="small-categories-container">
+                    <a href="/categories/data-science">Data Science</a>
+                </div>
+            </div>
+        </div>
+        <div class="content article-content">
+            <div class="toc-container">
+                
+    <div class="post-toc">
+        
+            <aside>
+                <button id="tocButton" ><h4 id="contents" style="margin-left: 1vw;color:rgb(96, 134, 180);margin-bottom: 0;">CONTENTS</h4></button>
+                <div id="hide"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#setting-th-scene">Setting th Scene</a></li>
+    <li><a href="#data-governance-in-gdpr">Data Governance in GDPR</a></li>
+    <li><a href="#recommended-approaches">Recommended Approaches</a></li>
+    <li><a href="#conclusion">Conclusion</a>
+      <ul>
+        <li><a href="#data-protection-and-impact-assessment-table">Data Protection and Impact Assessment Table</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </aside>
+        
+    </div><script>
+    
+        let button = document.getElementById('tocButton');
+        let hide = document.getElementById("hide");
+        let contents=document.getElementById("contents");
+        button.addEventListener("click", function() {
+        if (hide.style.display!='block') {
+            hide.style.display='block'
+        } else {
+            hide.style.display='none'
+            contents.style.color='rgb(96, 134, 180)'
+        }
+        });
+    
+
+
+
+
+</script>
+            </div>
+            <blockquote>
+<p>This article delivers two key insights:
+Advantages of applying UK GDPR in research planning.
+Approaches to safeguard data protection in lung cancer patient interviews.</p>
+</blockquote>
+<h2 id="setting-th-scene">Setting th Scene</h2>
+<p>The need of assessing the Quality of Life (QoL) in patients with lung cancer undergoing chemotherapy has been increasing(1). After treatment, patients may experience breathlessness or fatigue(2), along with potential challenges in their daily and occupational functioning. These side effects of chemotherapy consistently rank as a common complaint among patients.
+By using the validated QoL questionnaire(3), a hypothetical research project aim to summarize the QoL state among a cohort of patients in a hospital in the UK. Hopefully it can benefit the treatment of choice.</p>
+<blockquote>
+<p>However, concerns regarding data protection were brought up in a management meeting, with the focus on data confidentiality.</p>
+</blockquote>
+<p>Many patients consenting to participate in the study have uncertainty about their personal data processing, particularly in relation to sensitive questions(5).
+How do you lawfully and comprehensively tackle the data protection issue in a patient survey?</p>
+<h2 id="data-governance-in-gdpr">Data Governance in GDPR</h2>
+<p>To manage such risks, the GDPR can be one of the best solutions that is inetegrated into the research planning and implementations. Implementing this information governance rules can yield numerous benefits, encompassing aspects such as safeguarding individual rights and freedom, fulfilling lawful obligations, and gaining hospital&rsquo;s competitive advantages(8).</p>
+<blockquote>
+<p>Conversely, non-compliance with GDPR may cause research failure, distress to individuals, fines and penalties, and damage to hospital&rsquo;s reputation.</p>
+</blockquote>
+<p>Given GDPR’s seven key principles below, I propose five approaches that center on the principle of integrity and confidentiality to mitigate information governance risks and remove doubts regarding data security.
+<img src="/images/20231030GDPR_data_goverance/principles.png" alt="GDPR principles"></p>
+<ol>
+<li>Procedures and policy for data processing security</li>
+</ol>
+<p>With regard to security in data processing, transfer, and storage, it can be achieved through technical procedures and organisational policy, such as encryption, pseudonymization, access control, and audit(9).</p>
+<ol start="2">
+<li>Information technology (IT) security remediation</li>
+</ol>
+<p>Through employing tools for reviewing IT security, system vulnerabilities can be identified and mitigated, along with fortified protection against potential security threats and cyber security events(10).</p>
+<ol start="3">
+<li>Protocols for notifying a personal data breach</li>
+</ol>
+<p>Protocols need to be developed to respond to a personal data breach event, ensuring that the investigation and reporting are completed within 72 hours(11).</p>
+<ol start="4">
+<li>Appointing a data protection officer</li>
+</ol>
+<p>This role’s responsibility is to oversee, monitor, and document operations related to data processing, applying extensive knowledge of data protection practices(12).</p>
+<ol start="5">
+<li>A centralised area designated for data storage and processing</li>
+</ol>
+<p>To minimize the risk of data leak, data processing is exclusively and physically performed on these dedicated desktops in an office(13).</p>
+<p><strong>For more detailed you can refer to the GDPR’s Data Protection and Impact Assessment Table in the end of this post</strong></p>
+<h2 id="recommended-approaches">Recommended Approaches</h2>
+<p>To balance between risks presented by processing personal data and research utility, I propose endorsement of the first three approaches as a selection of strategies for this study due to following reasons. First, they follow GDPR’s principle of integrity and confidentiality, a priority particularly valued by your patients.
+Second, the advantages inherent in these approaches are substantial. For instance, the first and second approach can minimize the likelihood of negative events, such as unauthorized access or data breach; the third approach then serves as a response to such negative events.
+Third, the consequences of not implementing these approaches would be intolerable when weighed against their disadvantages, since a lack of robust safeguards for data protection can result in confidentiality risks, violation to regulations, and erode trust among patients.
+Lastly, the estimated residual level of information governance risks (impact and probability) for the first three approaches are lower compare to the remaining approaches. A data protection officer (fourth approach) is considered more suitable for a large-scale study; a centralized area for data processing (fifth approach) runs a risk of accidental data corruption.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Research planning can incorporate GDPR to help make trade-offs in data/information governance risks. While each GDPR’s principle is equally important, I recommend three approaches that can strengthen the compliance to the principle of integrity and confidentiality. By establishing procedures and policy, implementing IT security remediation, and generating protocols for notification, this hypothetical study can have appropriate safeguards in place to process data safely.</p>
+<p>Furthermore, I believe the assessment of QoL can provide the opportunity to improve QoL and symptom burden management of lung cancer patients with chemotherapy drugs(14). Therefore, we can not only accelerate research progress but also address confidentiality and regulatory requirements in our scope of research.</p>
+<h3 id="data-protection-and-impact-assessment-table">Data Protection and Impact Assessment Table</h3>
+<table>
+<thead>
+<tr>
+<th>What approach could be taken to reduce risk?</th>
+<th>What actions would this involve?</th>
+<th>What are the advantages and disadvantages of these actions for research?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Approach 1: Procedures and policy for data processing security</td>
+<td>(1) Data processing involves the practice of protecting information from unauthorized access and corruption during the entire research lifecycle. (2)It encompasses robust encryption and pseudonymization of personal data, while in parallel ensuring confidentiality, integrity, and resilience of processing systems. (3)Regular audit and monitoring are required to promptly detect and address any anomalies or potential data breaches. (4)Encrypted data transfer is implemented, and data storage and network security are ensured through essential measures on physical hardware.</td>
+<td>(1) Advantages: (1-1)Implementing security procedures and policies helps mitigate the risks of accidental or unlawful destruction, alteration, loss, and unauthorized access. (1-2)It not only complies with Article 32 of the GDPR but also adheres to the accountability principle of the GDPR, as the security logs and documentation can be used to demonstrate compliance. (2) Disadvantages: Enforcing access controls could introduce complexity and potentially decrease efficiency within the research project.</td>
+</tr>
+<tr>
+<td>Approach 2: IT security remediation</td>
+<td>(1)IT security remediation is an actionable set by detecting and protecting against potential security vulnerabilities or cyber security events, such as unauthorized access or disclosure due to non-encrypted transmission of data. (2)It identifies existing and scheduled mitigations for security issue, and rank likelihood of the issue occurring given existing or scheduled mitigations. (3)It updates existing security and antivirus software and strengthens IT infrastructure to ensure mitigations and controls are in place.</td>
+<td>(1) Advantages: (1-1)Cybersecurity remediation can help manage risks and intercept IT security threats. This approach aligns with the National Cyber Security Centre (NCSC) Cyber Assessment Framework (CAF) guidance. (1-2)By identifying security concerns, it indirectly adheres to the integrity and confidentiality principle of the GDPR. (2)Disadvantages: Procurement and management of security software entails ongoing expenses.</td>
+</tr>
+<tr>
+<td>Approach 3: Protocols for notifying a personal data breach</td>
+<td>(1)In response to personal data breach, protocols and internal procedures should be well-planned, including pulling the facts, contain the breach, access the risk, and report it without delay, and act to protect affected patients. (2)After having become aware of personal data breach, the research team should notify the issue to the Information Commissioner, no later than 72 hours. (3)LSHTM’s Research Ethics Committees should also be notified when any breach of the study protocol or the principles of Good Clinical Practice has been identified.</td>
+<td>(1) Advantages: (1-1)According to Article 33 of the GDPR, reporting a personal data breach in a timely manner (&lt;72 hours) can avoid fine (up to £8.7 million or 2 per cent of turnover) and penalties. (1-2)It meets the principle of lawfulness, fairness and transparency, accountability, and integrity and confidentiality in the GDPR. (1-3)A comprehensive procedure can save time to respond to an event of personal data breach and communication strategy (Article 34 of GDPR). (2)Disadvantage: Documented protocols and procedures are needed, along with essential training sessions for the research team.</td>
+</tr>
+<tr>
+<td>Approach 4: Appointing a data protection officer</td>
+<td>(1)The data protection officer is designated on the basis of data protection laws (GDPR) and practices for confidentiality. (2)The data protection officer is involved in all issues which relate to the protection of personal data, including regular and systematic monitoring of data subjects. (3)The data protection officer manages and maintains records of data analysis logs, as well as input and output activities within the designated area.</td>
+<td>(1)Advantages: (1-1)Compliance with regulations is regularly and systematically monitored, which aligns with the Article 37 of the GDPR and the principle of integrity and confidentiality and accountability of GDPR. (1-2)There is a contact point on issues relating to processing and protecting personal data. (2)Disadvantages: (2-1)The scope of this research is insufficient to warrant the role of a data protection officer, since systematic monitoring of data subjects is not conducted on a large scale. (2-2) Research budgetary allocation will be required to hire a data protection officer.</td>
+</tr>
+<tr>
+<td>Approach 5: A centralised area designated for data storage and processing</td>
+<td>(1)A structured set of personal data, including electronic health records, is stored in the filing system of the desktops in the information management department at the hospital. (2)Only members from the research have access to the research eligible patients’ personal data. (3)Data processing and analysis are exclusively and physically performed on these dedicated desktops.</td>
+<td>(1)Advantages: (1-1)It ensures that data remains confined to these systems and cannot be exported, minimizing the risk of data leak. (1-2)It provides protection against unauthorised processing of personal data, which aligns with the principle of integrity and confidentiality from the Article 5 of the GDPR. (2)Disadvantages: (2-1)There is a risk of accidental loss or corruption in the event of destruction or damage to the area of centralized data.  (2-2)Remote work is not available.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+</table>
+<p><em>In collaboration with ChatGPT, this article has been adapted from the assessment of the Thinking like a Health Data Scientist module at LSHTM.</em></p>
+
+        </div>
+    </div>
+    <a href="#" id="scrollToTopButton">
+        <svg t="1686753152588" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            p-id="3988" width="48" height="48">
+            <path
+                d="M518.5 360.3c-3.2-4.4-9.7-4.4-12.9 0l-178 246c-3.8 5.3 0 12.7 6.5 12.7H381c10.2 0 19.9-4.9 25.9-13.2L512 460.4l105.2 145.4c6 8.3 15.6 13.2 25.9 13.2H690c6.5 0 10.3-7.4 6.5-12.7l-178-246z"
+                p-id="3989" fill="#363636"></path>
+            <path
+                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                p-id="3990" fill="#363636"></path>
+        </svg>
+    </a><hr style="border-top: 1px solid #EEEEEE;">
+<div id="comment"></div>
+<script>
+    const getStoredTheme = () => localStorage.getItem("theme") === "dark" ? "dark" : "light";
+
+    const setGiscusTheme = () => {
+        const sendMessage = (message) => {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (iframe) {
+                iframe.contentWindow.postMessage({giscus: message}, 'https://giscus.app');
+            }
+        }
+        sendMessage({setConfig: {theme: getStoredTheme()}})
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const giscusAttributes = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "hotjuicew\/blog",
+            "data-repo-id": "R_kgDOHHQOuw",
+            "data-category": "Announcements",
+            "data-category-id": "DIC_kwDOHHQOu84CWCQ3",
+            "data-mapping": "og:title",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-input-position": "bottom",
+            "data-theme": getStoredTheme(),
+            "data-lang": "en",
+            "data-loading": "lazy",
+            "crossorigin": "anonymous",
+        };
+
+        
+        const giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(
+            ([key, value]) => giscusScript.setAttribute(key, value));
+        document.getElementById("comment").appendChild(giscusScript);
+
+        
+        const themeToggle = document.querySelector(".theme-toggle");
+        if (themeToggle) {
+            themeToggle.addEventListener("click", setGiscusTheme);
+        }
+    });
+
+</script>
+
+
+<div class="pp-container">
+        <section class="pre-and-post">
+            <div class="has-text-left">
+                
+                <p>Previous post</p>
+                <a href="https://haokaitseng.github.io/post/20230907london-rent-cost/">Navigating Short-Term Accommodation Search in London</a>
+                
+            </div>
+            <div class="has-text-right">
+                
+                <p>Next post</p>
+                <a href="https://haokaitseng.github.io/post/20231216-hpv-single-dose-vaccination/">Assessing the Non-inferiority of the Single-dose Human Papillomavirus Vaccination Schedule: A Hypothetical Multi-country Cohort Study</a>
+                
+            </div>
+        </section>
+    </div>
+
+</div>
+
+        </main><footer class="footer">
+    <div class="content has-text-centered">
+    <span>&copy; 2024 <a href="https://haokaitseng.github.io/">Infectious Perspectives</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" target="_blank">Hugo</a> &
+        <a href="https://github.com/hotjuicew/hugo-JuiceBar" target="_blank">JuiceBar</a>
+    </span>
+    </div>
+  </footer></body>
+</html>
+
