@@ -1,0 +1,413 @@
+
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Survival Analysis in Electronic Health Records Data | Infectious Perspectives</title>
+    <meta name="description"
+        content="How do you apply time-to-event analysis to compare the impact of different prescriptions on death?
+This article examines the survival function of two prescriptions using Kaplan-Meier and Cox models in an electronic health records (EHR) setting. EHR data are powerful real-world data. They are conducive to time-to-event analysis owing to the characteristic of sequential visits to primary and secondary care services. Take UK&rsquo;s OpenSAFELY for instance, this secure, transparent, and open-source platform provides an Trusted Research Environment (TRE) for National Health Service (NHS) EHR data analysis, which supported urgent research into the COVID-19 emergency.">
+    <link rel="canonical" href="https://haokaitseng.github.io/post/20240322-survival-analysis/" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    
+    <link rel="stylesheet" href="https://haokaitseng.github.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
+
+    <meta property="og:title" content="Survival Analysis in Electronic Health Records Data" />
+<meta property="og:description" content="How do you apply time-to-event analysis to compare the impact of different prescriptions on death?
+This article examines the survival function of two prescriptions using Kaplan-Meier and Cox models in an electronic health records (EHR) setting. EHR data are powerful real-world data. They are conducive to time-to-event analysis owing to the characteristic of sequential visits to primary and secondary care services. Take UK&rsquo;s OpenSAFELY for instance, this secure, transparent, and open-source platform provides an Trusted Research Environment (TRE) for National Health Service (NHS) EHR data analysis, which supported urgent research into the COVID-19 emergency." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://haokaitseng.github.io/post/20240322-survival-analysis/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-03-23T22:11:12+08:00" />
+<meta property="article:modified_time" content="2024-03-23T22:11:12+08:00" /><meta property="og:site_name" content="Kai&#39;s Data Science Blog" />
+
+
+    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Survival Analysis in Electronic Health Records Data"/>
+<meta name="twitter:description" content="How do you apply time-to-event analysis to compare the impact of different prescriptions on death?
+This article examines the survival function of two prescriptions using Kaplan-Meier and Cox models in an electronic health records (EHR) setting. EHR data are powerful real-world data. They are conducive to time-to-event analysis owing to the characteristic of sequential visits to primary and secondary care services. Take UK&rsquo;s OpenSAFELY for instance, this secure, transparent, and open-source platform provides an Trusted Research Environment (TRE) for National Health Service (NHS) EHR data analysis, which supported urgent research into the COVID-19 emergency."/>
+
+    
+    
+    
+
+</head><body><nav class="navbar is-light" role="navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a href="/" title="home" class="navbar-item">
+                <span class="logo">
+                    <h1>Infectious Perspectives</h1>
+                </span>
+            </a>
+
+            
+            <a id="theme-toggle" class="theme-toggle" href="#">
+                <img src="https://haokaitseng.github.io/svg/sun.svg" alt="sun icon" class="theme-icon" />
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                
+                <a href="/about" class="navbar-item">About</a>
+                
+                <a href="/post" class="navbar-item">Blog</a>
+                
+                <a href="/categories" class="navbar-item">Categories</a>
+                
+            </div>
+
+        </div>
+        <div class="search">
+            <div id="fastSearch">
+                <input id="searchInput" tabindex="0" placeholder="Search..">
+                <ul id="searchResults">
+
+                </ul>
+            </div>
+            <a id="search-btn" style="display: inline-block;" href="# ">
+                <div class="icon-search"><svg class="search-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+            </a>
+        </div>
+
+        <script src="/js/fuse.min.js"></script> 
+        <script src="/js/fastsearch.js"></script>
+
+    </div>
+</nav>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var burger = document.querySelector('.navbar-burger');
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('is-active');
+            document.querySelector('.navbar-menu').classList.toggle('is-active');
+        });
+    });
+
+    
+    function setTheme(theme) {
+        let body = document.body;
+        let themeIcon = document.querySelector(".theme-icon");
+        if (theme === "dark") {
+            body.classList.add("dark-mode");
+            themeIcon.src = "https:\/\/haokaitseng.github.io\/svg/moon.svg";
+            themeIcon.alt = "moon icon";
+        } else {
+            body.classList.remove("dark-mode");
+            themeIcon.src = "https:\/\/haokaitseng.github.io\/svg/sun.svg";
+            themeIcon.alt = "sun icon";
+        }
+        
+        localStorage.setItem("theme", theme);
+    }
+
+    
+    let theme = localStorage.getItem("theme") || "light";
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDarkMode) {
+        
+        setTheme('dark');
+
+    } else {
+        
+        setTheme('light');
+    }
+    setTheme(theme);
+
+    
+    document.getElementById("theme-toggle").addEventListener("click", function() {
+        if (theme === "light") {
+            theme = "dark";
+        } else {
+            theme = "light";
+        }
+        setTheme(theme);
+    });
+
+
+
+</script>
+
+</header><main>
+<div class="single-container">
+    <div class="archive">
+        <h1 class="title is-1">Survival Analysis in Electronic Health Records Data</h1>
+        <div class="title subtitle heading is-6">
+            <div class="author-info columns is-vcentered">
+                <div class="column">
+                    <div class="columns is-vcentered is-mobile">
+                        
+                        <div class="column is-narrow">
+                            <img src="/images/profile.jpg" class="author-image">
+                        </div>
+                        
+                        <div class="column">
+                            <p>Kai</p>
+                            <p><time>March 23, 2024</time>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="small-categories-container">
+                    <a href="/categories/data-science">Data Science</a>
+                </div>
+            </div>
+        </div>
+        <div class="content article-content">
+            <div class="toc-container">
+                
+    <div class="post-toc">
+        
+            <aside>
+                <button id="tocButton" ><h4 id="contents" style="margin-left: 1vw;color:rgb(96, 134, 180);margin-bottom: 0;">CONTENTS</h4></button>
+                <div id="hide"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#setting-the-scene">Setting the Scene</a></li>
+    <li><a href="#time-to-event-data">Time-to-event Data</a>
+      <ul>
+        <li><a href="#length-of-follow-up-by-prescriptiondeath-in-years">Length of Follow-up by Prescription/Death in Years</a></li>
+      </ul>
+    </li>
+    <li><a href="#kaplan-meier-method">Kaplan-Meier Method</a></li>
+    <li><a href="#cox-regression">Cox Regression</a>
+      <ul>
+        <li><a href="#univariable-model">Univariable Model</a></li>
+        <li><a href="#multivariable-model">Multivariable Model</a></li>
+        <li><a href="#assessing-the-ph-assumption">Assessing the PH Assumption</a></li>
+        <li><a href="#extended-cox-model">Extended Cox Model</a></li>
+        <li><a href="#estimating-survival-curve">Estimating Survival Curve</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav></div>
+            </aside>
+        
+    </div><script>
+    
+        let button = document.getElementById('tocButton');
+        let hide = document.getElementById("hide");
+        let contents=document.getElementById("contents");
+        button.addEventListener("click", function() {
+        if (hide.style.display!='block') {
+            hide.style.display='block'
+        } else {
+            hide.style.display='none'
+            contents.style.color='rgb(96, 134, 180)'
+        }
+        });
+    
+
+
+
+
+</script>
+            </div>
+            <blockquote>
+<p>How do you apply time-to-event analysis to compare the impact of different prescriptions on death?</p>
+<ul>
+<li>This article examines the survival function of two prescriptions using Kaplan-Meier and Cox models in an electronic health records (EHR) setting.</li>
+</ul>
+</blockquote>
+<p>EHR data are powerful real-world data. They are conducive to time-to-event analysis owing to the characteristic of sequential visits to primary and secondary care services. Take UK&rsquo;s <a href="https://www.opensafely.org/">OpenSAFELY</a> for instance, this secure, transparent, and open-source platform provides an Trusted Research Environment (TRE) for National Health Service (NHS) EHR data analysis, which <a href="https://digital.nhs.uk/coronavirus/coronavirus-covid-19-response-information-governance-hub/the-nhs-england-opensafely-covid-19-service-privacy-notice">supported urgent research into the COVID-19 emergency</a>.</p>
+<h2 id="setting-the-scene">Setting the Scene</h2>
+<p>Building on a hypothetical EHR data, this project aims to understand the impact of a prescription of proton pump inhibitor (PPI) versus a prescription for a histamine H2-receptor antagonist (H2RA) on all-cause mortality.
+To extract analysis data from various datasets of EHR and code lists, I use the following eligible criteria to define the study cohort:</p>
+<ul>
+<li>PPI and H2RA prescription with first prescription timeframe from 17 April 1997 to 17 April 2017</li>
+<li>the first prescription is after patient&rsquo;s registration at general practice (GP) plus one year</li>
+<li>the first prescription is after the patient’s 18th birthday.</li>
+</ul>
+<p><img src="/images/20240324_EHR_survival/flowchart.png" alt="Flowchart"></p>
+<p>The study follow-up begins at the first prescription for PPI or H2RA, and it ends at the first of:</p>
+<ul>
+<li>death (event of interest)</li>
+<li>transfer out of GP</li>
+<li>end of study (17 April 2017), i.e. administrative censoring</li>
+</ul>
+<p>Considering confounding effects, 10 potential confounding variables from the cohort are also examined: (1) age at prescription, (2) gender, (3) ethnicity, (4) <a href="https://data.cdrc.ac.uk/dataset/index-multiple-deprivation-imd">Index of Multiple Deprivation (IMD)</a>, (5) body max index (BMI), (6) calendar year of first description, (7) diagnosis of gastric cancer prior to prescription, (8) gastro-oesophageal reflux disease (GERD) in the 6 months prior to prescription, (9) peptic ulcer in the 6 months prior to prescription, and (10) number of consultations in the year prior to prescription.</p>
+<p>Notably, addressing missing data is an essential part of EHR data analysis. I adopt a strategy where patients&rsquo; birth dates are assumed to be on the 15th of June in the given birth year. Additionally, for BMI, I prioritize my-self-calculated BMI over those reported by GPs, while ensuring that the derived BMI values fall within an acceptable and realistic range of heights and weights.</p>
+<h2 id="time-to-event-data">Time-to-event Data</h2>
+<p>For the purpose of survival analysis, I define the length between index date (at first description) and end date (either death, censoring due to out of GP, or censoring due to end of study) as the days in the study.</p>
+<p>From the perspective of exposure, the median length of follow-up is 4 years in PPI group and 9 years in H2RA group, respectively. The distribution of the length of follow-up is strongly right-skewed in the PPI group, whereas such distribution is not observed in the H2RA group.</p>
+<h3 id="length-of-follow-up-by-prescriptiondeath-in-years">Length of Follow-up by Prescription/Death in Years</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Subgroup</th>
+<th style="text-align:center">N</th>
+<th style="text-align:center">Median</th>
+<th style="text-align:center">IQR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">PPI</td>
+<td style="text-align:center">12,984</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">4.5-13.4</td>
+</tr>
+<tr>
+<td style="text-align:center">H2RA</td>
+<td style="text-align:center">61,816</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">0.5-6.1</td>
+</tr>
+<tr>
+<td style="text-align:center">Death</td>
+<td style="text-align:center">13,741</td>
+<td style="text-align:center">3.4</td>
+<td style="text-align:center">0.3-5</td>
+</tr>
+<tr>
+<td style="text-align:center">Alive</td>
+<td style="text-align:center">61,059</td>
+<td style="text-align:center">5.2</td>
+<td style="text-align:center">0.8-8.6</td>
+</tr>
+</tbody>
+</table>
+<p>Disaggregated by outcome, those who are alive in the cohort period have longer follow-up (median 5.2 years), in comparison of the median 3.4 years for those who died.</p>
+<h2 id="kaplan-meier-method">Kaplan-Meier Method</h2>
+<p>To investigate the crude survival probability across two exposure groups, the non-parametric estimate of Kaplan-Meier is used. The probability of surviving 5 years or more is 0.888 (95% confidence interval, CI: 0.883-0.894) in H2RA group, whereas the probability of surviving 5 years or more is 0.796 (95% CI: 0.792-0.8) in PPI group.</p>
+<p>The survivor functions in H2RA group are always higher than those in PPI group. As time goes by, the difference in survivor functions between the two groups increases, from 0.057 at year 1, to 0.109 at year 10, to 0.132 at year 19.</p>
+<p><img src="/images/20240324_EHR_survival/2_3_KM-curve.png" alt="KM"></p>
+<p>By using log-rank test, an overall lower survival probability in PPI group is confirmed (the chi-square statistic is 556 on 1 degree of freedom, p-value &lt; 0.05), in comparison to H2RA group.</p>
+<h2 id="cox-regression">Cox Regression</h2>
+<h3 id="univariable-model">Univariable Model</h3>
+<p>By fitting a univariable Cox proportional hazard model, a semi-parametric method, the log hazard ratio estimate is 0.52. The estimated hazard ratio is 1.68, which means the hazard for all cause death is increased by 68% in the PPI group relative to the H2RA group. The 95% CI (1.61-1.76), not covering null, indicates a strong evidence against the null hypothesis of no association between exposure and the hazard for death.</p>
+<blockquote>
+<p>Note that the Cox Proportional Hazard (PH) assumption implies the hazard ratio measuring the effect of any predictor, i.e. prescriptions in this case, is constant over time.</p>
+</blockquote>
+<h3 id="multivariable-model">Multivariable Model</h3>
+<p>Considering potential confounding, I examine whether the effect estimate, e.g. odds ratios in logistic regression, changes substantially after adding each candidate  confounding variable in the Cox model. Also, for the purpose of survival curve estimation, certain non-confounding varaibles are selected into the multivariable Cox proportional hazard model.</p>
+<p>Furthermore, to investigate whether the functional form for the continuous variable age is appropriate in the multivariable model, I calculate the Martingale residuals for age and number of consultations. However, it can be observed from the LOESS lines that direct employing a linear term for these continous varaible is appropriate.</p>
+<p><img src="/images/20240324_EHR_survival/3_3_Martingale_residuals_age_consult.png" alt="martingale"></p>
+<p>In the final multivariable Cox PH model adjusting seven selected confounding ( below), the log hazard ratio estimate is 0.093. The estimated hazard ratio is 1.098 (95% CI: 1.049-1.150), meaning the hazard for all cause death is increased by 9.8% in the PPI group compared to the H2RA group. Compared to the univariable model, the effect of PPI is reduced in the multivariable model, yet still significant.</p>
+<pre><code>h(t│X) = h0 (t)exp⁡{ β1*X{PPI}+β2*X{calendar period}+β3*X_{IMD person}+β4*X{gender}  +β5*X_{ethnicity}+β6*X{recent GERD}+β7*X{number of consultations}+β8*X{age}  
+</code></pre>
+<p>Xi:exposure for individual i (i=1,…,n); ti:death or censoring time for individual i; δ:indicator of death (1)or censoring (0).</p>
+<h3 id="assessing-the-ph-assumption">Assessing the PH Assumption</h3>
+<p>I use the scaled Schoenfeld residual to assess the assumption of the multivariable Cox PH model. The null hypothesis in this test is that the corresponding β(t) coefficient does not vary over time, indicating that the proportional hazards assumption holds for that variable.</p>
+<p>It can be observed that the hazard ratio is changing over time in some variables. The global Chi-square statistic in the Schoenfeld residual is 211 (p-value &lt; 0.05), indicating this model in general didn’t follow the proportional hazard assumptions. For instance, in the beginning of follow-up, PPI’s hazard is similar to H2RA’s hazard, but the log hazard ratio of PPI is lower at later times.</p>
+<p><img src="/images/20240324_EHR_survival/3_3_schoenfeld_residual_multi_individuals_all.png" alt="schoenfeld"></p>
+<h3 id="extended-cox-model">Extended Cox Model</h3>
+<p>Since the assumption of the Cox PH model is violated, I use extended Cox model to accommodate the non-proportionality. This approach allows the hazard ratios to be <strong>dependent on time</strong>, i.e. interacting with time. After splitting cohort data into five-year chunks according to the adjusted years of follow-up in the study, we can see the hazard ratios of PPI over H2RA in 4 periods.</p>
+<p>In the extended model, the overall hazard ratio is 1.165 in PPI group relative to H2RA group. However, using PPI-period 1 (year 0-5) as reference in the extended Cox model, the estimate of hazard ratio is 0.946 in the PPI-period 2 (year 5-10) group compared to H2RA group during the same period, with other covariate holding constant.</p>
+<h3 id="estimating-survival-curve">Estimating Survival Curve</h3>
+<p>To apply the extended Cox model to hypothetical patient profiles, imagine four scenarios:</p>
+<ol>
+<li>A man aged 50 in the white ethnicity group, with no co-morbidities and in the most deprived group.</li>
+<li>A man aged 50 in the white ethnicity group, with recent diagnosis of Gastroesophageal reflux disease (GERD) prior to prescription and in the least deprived group.</li>
+<li>As in <strong>1.</strong> but for a woman.</li>
+<li>As in <strong>2.</strong> but for a woman.</li>
+</ol>
+<p>I plot the Cox survival curves in four scenarios by four periods, given this extended model is built upon time-dependent effect for the exposure. It can be observed that males (solid line) have lower survival functions compared to females (dashed line). In each scenarios during period 1, 2, and 3, the survival functions is lower in PPI group compared to H2RA group. However, in the period 4 (year 15 to 20), H2RA seems to have a higher risk of death, where its survival curve is under the PPI group.</p>
+<p><img src="/images/20240324_EHR_survival/3_4_estimated_Cox_survival_curve.png" alt="estimation"></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>EHR data are often used for survival analysis, either in parametic (Weibull), non-parametric (Kaplan-Meier), or semi-parametric (Cox) model. This article examines the observations which are times at which death occurs, in comparison of two prescriptions. Based on the extended Cox regression, hazard ratio gets increased by 16.5% in PPI group relative to H2RA group, whereas the hazard ratio is changing over time.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+</table>
+<p><em>This article has been adapted from the assessment of the Analysis of Electronic Health Record module at LSHTM.</em></p>
+
+        </div>
+    </div>
+    <a href="#" id="scrollToTopButton">
+        <svg t="1686753152588" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            p-id="3988" width="48" height="48">
+            <path
+                d="M518.5 360.3c-3.2-4.4-9.7-4.4-12.9 0l-178 246c-3.8 5.3 0 12.7 6.5 12.7H381c10.2 0 19.9-4.9 25.9-13.2L512 460.4l105.2 145.4c6 8.3 15.6 13.2 25.9 13.2H690c6.5 0 10.3-7.4 6.5-12.7l-178-246z"
+                p-id="3989" fill="#363636"></path>
+            <path
+                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                p-id="3990" fill="#363636"></path>
+        </svg>
+    </a><hr style="border-top: 1px solid #EEEEEE;">
+<div id="comment"></div>
+<script>
+    const getStoredTheme = () => localStorage.getItem("theme") === "dark" ? "dark" : "light";
+
+    const setGiscusTheme = () => {
+        const sendMessage = (message) => {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (iframe) {
+                iframe.contentWindow.postMessage({giscus: message}, 'https://giscus.app');
+            }
+        }
+        sendMessage({setConfig: {theme: getStoredTheme()}})
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const giscusAttributes = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "hotjuicew\/blog",
+            "data-repo-id": "R_kgDOHHQOuw",
+            "data-category": "Announcements",
+            "data-category-id": "DIC_kwDOHHQOu84CWCQ3",
+            "data-mapping": "og:title",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-input-position": "bottom",
+            "data-theme": getStoredTheme(),
+            "data-lang": "en",
+            "data-loading": "lazy",
+            "crossorigin": "anonymous",
+        };
+
+        
+        const giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(
+            ([key, value]) => giscusScript.setAttribute(key, value));
+        document.getElementById("comment").appendChild(giscusScript);
+
+        
+        const themeToggle = document.querySelector(".theme-toggle");
+        if (themeToggle) {
+            themeToggle.addEventListener("click", setGiscusTheme);
+        }
+    });
+
+</script>
+
+
+<div class="pp-container">
+        <section class="pre-and-post">
+            <div class="has-text-left">
+                
+                <p>Previous post</p>
+                <a href="https://haokaitseng.github.io/post/20240210-machine-learning-lasso-random-forest/">Predicting Remission Status in Healthcare: A Comparative Analysis of Lasso, Random Forest, and Adaboost Machine Learning Models</a>
+                
+            </div>
+            <div class="has-text-right">
+                
+            </div>
+        </section>
+    </div>
+
+</div>
+
+        </main><footer class="footer">
+    <div class="content has-text-centered">
+    <span>&copy; 2024 <a href="https://haokaitseng.github.io/">Infectious Perspectives</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" target="_blank">Hugo</a> &
+        <a href="https://github.com/hotjuicew/hugo-JuiceBar" target="_blank">JuiceBar</a>
+    </span>
+    </div>
+  </footer></body>
+</html>
+
