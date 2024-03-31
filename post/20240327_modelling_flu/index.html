@@ -6,18 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Equity vs. Equality: Modelling Vaccine Distribution in Response to an Influenza Outbreak | Infectious Perspectives</title>
     <meta name="description"
-        content="This group project is a collective effort, with contributions from my teammates Minn Thit Aung, Polly Nightingale, Simon Kent, and Xavier Dunn, listed alphabetically.*
+        content="This group project is a collective effort, with contributions from my teammates Minn Thit Aung, Polly Nightingale, Simon Kent, and Xavier Dunn, listed alphabetically.
 This post aims to:
-Find the the basic reproduction number of an hypothetical outbreak Assess the impact of specified vaccination strategies and school closures on an outbreak Offer codes on creating a GIF of an epidemic curve using R Note that this blog is currently under construction.">
+Determine the the basic reproduction number (R0) of an hypothetical outbreak Assess the impact of various strategies for vaccination and school closures on accumulative cases and peak cases/timing Provide instructions for constructing a SEIR model using Berkeley Madonna Offer simple R code for converting a ggplot into a GIF Setting the Scene Many countries have recently experienced the first wave of an influenza pandemic caused by the strain HuNz.">
     <link rel="canonical" href="https://haokaitseng.github.io/post/20240327_modelling_flu/" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
     
     <link rel="stylesheet" href="https://haokaitseng.github.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
 
     <meta property="og:title" content="Equity vs. Equality: Modelling Vaccine Distribution in Response to an Influenza Outbreak" />
-<meta property="og:description" content="This group project is a collective effort, with contributions from my teammates Minn Thit Aung, Polly Nightingale, Simon Kent, and Xavier Dunn, listed alphabetically.*
+<meta property="og:description" content="This group project is a collective effort, with contributions from my teammates Minn Thit Aung, Polly Nightingale, Simon Kent, and Xavier Dunn, listed alphabetically.
 This post aims to:
-Find the the basic reproduction number of an hypothetical outbreak Assess the impact of specified vaccination strategies and school closures on an outbreak Offer codes on creating a GIF of an epidemic curve using R Note that this blog is currently under construction." />
+Determine the the basic reproduction number (R0) of an hypothetical outbreak Assess the impact of various strategies for vaccination and school closures on accumulative cases and peak cases/timing Provide instructions for constructing a SEIR model using Berkeley Madonna Offer simple R code for converting a ggplot into a GIF Setting the Scene Many countries have recently experienced the first wave of an influenza pandemic caused by the strain HuNz." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://haokaitseng.github.io/post/20240327_modelling_flu/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2024-03-26T22:11:12+08:00" />
@@ -25,9 +25,9 @@ Find the the basic reproduction number of an hypothetical outbreak Assess the im
 
 
     <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Equity vs. Equality: Modelling Vaccine Distribution in Response to an Influenza Outbreak"/>
-<meta name="twitter:description" content="This group project is a collective effort, with contributions from my teammates Minn Thit Aung, Polly Nightingale, Simon Kent, and Xavier Dunn, listed alphabetically.*
+<meta name="twitter:description" content="This group project is a collective effort, with contributions from my teammates Minn Thit Aung, Polly Nightingale, Simon Kent, and Xavier Dunn, listed alphabetically.
 This post aims to:
-Find the the basic reproduction number of an hypothetical outbreak Assess the impact of specified vaccination strategies and school closures on an outbreak Offer codes on creating a GIF of an epidemic curve using R Note that this blog is currently under construction."/>
+Determine the the basic reproduction number (R0) of an hypothetical outbreak Assess the impact of various strategies for vaccination and school closures on accumulative cases and peak cases/timing Provide instructions for constructing a SEIR model using Berkeley Madonna Offer simple R code for converting a ggplot into a GIF Setting the Scene Many countries have recently experienced the first wave of an influenza pandemic caused by the strain HuNz."/>
 
     
     
@@ -173,15 +173,24 @@ Find the the basic reproduction number of an hypothetical outbreak Assess the im
                 <div id="hide"><nav id="TableOfContents">
   <ul>
     <li><a href="#setting-the-scene">Setting the Scene</a></li>
+    <li><a href="#model-structure">Model Structure</a></li>
     <li><a href="#fitting-the-first-wave">Fitting the First Wave</a></li>
-    <li><a href="#scenarios-modelling">Scenarios Modelling</a>
+    <li><a href="#modelling-for-second-wave">Modelling for Second Wave</a>
       <ul>
-        <li><a href="#visualisations">Visualisations</a></li>
+        <li><a href="#no-intervention">No Intervention</a></li>
+        <li><a href="#interventions">Interventions</a></li>
+      </ul>
+    </li>
+    <li><a href="#sensitivity-analysis">Sensitivity Analysis</a>
+      <ul>
+        <li><a href="#vaccination-distribution-equity-or-equality">Vaccination Distribution: Equity or Equality?</a></li>
+        <li><a href="#thresholds-for-school-closure">Thresholds for School Closure</a></li>
       </ul>
     </li>
     <li><a href="#conclusion">Conclusion</a>
       <ul>
-        <li><a href="#key-findings">Key Findings</a></li>
+        <li><a href="#key-finding">Key Finding</a></li>
+        <li><a href="#limitations">Limitations</a></li>
         <li><a href="#recommendations">Recommendations</a></li>
       </ul>
     </li>
@@ -209,58 +218,165 @@ Find the the basic reproduction number of an hypothetical outbreak Assess the im
 
 </script>
             </div>
-            <blockquote>
-<p>This group project is a collective effort, with contributions from my teammates <a href="https://www.linkedin.com/in/minn-thit-aung-40a17065/?originalSubdomain=mm">Minn Thit Aung</a>, <a href="https://www.linkedin.com/in/polly-nightingale-415a0b200/">Polly Nightingale</a>, Simon Kent, and <a href="https://www.linkedin.com/in/xavier-dunn-6088802aa/">Xavier Dunn</a>, listed alphabetically.*</p>
-</blockquote>
+            <p><em>This group project is a collective effort, with contributions from my teammates <a href="https://www.linkedin.com/in/minn-thit-aung-40a17065/?originalSubdomain=mm">Minn Thit Aung</a>, <a href="https://www.linkedin.com/in/polly-nightingale-415a0b200/">Polly Nightingale</a>, Simon Kent, and <a href="https://www.linkedin.com/in/xavier-dunn-6088802aa/">Xavier Dunn</a>, listed alphabetically.</em></p>
 <blockquote>
 <p>This post aims to:</p>
 <ol>
-<li>Find the the basic reproduction number of an hypothetical outbreak</li>
-<li>Assess the impact of specified vaccination strategies and school closures on an outbreak</li>
-<li>Offer codes on creating a GIF of an epidemic curve using R</li>
+<li>Determine the the basic reproduction number (R0) of an hypothetical outbreak</li>
+<li>Assess the impact of various strategies for vaccination and school closures on accumulative cases and peak cases/timing</li>
+<li>Provide instructions for constructing a SEIR model using Berkeley Madonna</li>
+<li>Offer simple R code for converting a ggplot into a GIF</li>
 </ol>
 </blockquote>
-<p><em><strong>Note that this blog is currently under construction. Please stay tuned for updates!</strong></em></p>
 <h2 id="setting-the-scene">Setting the Scene</h2>
-<p>It is May 20vz and many countries have recently experienced the first wave of an influenza pandemic caused by the strain HuNz. Because the symptoms associated with infection with this strain were generally mild, no country had introduced any measures to limit the spread of the infection.
-There are now rumours that in a distant country N, the second wave of the pandemic is just starting, and more infections have been reported so far than were reported by the same stage in the first wave. Initial reports suggest that the transmissibility of the strain in country N is 50% greater than it was during the first wave. There are increasing fears that the same will occur in other countries. Additionally, the symptoms reported in country N so far have been more severe than those during the first wave and appear to be worse in children than in adults.</p>
+<p>Many countries have recently experienced the first wave of an influenza pandemic caused by the strain HuNz. Now, there are rumours that in a distant country N, the second wave of the pandemic is just starting, and more infections have been reported so far.</p>
+<p>The Ministry of Health in country P has become concerned and has called an emergency meeting to discuss the next steps, assuming that the transmissibility of the virus increases by 50% between the first and second waves.</p>
+<p>If you were a group of modelling experts in the country P, how do you prepare for this emergency meeting and inform the Ministry of Health the decision-making process?</p>
+<h2 id="model-structure">Model Structure</h2>
+<p>The type of model used is a deterministic model with an SEIR framework, short for Susceptible-Exposed-Infectious-Removed. This model uses differential equations to estimate the change in populations over time (rate) in the various <strong>compartments</strong>, assuming static patterns.</p>
+<p><img src="/images/20240328_modelling_flu_outbreak/model_structure.png" alt="model_structure"></p>
+<p>Notably, we incorperate age-dependednt mixing, which means the transmission probability/parameter are different between age groups: children-to-children, adults-to-children, children-to-adults, and adults-to-adults.</p>
 <h2 id="fitting-the-first-wave">Fitting the First Wave</h2>
-<h2 id="scenarios-modelling">Scenarios Modelling</h2>
-<p>We have four basic scenrios:</p>
-<ol>
-<li>No intervention: Schools remain open during the second wave.</li>
-<li>School Closure: Schools are closed for four weeks once the true proportion of children who have experienced symptoms during the second wave has probably reached 0.5%.</li>
-<li>Vaccination: if the available vaccine stocks were to be distributed to 50% of population.</li>
-<li>Vaccination and School Closure: 2 and 3 combined.</li>
-<li>Longer School closure: close the school for 3 months.</li>
-<li>Scenario 6a: adjsut the threshold of school closure from 0.5% to 0.2%.</li>
-<li>Scenario 6b: adjsut the threshold of school closure from 0.5% to 1%.</li>
-<li>Equal vaccine distribution: distribute the same doses vaccines to children and adults.</li>
-<li>Higher transmissibility: 200% higher transmissible than wave 1.</li>
-<li>Fraction of reporting: change the fraction of reporting from 100% to 60%.</li>
-</ol>
-<h3 id="visualisations">Visualisations</h3>
-<p><img src="/images/20240328_modelling_flu_outbreak/dynamics_animation_scenario1_4.gif" alt="Scenario1_4"></p>
+<p>The information already known during the first wave includes: population (182,091 children and 369,909 adults), infectious period (2 days), latent period (2 days), fraction of symptom (60%), fraction of reporting (15%), vaccine efficacy (25%), susceptibility (50% first-wave infected individuals are fully protected against the second strain). Also, through the surveillance system, we&rsquo;ve known the cummulative weekly number of reported infections for children and adults.</p>
+<p>We must ascertain the basic reproductive number (R0) to inform our modelling for the second wave. Using the information mentioned, we apply the <em><strong>Curve Fit</strong></em> function in the <a href="https://berkeley-madonna.myshopify.com/">Berkeley Madonna</a> to fit our model to the first-wave data. Here comes the the optimal age-dependet transmission parameters: β1, β2, and β3 in the <em><strong>Who-Acquire-Infections-From-Whom (WAIFW) matrix</strong></em>. β is the per capita rate at which two individuals, in this case age-speceficly, come into effective contact per unit time.</p>
+<p><img src="/images/20240328_modelling_flu_outbreak/firstwave.png" alt="wave1"></p>
+<p>To derive the R0 in the first wave, <em><strong>Next Generation Matrix</strong></em> is used along with a simulation process. Briefly, based on the initial assumed conditions, this method simulate the dynamics of the disease spread over time, i.e. from one generation to the next generation. Once the simulation has reached a steady state (equilibrium), we can estimate R0 using the observed data. Finally we get 1.47 as our R0 in the first wave, which is not far from the historical R0 of influenza in the 20s century.</p>
+<h2 id="modelling-for-second-wave">Modelling for Second Wave</h2>
+<h3 id="no-intervention">No Intervention</h3>
+<p>Assuming an initial case of one child infection (seeding) in our country and 100% fraction of reporting, we multiply the first-wave WAIFW matrix by 1.5 because the transmissibility of the second wave is believed to be 50% higher. The Berkeley Madonna SEIR model produces cruves of cumulative number of symptomatic cases of children, adults, and all population.</p>
+<p><img src="/images/20240328_modelling_flu_outbreak/matrix_s1.png" alt="matrix 1"></p>
+<p>This is a <em><strong>no-intervention</strong></em> scenario (scenario 1). It is estimated that 28.7% children, 22.3% adults, and 24.4% total population will experience symptoms due to the new influenza strain.</p>
+<p><img src="/images/20240328_modelling_flu_outbreak/Graph_scenario_1.png" alt="Scenario1"></p>
+<h3 id="interventions">Interventions</h3>
+<p>Due to a global shortage, we have no stocks of antivirals and hope that closing schools and vaccination will help limit the spread of the infection. However, the vaccines supplied for the second wave are limited and we are expected to receive enough doses for 50% of the population. The available vaccine doses will be given to children, with any remaining doses being given to adults.</p>
+<p>The school-closure intervention will shut down the school for four weeks once the true proportion of children who have experienced symptoms during the second wave has reached 0.5%, which is called the school-closure threshold. We suppose that the β1 will be 60% lower during the school-closure period, i.e. the β1 need to be multiplied with 0.4.</p>
+<pre><code>In the global environment of the Berkeley Madonna model:
+
+b1_school_open = 5.83845e-6       
+b1_school_closure = 2.33538e-6
+b1 = if ((time&gt; 53) and (time&lt;83)) then b1_school_closure else b1_school_open   
+
+where on the 54th day the true proportion of children who have experienced symptoms hit the threshold
+</code></pre>
+<p>Now we can try the modelling for four basic scenrios:</p>
+<ul>
+<li><strong>Scenario 1</strong>: No intervention</li>
+<li><strong>Scenario 2</strong>: School Closure</li>
+<li><strong>Scenario 3</strong>: Vaccination for 100% children and 25.39% adults (=50% total population)</li>
+<li><strong>Scenario 4</strong>: Vaccination and School Closure, scenario 2 and 3 combined</li>
+</ul>
+<p>Owing to interventions, the proportion symptomatic in the total population are 24.1%, 19.8%, and 19.4% in scenarios 2, 3, and 4, respectively. It can be observed that the impact of school closure is limited, compared to vaccination programme.</p>
+<p><img src="/images/20240328_modelling_flu_outbreak/plot1_4.png" alt="Plot 1-4"></p>
+<p>In terms of flatting the curve and delaying the peak, similarly, the vaccination programme performs better than school closure does. The most effective strategy for controlling the outbreak involves a combination of vaccination and school closure measures (scenario 4).</p>
+<p><img src="/images/20240328_modelling_flu_outbreak/dynamics_animation_scenario1_4.gif" alt="Scenario1_4">
+<em>The R code for this animation is included in the appendix at the bottom.</em></p>
+<p>It is worth examining the <em><strong>Net Reproductive Number (Rn)</strong></em> at various point of time, calculated as the product of the transmission rate (β) with the <strong>susceptible</strong> population and the duration of infectiousness using the next generation matrix. In the begining of the scenario 1&amp;2, the Rn is 1.59. However, at the first day of the school closure in scenario 2, the Rn decreases to 1.155.</p>
+<p>With the collective protection from vaccination and acquired immunity from the first wave, the Rn in the begining of the scenario 3&amp;4 is 1.32. Upon the implementation of school closure in scenario 4, Rn becomes 1.164. <em>The Rn reaches a critical value of one at the peak of each curve.</em></p>
+<h2 id="sensitivity-analysis">Sensitivity Analysis</h2>
+<p>To explore the potential strategies in response to the outbreak, we come up with the following advanced scenarios:</p>
+<ul>
+<li><strong>Scenario 5</strong>: Longer School closure (3 months)</li>
+<li><strong>Scenario 6a</strong>: Adjsut the threshold of school closure from 0.5% to 0.2%.</li>
+<li><strong>Scenario 6b</strong>: Adjsut the threshold of school closure from 0.5% to 1%.</li>
+<li><strong>Scenario 7</strong>: Equal vaccine distribution: distribute the same doses vaccines to children and adults.</li>
+<li><strong>Scenario 8</strong>: The strain is 200% higher transmissible than the first wave</li>
+<li><strong>Scenario 9</strong>: Adjust the fraction of reporting from 100% to 60%</li>
+</ul>
+<p><img src="/images/20240328_modelling_flu_outbreak/barplot_1_9.png" alt="barplot_1_9"></p>
+<h3 id="vaccination-distribution-equity-or-equality">Vaccination Distribution: Equity or Equality?</h3>
+<p>We regard scenario 3 as a <em><strong>equitable strategy</strong></em> for vaccine distribution, as it prioritize individuals who are more vulnerable to the disease and have a higher transmission rate (where β1 &gt; β2 &gt; β3).</p>
+<p>In contrast, scenario 7 is a <em><strong>equal strategy</strong></em> for vaccine distribution. This is a equal allocation due to the same weight (number of vaccine doses) given to both groups of people.</p>
+<blockquote>
+<p>It can be observed that an equitable vaccine distribution program proves more effective in controlling outbreaks compared to equal distribution models, this is due to the equity-driven resource allocation favoring people with higher transmission rates (β1).</p>
+</blockquote>
+<h3 id="thresholds-for-school-closure">Thresholds for School Closure</h3>
+<p>Apart from proportion symptomatic, peak cases and peak timing are also critical indicators for controlling an outbreak.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Scenarios</th>
+<th style="text-align:center">Peak Cases</th>
+<th style="text-align:center">Peak Day</th>
+<th style="text-align:center">Prop. Symp.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">8-Vac&amp;200%Trans</td>
+<td style="text-align:center">20,917</td>
+<td style="text-align:center">52</td>
+<td style="text-align:center">40%</td>
+</tr>
+<tr>
+<td style="text-align:center">7-Vac (equal)</td>
+<td style="text-align:center">9,597</td>
+<td style="text-align:center">65</td>
+<td style="text-align:center">29%</td>
+</tr>
+<tr>
+<td style="text-align:center">1-No interv.</td>
+<td style="text-align:center">6,077</td>
+<td style="text-align:center">87</td>
+<td style="text-align:center">24%</td>
+</tr>
+<tr>
+<td style="text-align:center">2-Clos.(0.5%)</td>
+<td style="text-align:center">5,298</td>
+<td style="text-align:center">113</td>
+<td style="text-align:center">24%</td>
+</tr>
+<tr>
+<td style="text-align:center">3-Vac</td>
+<td style="text-align:center">3,243</td>
+<td style="text-align:center">140</td>
+<td style="text-align:center">20%</td>
+</tr>
+<tr>
+<td style="text-align:center">6a-Vac&amp;Clos.(0.2%)</td>
+<td style="text-align:center">3,077</td>
+<td style="text-align:center">155</td>
+<td style="text-align:center">20%</td>
+</tr>
+<tr>
+<td style="text-align:center">4-Vac&amp;Clos.(0.5%)</td>
+<td style="text-align:center">2,839</td>
+<td style="text-align:center">156</td>
+<td style="text-align:center">19%</td>
+</tr>
+<tr>
+<td style="text-align:center">6b-Vac&amp;Clos.(1%)</td>
+<td style="text-align:center">2,499</td>
+<td style="text-align:center">157</td>
+<td style="text-align:center">19%</td>
+</tr>
+<tr>
+<td style="text-align:center">9-Vac&amp;60%Rep.</td>
+<td style="text-align:center">1,946</td>
+<td style="text-align:center">140</td>
+<td style="text-align:center">20%</td>
+</tr>
+<tr>
+<td style="text-align:center">5-Vac&amp;Clos.(3m)</td>
+<td style="text-align:center">1,462</td>
+<td style="text-align:center">151</td>
+<td style="text-align:center">17%</td>
+</tr>
+</tbody>
+</table>
+<p>In this table, we sort the scenarios by the peak cases, and we focus on three scenarios with vaccination and different thresholds for school closure (scenario 6a, 4, and 6b). These three scenarios have similar peak timing and proportion symptomatic. However, the higher the threshold we set, the lower the peak cases we have.</p>
 <p><img src="/images/20240328_modelling_flu_outbreak/dynamics_animation_scenario1_9.gif" alt="Scenario1_9"></p>
+<p>In other words, as long as we know the surge capacity of the healthcare system, we can manipulate the threshold to flatten the curve, preventing the health care systems from overwhelming patients.</p>
 <h2 id="conclusion">Conclusion</h2>
-<h3 id="key-findings">Key Findings</h3>
-<ul>
-<li>Symptomatic cases with no control measures: adults 82,653, children 52,217 and total 134,871</li>
-<li>Reduction of symptomatic cases in only closing school for 4 weeks = 1.6%</li>
-<li>Reduction of symptomatic cases with vaccination as planned = 19.0%</li>
-<li>Reduction of symptomatic cases with vaccination and closing school for 4 weeks = 20.6%</li>
-<li>Closing schools may delay the peak of cases. Significance depends on whether burden to health services</li>
-<li>Cost to society of closing schools- disruption children&rsquo;s education/parents can&rsquo;t work</li>
-</ul>
+<h3 id="key-finding">Key Finding</h3>
+<p>Choosing from four basic scenarios (1-4), we recommened the vaccination only strategy to our Ministry of Health to mitigate the surges in influenza cases.</p>
+<p>In scenario 4, the combined effects of vaccination and school closure result in the largest reduction of symptomatic cases (20.6%) compared to scenario 1 as the reference. However, closing schools may delay the peak of cases, while the significance depends on whether burden to health services, given zero mortality in this context.</p>
+<blockquote>
+<p>Cost to society of school closure may result in disrupting children&rsquo;s education/csusing parents to miss work. This highlights the importance of considering the <strong>Incremental Cost Effectiveness Ratio (ICER)</strong> in the modelling.</p>
+</blockquote>
+<h3 id="limitations">Limitations</h3>
+<p>This hypothetical study has some limitations due to the assumptions. First, no births or deaths are included in model. Second, we assume the latent and infectious periods in the second wave are the same as virus in first wave. Third, proportions of cases showing symptoms is assumed the same in adults and children, and the fraction of reporting is not possible to reach 100% in the realworld settings.</p>
 <h3 id="recommendations">Recommendations</h3>
-<ul>
-<li>Collect more detailed information on age groups. Current age groups are too broad</li>
-<li>More economic evaluation of control measures</li>
-<li>Assess changes in behaviour through the epidemic in real time as difficult to predict in advance</li>
-<li>Create a cohort group that we study for seroprevalence through epidemic</li>
-<li>Assess effects on health service in real time as this may change the - recommendations</li>
-<li>Combine other non-pharmaceutical interventions, e.g. social distancing, wearing mask, personal hygiene</li>
-</ul>
+<p>First of all, it&rsquo;s important to collect more data to conduct a more comprehensive economic evaluation of control measures, which is the highlighted in a panel discussion at LSHTM - <a href="https://www.lshtm.ac.uk/newsevents/events/use-modelling-inform-decision-making-emergency-lessons-covid-19">The use of modelling to inform decision-making in an emergency: lessons from COVID-19</a>. Assessing changes in behavior throughout an outbreak in real-time can be challenging as they are difficult to predict in advance. Besides, assessing the effects on healthcare service is critial. It may also be useful to conduct a cohort/surveillance that we study for seroprevalence through outbreaks. The Ministry of Health may try to combine other non-pharmaceutical interventions, e.g. social distancing, wearing mask, personal hygiene.</p>
 <table>
 <thead>
 <tr>
@@ -269,7 +385,46 @@ There are now rumours that in a distant country N, the second wave of the pandem
 </tr>
 </thead>
 </table>
-<p><em>This group project is a collective effort, with contributions from my teammates <a href="https://www.linkedin.com/in/minn-thit-aung-40a17065/?originalSubdomain=mm">Minn Thit Aung</a>, <a href="https://www.linkedin.com/in/polly-nightingale-415a0b200/">Polly Nightingale</a>, Simon Kent, and <a href="https://www.linkedin.com/in/xavier-dunn-6088802aa/">Xavier Dunn</a>, listed alphabetically. It has been adapted from the Modelling and the Dynamics of Infectious Diseases module at LSHTM.</em></p>
+<p><em>This group project was originally intended for a group presentation of the the Modelling and the Dynamics of Infectious Diseases module at LSHTM, with contributions from <a href="https://www.linkedin.com/in/minn-thit-aung-40a17065/?originalSubdomain=mm">Minn Thit Aung</a>, <a href="https://www.linkedin.com/in/polly-nightingale-415a0b200/">Polly Nightingale</a>, Simon Kent, and <a href="https://www.linkedin.com/in/xavier-dunn-6088802aa/">Xavier Dunn</a>, listed alphabetically.</em></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+</table>
+<h6 id="appendix">Appendix</h6>
+<pre><code># The gganimate package demonstrate how to make the ggplot in the scenario 1-4 into a GIF
+library(gganimate)
+
+plot_object &lt;- ggplot() +
+geom_line(data=df1,aes(x=Time,y=Scenario1),color=&quot;#088199&quot;,size=0.7)+
+geom_line(data=df1,aes(x=Time,y=Scenario2),color=&quot;purple&quot;,size=0.7)+
+geom_line(data=df1,aes(x=Time,y=Scenario3),color=&quot;#Ca0020&quot;,size=0.7)+
+geom_line(data=df1,aes(x=Time,y=Scenario4),color=&quot;#b8e186&quot;,size=0.7)+
+geom_text(data=df1,aes(x=Time, y=Scenario1 + 1.5,label=paste('S1')), color = &quot;#088199&quot;)+
+geom_text(data=df1,aes(x=Time, y=Scenario2 + 1.5,label=paste('S2')), color = &quot;purple&quot;) +
+geom_text(data=df1,aes(x=Time, y=Scenario3 + 1.5,label=paste('S3')), color = &quot;#Ca0020&quot;)+
+geom_text(data=df1,aes(x=Time, y=Scenario4 + 1.5,label=paste('S4')), color = &quot;#b8e186&quot;)+
+theme(panel.grid.major = element_blank(),
+      axis.line = element_line(colour = &quot;black&quot;),
+      panel.background = element_rect(fill = &quot;transparent&quot;),
+      plot.title=element_text(hjust=0.5)) +
+scale_x_continuous(breaks=seq(0,350,25))+
+labs(y=&quot;Daily New Reported Cases&quot;,x = 'Time (Day)',title = &quot;Outbreak Dynamics of Influenza Strain HuNz&quot;)
+
+print(plot_object)
+
+plot_object_transition &lt;- plot_object + transition_reveal(Time) # make static into dynamic
+
+animate(plot_object_transition, #save the GIF
+        fps = 50, #frame rate
+        duration = 1.5, #speed
+        width = 1800, height = 865, #dimension
+        renderer = gifski_renderer(loop = FALSE,&quot;My_animation.gif&quot;),
+        res= 100)# accuracy every fold
+</code></pre>
 
         </div>
     </div>
