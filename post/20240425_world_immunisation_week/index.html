@@ -1,0 +1,346 @@
+
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>World Immunisation Week 2024 | Transmission Landscape</title>
+    <meta name="description"
+        content="For poeple doing vaccination works, their world wareness day is not a single day - it&rsquo;s a week, spanning from 24th to 30th April each year.
+This year, WHO celebrate 50 years of the &ldquo;Expanded Programme on Immunization (EPI)&rdquo;.
+In LSHTM&rsquo;s Vaccine Centre (VaC), our world immunisation week (WIW) topic this year is &ldquo;responding to outbreaks&rdquo;. We want to highlight the collective action needed to protect people from outbreaks and vaccine-preventable diseases.">
+    <link rel="canonical" href="https://haokaitseng.github.io/post/20240425_world_immunisation_week/" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    
+    <link rel="stylesheet" href="https://haokaitseng.github.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
+
+    <meta property="og:title" content="World Immunisation Week 2024" />
+<meta property="og:description" content="For poeple doing vaccination works, their world wareness day is not a single day - it&rsquo;s a week, spanning from 24th to 30th April each year.
+This year, WHO celebrate 50 years of the &ldquo;Expanded Programme on Immunization (EPI)&rdquo;.
+In LSHTM&rsquo;s Vaccine Centre (VaC), our world immunisation week (WIW) topic this year is &ldquo;responding to outbreaks&rdquo;. We want to highlight the collective action needed to protect people from outbreaks and vaccine-preventable diseases." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://haokaitseng.github.io/post/20240425_world_immunisation_week/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-04-22T22:11:12+08:00" />
+<meta property="article:modified_time" content="2024-04-22T22:11:12+08:00" /><meta property="og:site_name" content="Kai&#39;s Data Science Blog" />
+
+
+    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="World Immunisation Week 2024"/>
+<meta name="twitter:description" content="For poeple doing vaccination works, their world wareness day is not a single day - it&rsquo;s a week, spanning from 24th to 30th April each year.
+This year, WHO celebrate 50 years of the &ldquo;Expanded Programme on Immunization (EPI)&rdquo;.
+In LSHTM&rsquo;s Vaccine Centre (VaC), our world immunisation week (WIW) topic this year is &ldquo;responding to outbreaks&rdquo;. We want to highlight the collective action needed to protect people from outbreaks and vaccine-preventable diseases."/>
+
+    
+    
+    
+
+</head><body><nav class="navbar is-light" role="navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a href="/" title="home" class="navbar-item">
+                <span class="logo">
+                    <h1>Transmission Landscape</h1>
+                </span>
+            </a>
+
+            
+            <a id="theme-toggle" class="theme-toggle" href="#">
+                <img src="https://haokaitseng.github.io/svg/sun.svg" alt="sun icon" class="theme-icon" />
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                
+                <a href="/about" class="navbar-item">About</a>
+                
+                <a href="/post" class="navbar-item">Blog</a>
+                
+                <a href="/categories" class="navbar-item">Categories</a>
+                
+            </div>
+
+        </div>
+        <div class="search">
+            <div id="fastSearch">
+                <input id="searchInput" tabindex="0" placeholder="Search..">
+                <ul id="searchResults">
+
+                </ul>
+            </div>
+            <a id="search-btn" style="display: inline-block;" href="# ">
+                <div class="icon-search"><svg class="search-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+            </a>
+        </div>
+
+        <script src="/js/fuse.min.js"></script> 
+        <script src="/js/fastsearch.js"></script>
+
+    </div>
+</nav>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var burger = document.querySelector('.navbar-burger');
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('is-active');
+            document.querySelector('.navbar-menu').classList.toggle('is-active');
+        });
+    });
+
+    
+    function setTheme(theme) {
+        let body = document.body;
+        let themeIcon = document.querySelector(".theme-icon");
+        if (theme === "dark") {
+            body.classList.add("dark-mode");
+            themeIcon.src = "https:\/\/haokaitseng.github.io\/svg/moon.svg";
+            themeIcon.alt = "moon icon";
+        } else {
+            body.classList.remove("dark-mode");
+            themeIcon.src = "https:\/\/haokaitseng.github.io\/svg/sun.svg";
+            themeIcon.alt = "sun icon";
+        }
+        
+        localStorage.setItem("theme", theme);
+    }
+
+    
+    let theme = localStorage.getItem("theme") || "light";
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDarkMode) {
+        
+        setTheme('dark');
+
+    } else {
+        
+        setTheme('light');
+    }
+    setTheme(theme);
+
+    
+    document.getElementById("theme-toggle").addEventListener("click", function() {
+        if (theme === "light") {
+            theme = "dark";
+        } else {
+            theme = "light";
+        }
+        setTheme(theme);
+    });
+
+
+
+</script>
+
+</header><main>
+<div class="single-container">
+    <div class="archive">
+        <h1 class="title is-1">World Immunisation Week 2024</h1>
+        <div class="title subtitle heading is-6">
+            <div class="author-info columns is-vcentered">
+                <div class="column">
+                    <div class="columns is-vcentered is-mobile">
+                        
+                        <div class="column is-narrow">
+                            <img src="/images/profile.jpg" class="author-image">
+                        </div>
+                        
+                        <div class="column">
+                            <p>Kai</p>
+                            <p><time>April 22, 2024</time>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="small-categories-container">
+                    <a href="/categories/vaccine">Vaccine</a>
+                </div>
+            </div>
+        </div>
+        <div class="content article-content">
+            <div class="toc-container">
+                
+    <div class="post-toc">
+        
+            <aside>
+                <button id="tocButton" ><h4 id="contents" style="margin-left: 1vw;color:rgb(96, 134, 180);margin-bottom: 0;">CONTENTS</h4></button>
+                <div id="hide"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#poster">Poster</a></li>
+    <li><a href="#podcast">Podcast</a></li>
+    <li><a href="#other-events--podcasts">Other Events &amp; Podcasts</a></li>
+  </ul>
+</nav></div>
+            </aside>
+        
+    </div><script>
+    
+        let button = document.getElementById('tocButton');
+        let hide = document.getElementById("hide");
+        let contents=document.getElementById("contents");
+        button.addEventListener("click", function() {
+        if (hide.style.display!='block') {
+            hide.style.display='block'
+        } else {
+            hide.style.display='none'
+            contents.style.color='rgb(96, 134, 180)'
+        }
+        });
+    
+
+
+
+
+</script>
+            </div>
+            <p>For poeple doing vaccination works, their world wareness day is not a single day - it&rsquo;s a <strong>week</strong>, spanning from 24th to 30th April each year.</p>
+<blockquote>
+<p>This year, WHO celebrate 50 years of the &ldquo;<a href="https://www.who.int/campaigns/world-immunization-week/2024">Expanded Programme on Immunization (EPI)</a>&rdquo;.</p>
+</blockquote>
+<p>In LSHTM&rsquo;s Vaccine Centre (VaC), our world immunisation week (WIW) topic this year is &ldquo;<a href="https://www.lshtm.ac.uk/research/centres/vaccine-centre/media-and-resources">responding to outbreaks</a>&rdquo;. We want to highlight the collective action needed to protect people from outbreaks and vaccine-preventable diseases. This is the largest event series of the year, and we&rsquo;ve spent several months meticulously planning activities to celebrate this week.</p>
+<p>As a student liaison officer of VaC, I contribute in the following two projects - poster and podcast.</p>
+<h2 id="poster">Poster</h2>
+<p>I used Inkscape to illustrate the key image for WIW - a little boy saying no to a virus, with a post-vaccinnation bandage and a VaC backpack.
+<img src="/images/20240425_WIW/20240308_WIW_poster.png" alt="yellow"></p>
+<p>The blue theme is used in our daily newsletter and website deployment, in alignment with the school&rsquo;s color policy.
+<img src="/images/20240425_WIW/20240402_WIW_poster_px900_630.png" alt="blue"></p>
+<h2 id="podcast">Podcast</h2>
+<p>Serving as the student liaison officers of VaC, Ashna and I collaborated to record a podcast series with <a href="https://www.lshtm.ac.uk/aboutus/people/kasstan-dabush.ben">Ben Kasstan-Dabush</a>. Ben is an Assistant Professor of medical anthropology at LSHTM, evaluating vaccine programme delivery amidst the COVID-19 pandemic, measle outbreaks, and poliovirus incidents within Jewish community. He has brilliant insights and critial thinking about vaccine engagement and the relationships that vaccine is embedded in. We had a excellent time interviewing him and gained a wealth of knowledge from both reading his research and engaging in conversation with him. Highly recommended!</p>
+<p><img src="/images/20240425_WIW/Screenshot1.png" alt="trailer"></p>
+<blockquote>
+<p><strong>&ldquo;Immunity is about relationships: outbreak response and vaccine engagement&rdquo;</strong> <a href="https://soundcloud.com/user-789387211/why-immunity-is-about-relationships-a-deep-dive-into-outbreak-response-and-vaccine-engagement">Listen now for the trailer</a>.</p>
+</blockquote>
+<p><img src="/images/20240425_WIW/Screenshot2.png" alt="fullepisode"></p>
+<blockquote>
+<p><strong>&ldquo;Immunity is about relationships: outbreak response and vaccine engagement&rdquo;</strong> <a href="">Listen now for the full episode</a>.</p>
+</blockquote>
+<p>In this episode, Assistant Professor Ben Kasstan-Dabush from the Department of Global Health &amp; Development at LSHTM sits down with Student Liaison Officers Ashna Pillai and Hao Kai Tseng from the LSHTM Vaccine Centre to talk about vaccines and the relationships between parents, community, and health systems.</p>
+<p>Building on the fieldwork stories with Haredi Jewish families, Ben Kasstan-Dabush delves into his vaccine research around the religious communities and the complementary delivery pathways tailored for them.</p>
+<p>Ben Kasstan-Dabush describes an outbreak as firefighting caused by a lack of investment. <em><strong>“How do we sustain that money, so that we&rsquo;re not in a problem of constant firefighting.”</strong></em>, he said. Unfortunately, the learning and models implemented during the COVID-19 pandemic have limited transferability to routine immunisation programmes.</p>
+<p>Take the measles outbreak in the UK for instance, Ben Kasstan-Dabush discusses the concept of the link between the declining vaccine coverage and chronic deprivation. Thinking about “vaccine engagement” aids in understanding the complex relationships that vaccination is embedded in, where we should not lose sight of the particular political, economic, and social climate in which vaccines are delivered, alongside the ability and resources of our systems. Therefore, building resilience and flexibility into immunisation programmes is crucial for enhancing vaccine uptake.</p>
+<p>What do we need in outbreak management? How is deprivation linked with vaccine uptake? Why is it helpful to think about vaccine engagement? Together, Ben Kasstan-Dabush and the Student Liaison Officers will guide you through these questions, with a focus on the key lessons learned from COVID-19, measles, and poliovirus outbreaks.</p>
+<h2 id="other-events--podcasts">Other Events &amp; Podcasts</h2>
+<p>VaC hosts three events and other two podcasts during the WIW. Be sure not to miss them!</p>
+<p>🎈 EVENTS</p>
+<p>🗓 23 April  |  <a href="https://www.lshtm.ac.uk/newsevents/events/vaccine-centre-annual-lecture-professor-dame-sarah-gilbert">Vaccine Centre Annual Lecture: Professor Dame Sarah Gilbert</a>
+Development of vaccines against outbreak pathogens</p>
+<p>🗓 25 April  |  <a href="https://www.lshtm.ac.uk/newsevents/events/community-engagement-vaccination-humanitarian-settings-view-field">Community engagement for vaccination in humanitarian settings: A view from the field</a></p>
+<ul>
+<li>Idaraobong Ekanem, ​IFRC / Nigeria Red Cross </li>
+<li>Sofi Lazlo, MSF</li>
+<li>Nada Abdelmagid, LSHTM</li>
+<li>Mohamed Kahow, ​Save the Children Somalia</li>
+</ul>
+<p>🗓 30 April  |  Health promotion and vaccination in the age of social media: insights from the frontline</p>
+<ul>
+<li>​​Natalia Pasternak Taschner, University of São Paulo, Brazil​</li>
+<li>Cherstyn Hurley, UKHSA</li>
+<li>Vishaal Virani, Head of UK Health, YouTube</li>
+</ul>
+<p>📻 PODCASTS</p>
+<p>🗓 22 April  |  <a href="https://soundcloud.com/user-789387211/responding-to-polio-outbreaks-new-vaccine-old-foe">Responding to polio outbreaks – new vaccine, old foe</a></p>
+<ul>
+<li>Edward Parker, LSHTM</li>
+<li>Nick Grassly, Isobel Blake, and Laura Cooper, Imperial College London</li>
+<li>Ed Clarke and Dr Larry Kotei, MRC Unit in The Gambia at LSHTM</li>
+</ul>
+<p>🗓 24 April  |  <a href="https://soundcloud.com/user-789387211/the-use-of-vaccines-in-outbreak-response">The use of vaccines in outbreak response</a></p>
+<ul>
+<li>Ed Newman, Nadine Beckmann and Sophie Everest, UK Public Health Rapid Support Team</li>
+<li>Nicholas Davies, LSHTM</li>
+</ul>
+
+        </div>
+    </div>
+    <a href="#" id="scrollToTopButton">
+        <svg t="1686753152588" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            p-id="3988" width="48" height="48">
+            <path
+                d="M518.5 360.3c-3.2-4.4-9.7-4.4-12.9 0l-178 246c-3.8 5.3 0 12.7 6.5 12.7H381c10.2 0 19.9-4.9 25.9-13.2L512 460.4l105.2 145.4c6 8.3 15.6 13.2 25.9 13.2H690c6.5 0 10.3-7.4 6.5-12.7l-178-246z"
+                p-id="3989" fill="#363636"></path>
+            <path
+                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                p-id="3990" fill="#363636"></path>
+        </svg>
+    </a><hr style="border-top: 1px solid #EEEEEE;">
+<div id="comment"></div>
+<script>
+    const getStoredTheme = () => localStorage.getItem("theme") === "dark" ? "dark" : "light";
+
+    const setGiscusTheme = () => {
+        const sendMessage = (message) => {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (iframe) {
+                iframe.contentWindow.postMessage({giscus: message}, 'https://giscus.app');
+            }
+        }
+        sendMessage({setConfig: {theme: getStoredTheme()}})
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const giscusAttributes = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "hotjuicew\/blog",
+            "data-repo-id": "R_kgDOHHQOuw",
+            "data-category": "Announcements",
+            "data-category-id": "DIC_kwDOHHQOu84CWCQ3",
+            "data-mapping": "og:title",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-input-position": "bottom",
+            "data-theme": getStoredTheme(),
+            "data-lang": "en",
+            "data-loading": "lazy",
+            "crossorigin": "anonymous",
+        };
+
+        
+        const giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(
+            ([key, value]) => giscusScript.setAttribute(key, value));
+        document.getElementById("comment").appendChild(giscusScript);
+
+        
+        const themeToggle = document.querySelector(".theme-toggle");
+        if (themeToggle) {
+            themeToggle.addEventListener("click", setGiscusTheme);
+        }
+    });
+
+</script>
+
+
+<div class="pp-container">
+        <section class="pre-and-post">
+            <div class="has-text-left">
+                
+                <p>Previous post</p>
+                <a href="https://haokaitseng.github.io/post/20240327_modelling_flu/">Equity vs. Equality: Modelling Vaccine Distribution Strategies for Outbreak Response Decision-Making</a>
+                
+            </div>
+            <div class="has-text-right">
+                
+            </div>
+        </section>
+    </div>
+
+</div>
+
+        </main><footer class="footer">
+    <div class="content has-text-centered">
+    <span>&copy; 2024 <a href="https://haokaitseng.github.io/">Transmission Landscape</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" target="_blank">Hugo</a> &
+        <a href="https://github.com/hotjuicew/hugo-JuiceBar" target="_blank">JuiceBar</a>
+    </span>
+    </div>
+  </footer></body>
+</html>
+
