@@ -1,0 +1,449 @@
+
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>The Beginnig of the End: What Is the Expected Notification Rate of the Polio Surveillance Indicator? | Transmission Landscape</title>
+    <meta name="description"
+        content="This post presents my research proposal for my MSc thesis: &ldquo;Predicting the rate of Acute Flaccid Paralysis in different settings to support polio surveillance and elimination&rdquo;.
+You will learn why non-polio Acute Flaccid Paralysis (NPAFP) is important in support of polio eradication. The current challenge involves interpreting the AFP indicator that exceed the targeted levels. Potential data sources and modelling methods are raised to fill this knowledge gap. Aim and Objectives Research Aim To investigate and model the mechanisms underlying the notification of the key polio surveillance indicator - NPAFP rates in endemic and outbreak settings.">
+    <link rel="canonical" href="https://haokaitseng.github.io/post/20240503_polio_proposal/" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    
+    <link rel="stylesheet" href="https://haokaitseng.github.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
+
+    <meta property="og:title" content="The Beginnig of the End: What Is the Expected Notification Rate of the Polio Surveillance Indicator?" />
+<meta property="og:description" content="This post presents my research proposal for my MSc thesis: &ldquo;Predicting the rate of Acute Flaccid Paralysis in different settings to support polio surveillance and elimination&rdquo;.
+You will learn why non-polio Acute Flaccid Paralysis (NPAFP) is important in support of polio eradication. The current challenge involves interpreting the AFP indicator that exceed the targeted levels. Potential data sources and modelling methods are raised to fill this knowledge gap. Aim and Objectives Research Aim To investigate and model the mechanisms underlying the notification of the key polio surveillance indicator - NPAFP rates in endemic and outbreak settings." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://haokaitseng.github.io/post/20240503_polio_proposal/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-05-03T22:11:12+08:00" />
+<meta property="article:modified_time" content="2024-05-03T22:11:12+08:00" /><meta property="og:site_name" content="Kai&#39;s Data Science Blog" />
+
+
+    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="The Beginnig of the End: What Is the Expected Notification Rate of the Polio Surveillance Indicator?"/>
+<meta name="twitter:description" content="This post presents my research proposal for my MSc thesis: &ldquo;Predicting the rate of Acute Flaccid Paralysis in different settings to support polio surveillance and elimination&rdquo;.
+You will learn why non-polio Acute Flaccid Paralysis (NPAFP) is important in support of polio eradication. The current challenge involves interpreting the AFP indicator that exceed the targeted levels. Potential data sources and modelling methods are raised to fill this knowledge gap. Aim and Objectives Research Aim To investigate and model the mechanisms underlying the notification of the key polio surveillance indicator - NPAFP rates in endemic and outbreak settings."/>
+
+    
+    
+    
+
+</head><body><nav class="navbar is-light" role="navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a href="/" title="home" class="navbar-item">
+                <span class="logo">
+                    <h1>Transmission Landscape</h1>
+                </span>
+            </a>
+
+            
+            <a id="theme-toggle" class="theme-toggle" href="#">
+                <img src="https://haokaitseng.github.io/svg/sun.svg" alt="sun icon" class="theme-icon" />
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                
+                <a href="/about" class="navbar-item">About</a>
+                
+                <a href="/post" class="navbar-item">Blog</a>
+                
+                <a href="/categories" class="navbar-item">Categories</a>
+                
+            </div>
+
+        </div>
+        <div class="search">
+            <div id="fastSearch">
+                <input id="searchInput" tabindex="0" placeholder="Search..">
+                <ul id="searchResults">
+
+                </ul>
+            </div>
+            <a id="search-btn" style="display: inline-block;" href="# ">
+                <div class="icon-search"><svg class="search-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+            </a>
+        </div>
+
+        <script src="/js/fuse.min.js"></script> 
+        <script src="/js/fastsearch.js"></script>
+
+    </div>
+</nav>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var burger = document.querySelector('.navbar-burger');
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('is-active');
+            document.querySelector('.navbar-menu').classList.toggle('is-active');
+        });
+    });
+
+    
+    function setTheme(theme) {
+        let body = document.body;
+        let themeIcon = document.querySelector(".theme-icon");
+        if (theme === "dark") {
+            body.classList.add("dark-mode");
+            themeIcon.src = "https:\/\/haokaitseng.github.io\/svg/moon.svg";
+            themeIcon.alt = "moon icon";
+        } else {
+            body.classList.remove("dark-mode");
+            themeIcon.src = "https:\/\/haokaitseng.github.io\/svg/sun.svg";
+            themeIcon.alt = "sun icon";
+        }
+        
+        localStorage.setItem("theme", theme);
+    }
+
+    
+    let theme = localStorage.getItem("theme") || "light";
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDarkMode) {
+        
+        setTheme('dark');
+
+    } else {
+        
+        setTheme('light');
+    }
+    setTheme(theme);
+
+    
+    document.getElementById("theme-toggle").addEventListener("click", function() {
+        if (theme === "light") {
+            theme = "dark";
+        } else {
+            theme = "light";
+        }
+        setTheme(theme);
+    });
+
+
+
+</script>
+
+</header><main>
+<div class="single-container">
+    <div class="archive">
+        <h1 class="title is-1">The Beginnig of the End: What Is the Expected Notification Rate of the Polio Surveillance Indicator?</h1>
+        <div class="title subtitle heading is-6">
+            <div class="author-info columns is-vcentered">
+                <div class="column">
+                    <div class="columns is-vcentered is-mobile">
+                        
+                        <div class="column is-narrow">
+                            <img src="/images/profile.jpg" class="author-image">
+                        </div>
+                        
+                        <div class="column">
+                            <p>Kai</p>
+                            <p><time>May 3, 2024</time>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="small-categories-container">
+                    <a href="/categories/data-science">Data Science</a>, <a href="/categories/polio">Polio</a>, <a href="/categories/vaccine">Vaccine</a>
+                </div>
+            </div>
+        </div>
+        <div class="content article-content">
+            <div class="toc-container">
+                
+    <div class="post-toc">
+        
+            <aside>
+                <button id="tocButton" ><h4 id="contents" style="margin-left: 1vw;color:rgb(96, 134, 180);margin-bottom: 0;">CONTENTS</h4></button>
+                <div id="hide"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#aim-and-objectives">Aim and Objectives</a>
+      <ul>
+        <li><a href="#research-aim">Research Aim</a></li>
+        <li><a href="#research-objectives">Research Objectives</a></li>
+      </ul>
+    </li>
+    <li><a href="#background">Background</a>
+      <ul>
+        <li><a href="#polio-today">Polio Today</a></li>
+        <li><a href="#afp-notification">AFP Notification</a></li>
+        <li><a href="#challenge">Challenge</a></li>
+        <li><a href="#statistics">Statistics</a></li>
+        <li><a href="#mission">Mission</a></li>
+      </ul>
+    </li>
+    <li><a href="#methods">Methods</a>
+      <ul>
+        <li><a href="#outcome-measures">Outcome Measures</a></li>
+        <li><a href="#predictors">Predictors</a></li>
+        <li><a href="#models">Models</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </aside>
+        
+    </div><script>
+    
+        let button = document.getElementById('tocButton');
+        let hide = document.getElementById("hide");
+        let contents=document.getElementById("contents");
+        button.addEventListener("click", function() {
+        if (hide.style.display!='block') {
+            hide.style.display='block'
+        } else {
+            hide.style.display='none'
+            contents.style.color='rgb(96, 134, 180)'
+        }
+        });
+    
+
+
+
+
+</script>
+            </div>
+            <blockquote>
+<p>This post presents my research proposal for my MSc thesis: &ldquo;Predicting the rate of Acute Flaccid Paralysis in different settings to support polio surveillance and elimination&rdquo;.</p>
+<ul>
+<li>You will learn why non-polio Acute Flaccid Paralysis (NPAFP) is important in support of polio eradication.</li>
+<li>The current challenge involves interpreting the AFP indicator that exceed the targeted levels.</li>
+<li>Potential data sources and modelling methods are raised to fill this knowledge gap.</li>
+</ul>
+</blockquote>
+<h2 id="aim-and-objectives">Aim and Objectives</h2>
+<h3 id="research-aim">Research Aim</h3>
+<p>To investigate and model the mechanisms underlying the notification of the key polio surveillance indicator - NPAFP rates in endemic and outbreak settings.</p>
+<h3 id="research-objectives">Research Objectives</h3>
+<ol>
+<li>Review and consolidate existing evidence about the possible aetiologies of AFP in population aged less than 15.</li>
+<li>Identify the most informative predictive features for NPAFP rates in WPV-1 endemic countries and a selection of cVDPV outbreak countries.</li>
+<li>Building on the potential causal mechanism of AFP, modelling the expected NPAFP rates at both national and subnational levels.</li>
+</ol>
+<h2 id="background">Background</h2>
+<h3 id="polio-today">Polio Today</h3>
+<p>Since the global efforts initiated in 1988, wild poliovirus has been very close to global eradication. Endemic transmissions of wild poliovirus type 1 (WPV-1) is restricted to certain regions in Afghanistan and Pakistan. There are also episodes of circulating vaccine-derived poliovirus (cVDPV), mostly notified in World Health Organisation African region (AFRO).</p>
+<p>The WHO Global Polio Eradication Initiative (GPEI) sets the gold standard for detecting cases of poliomyelitis. The key indicator, the sensitivity of surveillance, is defined at least one case of non-polio AFP should be detected annually per 100,000 population aged less than 15 years. This is the minimum level for certificating a standard surveillance system, which indicate the probability that polio infection will be detected given that infection is present in the population. To ensure higher sensitivity in endemic regions and during polio outbreaks, the NPAFP rate should be two per 100,000 and three per 100,000, respectively (GPEI, 2021).</p>
+<h3 id="afp-notification">AFP Notification</h3>
+<p>AFP is characterized by repaid onset of gait disturbance, weakness, or trouble coordination in one or several extremities. The symptoms can progress to maximum severity within 10 days, frequently encompassing weakness of the muscles of respiration and swallowing. Every AFP case, as a result, poses a clinical emergency. It requires immediate neurologic examination to narrow the differential diagnosis, often involving electrophysiologic studies (Marx et al., 2000).</p>
+<p>Poliomyelitis is not the only cause of AFP. There many other causes, including Guillain-Barre syndrome, non-polio enterovirus, other neurotropic viruses, and acute traumatic sciatic neuritis. These potential causes of AFP are often associated with anatomic-morphologic changes or specific pathophysiologic mechanisms. Confirmation of either polio or NPAFP can only be achieved through collecting and testing of stool specimens from AFP cases within the Global Polio Laboratory Network (Tangermann et al., 2017). In other words, appropriate testing AFP, regardless of its presumed etiology, is an integral component of polio surveillance (Marx et al., 2000).</p>
+<p>From a macro perspective, the reporting of NPAFP may be associated with multiple factors within a sequence of events. These events include: (1) the necessity for a susceptible individual to be effectively exposed to the pathogens or causes mentioned above, (2) onset of symptoms, (3) seeking healthcare (accompanied by parents), (4) notification as AFP, (5) collection of stool specimens, (6) sample transportation, and (7) laboratory examination (Tangermann et al., 2017).</p>
+<p>Across these sequence of events, factors such as dwelling environment (related to climate, sanitation, and access to healthcare services), susceptibility (related to immunity and underlying prevalence), strengths of the surveillance system (related to technical, laboratory ,human, and financial resources) may play crucial roles. For instance, Pakistan and India’s NPAFP rates have been observed as having some association with polio vaccine uptakes and polio cases, respectively (Dhiman et al., 2018; Molodecky et al., 2017). Besides, factors associated with an increase risk of poliovirus outbreaks have also been identified (O’Reilly et al., 2017). The interactions between polio campaigns and health systems were also illustrated through a causal loop diagram (Neel et al., 2021). Nevertheless, there remains a limited understanding and approach to quantify the associations between AFP notifications and various factors throughout the continuum of surveillance events, let alone establishing causal inference.</p>
+<h3 id="challenge">Challenge</h3>
+<p>The current gold standard of NPAFP rate to define a well-operating poliovirus surveillance system might be challenged. First, from the perspective of certification, <code>zero-reporting</code> doesn&rsquo;t necessarily imply the absence of the underlying (latent) numbers of polio cases in a population. For example, an incorrect declaration of polio elimination almost occurred in Nigeria in 2016, following a track record of 730 days polio-free (Adamu et al., 2019; Bell, 2019).</p>
+<p>Second, in response to outbreaks, a cross-country study indicates that maintaining a high rate of NPAFP is essential to timely detection of cVDPVs outbreaks (Auzenbergs et al., 2021). It is critical for community health workers in outbreak regions to know how effectively the AFP surveillance systems monitor and identify cases, coupled with environmental surveillance.</p>
+<p>Third, concerning international movements, no country can be exempt from the risk of imported polio cases. A WPV-1 confirmed case was reported in Malawi in 2017, which was genetically linked to WPV-1 transmission in Pakistan (2022). This underscores the ongoing risk of international spread until the objective of global polio eradication is attained. Countries that fail to report NPAFP rates after certification may require assessment.</p>
+<h3 id="statistics">Statistics</h3>
+<p>According to the WHO’s open data (Figure 1), it is observed that in 2000, the NPAFP rate falling within the range of 1 to 2 per 100,000 accounted for the largest share (43%) among the reporting countries. Over the years, there has been an increase in the proportion exceeding 2 per 100,000, with 77% of countries’ NPAFP rates surpassing this standard in 2023.</p>
+<p><img src="/images/20240503_polio_proposal/polio_time_series.png" alt="polio_time"></p>
+<p>Diving into the data distribution, the median NPAFP rate of the annually median from the reporting countries is 1.7 per 100,000. However, this century ‘s maximum NPAFP rates by year range from 3.8 to 373.9 per 100,000. This wide range is accompanied by an increasing standard deviation in recent years. This right-skewed distribution of data poses a challenge to properly interpretate changes in NPAFP rates, as it reflects different strength of surveillance in different contexts. Notably, the aftermath of the COVID-19 pandemic could potentially shapes the healthcare landscape, as well as the polio surveillance systems (Niaz et al., 2023).</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">NPAFP rate (2000-2023)</th>
+<th style="text-align:center">Min</th>
+<th style="text-align:center">Q1</th>
+<th style="text-align:center">Median</th>
+<th style="text-align:center">Mean</th>
+<th style="text-align:center">Q3</th>
+<th style="text-align:center">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Annual Median</td>
+<td style="text-align:center">1.3</td>
+<td style="text-align:center">1.5</td>
+<td style="text-align:center">1.7</td>
+<td style="text-align:center">2.5</td>
+<td style="text-align:center">1.9</td>
+<td style="text-align:center">19.3</td>
+</tr>
+<tr>
+<td style="text-align:center">Annual Mean</td>
+<td style="text-align:center">1.4</td>
+<td style="text-align:center">1.9</td>
+<td style="text-align:center">2.3</td>
+<td style="text-align:center">3.8</td>
+<td style="text-align:center">2.8</td>
+<td style="text-align:center">37.2</td>
+</tr>
+<tr>
+<td style="text-align:center">Annual Maximum</td>
+<td style="text-align:center">3.8</td>
+<td style="text-align:center">9.2</td>
+<td style="text-align:center">15</td>
+<td style="text-align:center">30.4</td>
+<td style="text-align:center">22</td>
+<td style="text-align:center">373.9</td>
+</tr>
+<tr>
+<td style="text-align:center">Annual SD</td>
+<td style="text-align:center">0.8</td>
+<td style="text-align:center">1.4</td>
+<td style="text-align:center">2.2</td>
+<td style="text-align:center">4.5</td>
+<td style="text-align:center">3.4</td>
+<td style="text-align:center">53.6</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mission">Mission</h3>
+<p>Building on the partnership with the GPEI (on behalf of WHO), this project uses GPEI’s database, originally owned by the United Nations Children&rsquo;s Fund (UNICEF). The AFP data (including polio and non-polio cases) cover a comprehensive time (&gt; 20 years) and space, including WHO AFRO, Eastern Mediterranean Region (EMRO), and Western Pacific Region (WPRO). For the purpose of polio eradication, this project’s data landscape focuses on the WPV-1 endemic countries, Afghanistan and Pakistan, coupled with cVDPV outbreak countries, such as Nigeria. Publicly available data will also be collected and analysed as potential predictors at national and subnational levels.</p>
+<p>The added value of this project is to offer insight into the reconsideration of GPEI’s key surveillance indicator - NPAFP rate. This project can also contribute to the component of the Free From Infection (FFI) framework of the broad SPEC project. By understanding the sensitivity of the different components that make up the detection process, this project aims to answer what rate of NPAFP should be expected in the under-15 group, either for retrospective data analysis or for future projections. If study countries consistently reports zero polio cases for a certain period, with NPAFP reporting rate exceeding the expected NPAFP rate, this can serve as evidence of the successful interruption of poliovirus transmission.</p>
+<blockquote>
+<p><em><strong>ADDED VALUE:</strong></em>
+By assessing the target rates of reported NPAFP among the under 15 population in endemic regions, this project&rsquo;s value lies in defining a well-operating surveillance system, and identifying regions at risk of under detection.</p>
+</blockquote>
+<p>Furthermore, through the comparison between reported and expected NPAFP rates, it can also identify the weakness of surveillance systems and informs resource mobilisation during different phases, including outbreaks, eradication, and post-certification. Therefore, within the framework of the Polio Eradication Strategy 2022-2026 facilitated by GPEI, this project has scientific importance in providing essential support for surveillance activities and certification outlined in the strategy&rsquo;s timeline.</p>
+<h2 id="methods">Methods</h2>
+<h3 id="outcome-measures">Outcome Measures</h3>
+<p>The NPAFP rate per 100,000 in children aged less than 15, which is GPEI’s number of NPAFP cases divided by the annual under-15 population size according to national statistics.</p>
+<h3 id="predictors">Predictors</h3>
+<p>The absolute number of AFP cases is likely to vary substantially between populations due to a number of factors. Predictors to be assessed including:</p>
+<ol>
+<li>Geographical: (1) urban, rural, or conflict zone, (2) districts bordering, (3) temperature, (4) precipitation, (5) risk of diarrhea.</li>
+<li>Demographic: (1) population size: fewer than 50,000 children under 15 years of age may not detect AFP every year (WHO, 2022), (2) population density, (3) migration and movement (displacement), (4) socio-economic (poverty and barriers to access), (5) total births, (6) gender proportions.</li>
+<li>Surveillance and healthcare system: (1) healthcare services quality, accessibility, and affordability (out-of-pocket payment), (2) Electronic surveillance technology, (3) sensitivity of laboratory testing methods, (4) environmental surveillance, (5) number of SIA campaigns, (6) human resources of community health workers, (7) health financing, (8) performance assessment or reward for reporting, (9) unit of reporting (number of offices/hospitals), (10) pre-and-post COVID-19 pandemic.</li>
+<li>Biological: (1) non-polio enterovirus rate, (2) Guillain-Barré Syndrome prevalence, (3) polio confirmed cases and type.</li>
+<li>Immunisation: (1) OPV and IPV vaccination coverage, (2) OPV and IPV vaccines administered, (3) switch from tOPV to bOPV.</li>
+</ol>
+<h3 id="models">Models</h3>
+<p>The time interval within the scope of the method may be monthly, 6-month, and annually, whilst geographical scale may be applied to district, country, and continent level. A sequential process from risk exposure, probability of present AFP disease, seeking healthcare, notification, stool collection, sample transportation, to laboratory results will be considered throughout the analysis.
+The models to be implemented are as follows:</p>
+<ol>
+<li>Machine learning methods, which are robust to high dimensionality and potential dependencies between predictors (dependent on what kind of indicators can be obtained across all geographies). This may include penalised regression (Lasso and Ridge), tree-based methods (random forest), or super learner.</li>
+</ol>
+<p>These methods focus on learning complex and non-linear relationships. They can assist in subset selection and variables selection, given the wide range of variables in this project. They can adapt to intricate patterns but may be prone to overfitting, especially with limited data; hence it is crucial to find a bias-variance trade-off.</p>
+<ol start="2">
+<li>Regression based approaches accounting for spatial and temporal dependence. This may include generalized additive models (GAMs), splines, autoregressive models, and Poisson mixed-effect model.</li>
+</ol>
+<p>These methods focus on parameter estimation based on assumed relationships, also allowing non-parametric fits with relaxed assumptions. Past values of the variable of interest may be considered. Coefficients in these models may directly represent the impact of each variable on the dependent variable.</p>
+<ol start="3">
+<li>Methods to evaluate out-of-sample predictive ability of models. It serves as an validation purpose.</li>
+</ol>
+<h4 id="reference">Reference</h4>
+<ul>
+<li>Adamu, U. S., Archer, W. R., Braka, F., Damisa, E., Siddique, A., Baig, S., Higgins, J., Sume, G. E., Banda, R., Korir, C. K., Waziri, N., Gidado, S., Bammeke, P., Edukugo, A., Nganda, G. W., Forbi, J. C., Burns, C. C., Liu, H., Jorba, J., . . . Bolu, O. (2019). Progress Toward Poliomyelitis Eradication - Nigeria, January 2018-May 2019. MMWR Morb Mortal Wkly Rep, 68(29), 642-646. <a href="https://doi.org/10.15585/mmwr.mm6829a3">https://doi.org/10.15585/mmwr.mm6829a3</a></li>
+<li>Auzenbergs, M., Fountain, H., Macklin, G., Lyons, H., &amp; O&rsquo;Reilly, K. M. (2021). The impact of surveillance and other factors on detection of emergent and circulating vaccine derived polioviruses. Gates Open Res, 5, 94. <a href="https://doi.org/10.12688/gatesopenres.13272.3">https://doi.org/10.12688/gatesopenres.13272.3</a></li>
+<li>Bell, R. (2019, November, 18). Day Zero: Inside Nigeria’s response to the 2016 polio outbreak. Bill &amp; Melinda Gates Foundation. <a href="https://www.gatesfoundation.org/ideas/articles/nigeria-2016-polio-outbreak-response">https://www.gatesfoundation.org/ideas/articles/nigeria-2016-polio-outbreak-response</a></li>
+<li>Dhiman, R., Prakash, S. C., Sreenivas, V., &amp; Puliyel, J. (2018). Correlation between Non-Polio Acute Flaccid Paralysis Rates with Pulse Polio Frequency in India. International Journal of Environmental Research and Public Health, 15(8), 1755. <a href="https://www.mdpi.com/1660-4601/15/8/1755">https://www.mdpi.com/1660-4601/15/8/1755</a></li>
+<li>GPEI. (2021). Interim Quick Reference on Strengthening Polio Surveillance during a Poliovirus Outbreak. Global Polio Eradication Initiative Retrieved from <a href="https://polioeradication.org/wp-content/uploads/2021/12/Quick-Reference_Strengthening-Surveillance-during-Poliovirus-Outbreaks_24-March-2021.pdf">https://polioeradication.org/wp-content/uploads/2021/12/Quick-Reference_Strengthening-Surveillance-during-Poliovirus-Outbreaks_24-March-2021.pdf</a></li>
+<li>Marx, A., Glass, J. D., &amp; Sutter, R. W. (2000). Differential Diagnosis of Acute Flaccid Paralysis and its Role in Poliomyelitis Surveillance. Epidemiologic Reviews, 22(2), 298-316. <a href="https://doi.org/10.1093/oxfordjournals.epirev.a018041">https://doi.org/10.1093/oxfordjournals.epirev.a018041</a></li>
+<li>Molodecky, N. A., Blake, I. M., O’Reilly, K. M., Wadood, M. Z., Safdar, R. M., Wesolowski, A., Buckee, C. O., Bandyopadhyay, A. S., Okayasu, H., &amp; Grassly, N. C. (2017). Risk factors and short-term projections for serotype-1 poliomyelitis incidence in Pakistan: A spatiotemporal analysis. PLOS Medicine, 14(6), e1002323. <a href="https://doi.org/10.1371/journal.pmed.1002323">https://doi.org/10.1371/journal.pmed.1002323</a></li>
+<li>Neel, A., Closser, S., Villanueva, C., Majumdar, P., Gupta, S., Krugman, D., Akinyemi, O., Deressa, W., Kalbarczyk, A., &amp; Alonge, O. (2021). 30 years of polio campaigns in Ethiopia, India and Nigeria: the impacts of campaign design on vaccine hesitancy and health worker motivation. BMJ Global Health, 6, e006002. <a href="https://doi.org/10.1136/bmjgh-2021-006002">https://doi.org/10.1136/bmjgh-2021-006002</a></li>
+<li>Niaz, F., Tariq, S., Rana, M. S., Nashwan, A. J., Fatima, I., Afzal, Y., &amp; Tariq, R. (2023). The resurgence of polio: The effect of the Covid-19 pandemic on polio eradication. Ethics Med Public Health, 26, 100858. <a href="https://doi.org/10.1016/j.jemep.2022.100858">https://doi.org/10.1016/j.jemep.2022.100858</a></li>
+<li>O’Reilly, K. M., Lamoureux, C., Molodecky, N. A., Lyons, H., Grassly, N. C., &amp; Tallis, G. (2017). An assessment of the geographical risks of wild and vaccine-derived poliomyelitis outbreaks in Africa and Asia. BMC Infectious Diseases, 17(1), 367. <a href="https://doi.org/10.1186/s12879-017-2443-4">https://doi.org/10.1186/s12879-017-2443-4</a></li>
+<li>Tangermann, R. H., Lamoureux, C., Tallis, G., &amp; Goel, A. (2017). The critical role of acute flaccid paralysis surveillance in the Global Polio Eradication Initiative. International Health, 9(3), 156-163. <a href="https://doi.org/10.1093/inthealth/ihx016">https://doi.org/10.1093/inthealth/ihx016</a></li>
+<li>WHO. (2022). Standard operating procedures: responding to a poliovirus event or outbreak, version 4. W. H. Organization. <a href="https://iris.who.int/bitstream/handle/10665/363627/9789240049154-eng.pdf?sequence=1">https://iris.who.int/bitstream/handle/10665/363627/9789240049154-eng.pdf?sequence=1</a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+</table>
+<p><em>This MSc summer project is under the SPEC (Surveillance Modelling to Support Polio Elimination and Certification) project work package 1: Surveillance Modelling, led by <a href="https://www.lshtm.ac.uk/aboutus/people/oreilly.kathleen">Dr. Kathleen O&rsquo;Reilly</a> and supervised by <a href="https://www.lshtm.ac.uk/aboutus/people/nightingale.emily">Dr. Emily Nightingale</a> at LSHTM.</em></p>
+
+        </div>
+    </div>
+    <a href="#" id="scrollToTopButton">
+        <svg t="1686753152588" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            p-id="3988" width="48" height="48">
+            <path
+                d="M518.5 360.3c-3.2-4.4-9.7-4.4-12.9 0l-178 246c-3.8 5.3 0 12.7 6.5 12.7H381c10.2 0 19.9-4.9 25.9-13.2L512 460.4l105.2 145.4c6 8.3 15.6 13.2 25.9 13.2H690c6.5 0 10.3-7.4 6.5-12.7l-178-246z"
+                p-id="3989" fill="#363636"></path>
+            <path
+                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                p-id="3990" fill="#363636"></path>
+        </svg>
+    </a><hr style="border-top: 1px solid #EEEEEE;">
+<div id="comment"></div>
+<script>
+    const getStoredTheme = () => localStorage.getItem("theme") === "dark" ? "dark" : "light";
+
+    const setGiscusTheme = () => {
+        const sendMessage = (message) => {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (iframe) {
+                iframe.contentWindow.postMessage({giscus: message}, 'https://giscus.app');
+            }
+        }
+        sendMessage({setConfig: {theme: getStoredTheme()}})
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const giscusAttributes = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "hotjuicew\/blog",
+            "data-repo-id": "R_kgDOHHQOuw",
+            "data-category": "Announcements",
+            "data-category-id": "DIC_kwDOHHQOu84CWCQ3",
+            "data-mapping": "og:title",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-input-position": "bottom",
+            "data-theme": getStoredTheme(),
+            "data-lang": "en",
+            "data-loading": "lazy",
+            "crossorigin": "anonymous",
+        };
+
+        
+        const giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(
+            ([key, value]) => giscusScript.setAttribute(key, value));
+        document.getElementById("comment").appendChild(giscusScript);
+
+        
+        const themeToggle = document.querySelector(".theme-toggle");
+        if (themeToggle) {
+            themeToggle.addEventListener("click", setGiscusTheme);
+        }
+    });
+
+</script>
+
+
+<div class="pp-container">
+        <section class="pre-and-post">
+            <div class="has-text-left">
+                
+                <p>Previous post</p>
+                <a href="https://haokaitseng.github.io/post/20240425_world_immunisation_week/">World Immunisation Week 2024</a>
+                
+            </div>
+            <div class="has-text-right">
+                
+            </div>
+        </section>
+    </div>
+
+</div>
+
+        </main><footer class="footer">
+    <div class="content has-text-centered">
+    <span>&copy; 2024 <a href="https://haokaitseng.github.io/">Transmission Landscape</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" target="_blank">Hugo</a> &
+        <a href="https://github.com/hotjuicew/hugo-JuiceBar" target="_blank">JuiceBar</a>
+    </span>
+    </div>
+  </footer></body>
+</html>
+
