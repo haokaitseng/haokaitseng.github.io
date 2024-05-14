@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>COVID-19 on Transmission Landscape</title>
+    <link>https://haokaitseng.github.io/categories/covid-19/</link>
+    <description>Recent content in COVID-19 on Transmission Landscape</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Mon, 13 May 2024 22:11:12 +0800</lastBuildDate>
+    <atom:link href="https://haokaitseng.github.io/categories/covid-19/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Where COVID Has Shifted Flu and RSV Seasons</title>
+      <link>https://haokaitseng.github.io/post/20240514_sanofi_think_global_health/</link>
+      <pubDate>Mon, 13 May 2024 22:11:12 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/post/20240514_sanofi_think_global_health/</guid>
+      <description>This post shares a publication on Think Global Health, showcasing collaborative efforts with my teammamtes: Wan-Jen Lee, Giovanni Jacob, Dhihram Tenrisau, and Caitlynne McGaff.&#xA;Read our article by navitagting to Think Global Health. Data Visualisations Epicurve in England This is regraphed by Editor Allison Krugman.&#xA;Selected Heatmaps This is regraphed by Editor Allison Krugman.&#xA;Pathgraph Overview This graph was created by me, although it wasn&amp;rsquo;t ultimately included in the publication.</description>
+    </item>
+  </channel>
+</rss>

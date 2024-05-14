@@ -6,8 +6,15 @@
     <description>Recent content in Machine Learning on Transmission Landscape</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sat, 10 Feb 2024 22:11:12 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 03 May 2024 22:11:12 +0800</lastBuildDate>
     <atom:link href="https://haokaitseng.github.io/categories/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Beginnig of the End: What Is the Expected Notification Rate of the Polio Surveillance Indicator?</title>
+      <link>https://haokaitseng.github.io/post/20240503_polio_proposal/</link>
+      <pubDate>Fri, 03 May 2024 22:11:12 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/post/20240503_polio_proposal/</guid>
+      <description>This post presents my research proposal for my MSc thesis: &amp;ldquo;Predicting the rate of Acute Flaccid Paralysis in different settings to support polio surveillance and elimination&amp;rdquo;.&#xA;You will learn why non-polio Acute Flaccid Paralysis (NPAFP) is important in support of polio eradication. The current challenge involves interpreting the AFP indicator that exceed the targeted levels. Potential data sources and modelling methods are raised to fill this knowledge gap. Aim and Objectives Research Aim To investigate and model the mechanisms underlying the notification of the key polio surveillance indicator - NPAFP rates in endemic and outbreak settings.</description>
+    </item>
     <item>
       <title>Predicting Remission Status in Healthcare: A Comparative Analysis of Lasso, Random Forest, and Adaboost Machine Learning Models</title>
       <link>https://haokaitseng.github.io/post/20240210-machine-learning-lasso-random-forest/</link>
