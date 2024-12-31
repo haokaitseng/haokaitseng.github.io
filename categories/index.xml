@@ -6,13 +6,34 @@
     <description>Recent content in Categories on Transmission Landscape</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Thu, 18 Jul 2024 22:11:12 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 31 Dec 2024 22:11:12 +0800</lastBuildDate>
     <atom:link href="https://haokaitseng.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Data Science</title>
       <link>https://haokaitseng.github.io/categories/data-science/</link>
-      <pubDate>Thu, 18 Jul 2024 22:11:12 +0800</pubDate>
+      <pubDate>Tue, 31 Dec 2024 22:11:12 +0800</pubDate>
       <guid>https://haokaitseng.github.io/categories/data-science/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Portfolio Management</title>
+      <link>https://haokaitseng.github.io/categories/portfolio-management/</link>
+      <pubDate>Tue, 31 Dec 2024 22:11:12 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/portfolio-management/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Vaccine</title>
+      <link>https://haokaitseng.github.io/categories/vaccine/</link>
+      <pubDate>Tue, 31 Dec 2024 22:11:12 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/vaccine/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Visualisation</title>
+      <link>https://haokaitseng.github.io/categories/visualisation/</link>
+      <pubDate>Tue, 31 Dec 2024 22:11:12 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/visualisation/</guid>
       <description></description>
     </item>
     <item>
@@ -20,13 +41,6 @@
       <link>https://haokaitseng.github.io/categories/polio/</link>
       <pubDate>Thu, 18 Jul 2024 22:11:12 +0800</pubDate>
       <guid>https://haokaitseng.github.io/categories/polio/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Vaccine</title>
-      <link>https://haokaitseng.github.io/categories/vaccine/</link>
-      <pubDate>Thu, 18 Jul 2024 22:11:12 +0800</pubDate>
-      <guid>https://haokaitseng.github.io/categories/vaccine/</guid>
       <description></description>
     </item>
     <item>
@@ -41,13 +55,6 @@
       <link>https://haokaitseng.github.io/categories/covid-19/</link>
       <pubDate>Mon, 13 May 2024 22:11:12 +0800</pubDate>
       <guid>https://haokaitseng.github.io/categories/covid-19/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Visualisation</title>
-      <link>https://haokaitseng.github.io/categories/visualisation/</link>
-      <pubDate>Mon, 13 May 2024 22:11:12 +0800</pubDate>
-      <guid>https://haokaitseng.github.io/categories/visualisation/</guid>
       <description></description>
     </item>
     <item>

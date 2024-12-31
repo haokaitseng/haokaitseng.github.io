@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Visualisation on Transmission Landscape</title>
-    <link>https://haokaitseng.github.io/categories/visualisation/</link>
-    <description>Recent content in Visualisation on Transmission Landscape</description>
+    <title>Portfolio Management on Transmission Landscape</title>
+    <link>https://haokaitseng.github.io/categories/portfolio-management/</link>
+    <description>Recent content in Portfolio Management on Transmission Landscape</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <lastBuildDate>Tue, 31 Dec 2024 22:11:12 +0800</lastBuildDate>
-    <atom:link href="https://haokaitseng.github.io/categories/visualisation/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://haokaitseng.github.io/categories/portfolio-management/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Co-financing for vaccine portfolio: visual tips and data flow</title>
       <link>https://haokaitseng.github.io/post/20241220-portfolio-management-and-process-optimisation/</link>
       <pubDate>Tue, 31 Dec 2024 22:11:12 +0800</pubDate>
       <guid>https://haokaitseng.github.io/post/20241220-portfolio-management-and-process-optimisation/</guid>
       <description>This post shares my work at the Immunisation Financing &amp;amp; Sustainability (IF&amp;amp;S) team at Gavi, the Vaccine Alliance, with thanks to my lovely teammates, especially to my super supervisor Anthony Nguyen. It covers:&#xA;Brief intro for Gavi&amp;rsquo;s Co-financing model 5 visual tips for portfolio management, e.g. risk-assessment table and faceted pie An optimized data flow for a complex data ecosystem What is Co-financing Under Gavi&amp;rsquo;s Co-financing policy, countries share the costs of the vaccine programmes by directly co-procuring a portion of the vaccines and injection devices from a supplier or procurement agency to fulfill their co-financing requirements.</description>
-    </item>
-    <item>
-      <title>Where COVID Has Shifted Flu and RSV Seasons</title>
-      <link>https://haokaitseng.github.io/post/20240514_sanofi_think_global_health/</link>
-      <pubDate>Mon, 13 May 2024 22:11:12 +0800</pubDate>
-      <guid>https://haokaitseng.github.io/post/20240514_sanofi_think_global_health/</guid>
-      <description>This post shares a publication on Think Global Health, showcasing collaborative efforts with my teammamtes: Wan-Jen Lee, Giovanni Jacob, Dhihram Tenrisau, and Caitlynne McGaff.&#xA;Read our article by navitagting to Think Global Health. Data Visualisations Epicurve in England This graph has been recreated by Editor Allison Krugman.&#xA;Selected Heatmaps Heatmaps showing the log hospitalization rates for influenza and RSV throughout each season. Darker shades means higher hospitalization rate. This graph has been recreated by Editor Allison Krugman.</description>
     </item>
   </channel>
 </rss>

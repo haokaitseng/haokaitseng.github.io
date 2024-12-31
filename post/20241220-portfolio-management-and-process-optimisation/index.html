@@ -1,0 +1,439 @@
+
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Co-financing for vaccine portfolio: visual tips and data flow | Transmission Landscape</title>
+    <meta name="description"
+        content="This post shares my work at the Immunisation Financing &amp; Sustainability (IF&amp;S) team at Gavi, the Vaccine Alliance, with thanks to my lovely teammates, especially to my super supervisor Anthony Nguyen. It covers:
+Brief intro for Gavi&rsquo;s Co-financing model 5 visual tips for portfolio management, e.g. risk-assessment table and faceted pie An optimized data flow for a complex data ecosystem What is Co-financing Under Gavi&rsquo;s Co-financing policy, countries share the costs of the vaccine programmes by directly co-procuring a portion of the vaccines and injection devices from a supplier or procurement agency to fulfill their co-financing requirements.">
+    <link rel="canonical" href="https://haokaitseng.github.io/post/20241220-portfolio-management-and-process-optimisation/" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    
+    <link rel="stylesheet" href="https://haokaitseng.github.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
+
+    <meta property="og:title" content="Co-financing for vaccine portfolio: visual tips and data flow" />
+<meta property="og:description" content="This post shares my work at the Immunisation Financing &amp; Sustainability (IF&amp;S) team at Gavi, the Vaccine Alliance, with thanks to my lovely teammates, especially to my super supervisor Anthony Nguyen. It covers:
+Brief intro for Gavi&rsquo;s Co-financing model 5 visual tips for portfolio management, e.g. risk-assessment table and faceted pie An optimized data flow for a complex data ecosystem What is Co-financing Under Gavi&rsquo;s Co-financing policy, countries share the costs of the vaccine programmes by directly co-procuring a portion of the vaccines and injection devices from a supplier or procurement agency to fulfill their co-financing requirements." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://haokaitseng.github.io/post/20241220-portfolio-management-and-process-optimisation/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-12-31T22:11:12+08:00" />
+<meta property="article:modified_time" content="2024-12-31T22:11:12+08:00" /><meta property="og:site_name" content="Kai&#39;s Data Science Blog" />
+
+
+    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Co-financing for vaccine portfolio: visual tips and data flow"/>
+<meta name="twitter:description" content="This post shares my work at the Immunisation Financing &amp; Sustainability (IF&amp;S) team at Gavi, the Vaccine Alliance, with thanks to my lovely teammates, especially to my super supervisor Anthony Nguyen. It covers:
+Brief intro for Gavi&rsquo;s Co-financing model 5 visual tips for portfolio management, e.g. risk-assessment table and faceted pie An optimized data flow for a complex data ecosystem What is Co-financing Under Gavi&rsquo;s Co-financing policy, countries share the costs of the vaccine programmes by directly co-procuring a portion of the vaccines and injection devices from a supplier or procurement agency to fulfill their co-financing requirements."/>
+
+    
+    
+    
+
+</head><body><nav class="navbar is-light" role="navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a href="/" title="home" class="navbar-item">
+                <span class="logo">
+                    <h1>Transmission Landscape</h1>
+                </span>
+            </a>
+
+            
+            <a id="theme-toggle" class="theme-toggle" href="#">
+                <img src="https://haokaitseng.github.io/svg/sun.svg" alt="sun icon" class="theme-icon" />
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                
+                <a href="/about" class="navbar-item">About</a>
+                
+                <a href="/post" class="navbar-item">Blog</a>
+                
+                <a href="/categories" class="navbar-item">Categories</a>
+                
+            </div>
+
+        </div>
+        <div class="search">
+            <div id="fastSearch">
+                <input id="searchInput" tabindex="0" placeholder="Search..">
+                <ul id="searchResults">
+
+                </ul>
+            </div>
+            <a id="search-btn" style="display: inline-block;" href="# ">
+                <div class="icon-search"><svg class="search-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+            </a>
+        </div>
+
+        <script src="/js/fuse.min.js"></script> 
+        <script src="/js/fastsearch.js"></script>
+
+    </div>
+</nav>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var burger = document.querySelector('.navbar-burger');
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('is-active');
+            document.querySelector('.navbar-menu').classList.toggle('is-active');
+        });
+    });
+
+    
+    function setTheme(theme) {
+        let body = document.body;
+        let themeIcon = document.querySelector(".theme-icon");
+        if (theme === "dark") {
+            body.classList.add("dark-mode");
+            themeIcon.src = "https:\/\/haokaitseng.github.io\/svg/moon.svg";
+            themeIcon.alt = "moon icon";
+        } else {
+            body.classList.remove("dark-mode");
+            themeIcon.src = "https:\/\/haokaitseng.github.io\/svg/sun.svg";
+            themeIcon.alt = "sun icon";
+        }
+        
+        localStorage.setItem("theme", theme);
+    }
+
+    
+    let theme = localStorage.getItem("theme") || "light";
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDarkMode) {
+        
+        setTheme('dark');
+
+    } else {
+        
+        setTheme('light');
+    }
+    setTheme(theme);
+
+    
+    document.getElementById("theme-toggle").addEventListener("click", function() {
+        if (theme === "light") {
+            theme = "dark";
+        } else {
+            theme = "light";
+        }
+        setTheme(theme);
+    });
+
+
+
+</script>
+
+</header><main>
+<div class="single-container">
+    <div class="archive">
+        <h1 class="title is-1">Co-financing for vaccine portfolio: visual tips and data flow</h1>
+        <div class="title subtitle heading is-6">
+            <div class="author-info columns is-vcentered">
+                <div class="column">
+                    <div class="columns is-vcentered is-mobile">
+                        
+                        <div class="column is-narrow">
+                            <img src="/images/profile.jpg" class="author-image">
+                        </div>
+                        
+                        <div class="column">
+                            <p>Kai</p>
+                            <p><time>December 31, 2024</time>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="small-categories-container">
+                    <a href="/categories/portfolio-management">Portfolio Management</a>, <a href="/categories/vaccine">Vaccine</a>, <a href="/categories/visualisation">Visualisation</a>, <a href="/categories/data-science">Data Science</a>
+                </div>
+            </div>
+        </div>
+        <div class="content article-content">
+            <div class="toc-container">
+                
+    <div class="post-toc">
+        
+            <aside>
+                <button id="tocButton" ><h4 id="contents" style="margin-left: 1vw;color:rgb(96, 134, 180);margin-bottom: 0;">CONTENTS</h4></button>
+                <div id="hide"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-co-financing">What is Co-financing</a></li>
+    <li><a href="#managing-a-portfolio-of-us-215-million">Managing a portfolio of US$ 215 million</a>
+      <ul>
+        <li><a href="#1-time-series-monitoring">1. Time series monitoring</a></li>
+        <li><a href="#2-risk-assessment-table">2. Risk assessment table</a></li>
+        <li><a href="#3-faceted-pie-charts-for-portfolio-composition">3. Faceted pie charts for portfolio composition</a></li>
+        <li><a href="#4-alluvial--sankey-diagram-for-multi-level-streams">4. Alluvial / Sankey diagram for multi-level streams</a></li>
+        <li><a href="#5-treemap-for-landscaping">5. Treemap for landscaping</a></li>
+      </ul>
+    </li>
+    <li><a href="#optimizing-data-flow-for-a-complex-data-ecosystem">Optimizing data flow for a complex data ecosystem</a></li>
+  </ul>
+</nav></div>
+            </aside>
+        
+    </div><script>
+    
+        let button = document.getElementById('tocButton');
+        let hide = document.getElementById("hide");
+        let contents=document.getElementById("contents");
+        button.addEventListener("click", function() {
+        if (hide.style.display!='block') {
+            hide.style.display='block'
+        } else {
+            hide.style.display='none'
+            contents.style.color='rgb(96, 134, 180)'
+        }
+        });
+    
+
+
+
+
+</script>
+            </div>
+            <blockquote>
+<p>This post shares my work at the Immunisation Financing &amp; Sustainability (IF&amp;S) team at Gavi, the Vaccine Alliance, with thanks to my lovely teammates, especially to my <strong>super</strong> supervisor Anthony Nguyen. It covers:</p>
+<ul>
+<li>Brief intro for Gavi&rsquo;s Co-financing model</li>
+<li>5 visual tips for portfolio management, e.g. risk-assessment table and faceted pie</li>
+<li>An optimized data flow for a complex data ecosystem</li>
+</ul>
+</blockquote>
+<h2 id="what-is-co-financing">What is Co-financing</h2>
+<p>Under Gavi&rsquo;s <a href="https://www.gavi.org/programmes-impact/programmatic-policies/co-financing-policy">Co-financing policy</a>, countries share the costs of the vaccine programmes by directly co-procuring a portion of the vaccines and injection devices from a supplier or procurement agency to fulfill their co-financing requirements.
+This policy, along with the <a href="https://www.gavi.org/types-support/sustainability/eligibility">Eligibility</a> and Transition policies, aims to bring countries on a trajectory towards financial sustainability.</p>
+<p>Each year, the primary objective of the Immunisation Financing &amp; Sustainability (IF&amp;S) team is to ensure that Gavi-implementing countries&rsquo; co-financing commitments are transformed into actual funding allocations.</p>
+<ul>
+<li>Externally, we IF&amp;S partner with 54 countries for immunisation budget planning and advocacy and resolve issues related to payment defaulting.</li>
+<li>Internally, we IF&amp;S monitor monthly payment progress and identify at-risk countries for intensified engagement.</li>
+</ul>
+<blockquote>
+<p>We believe every Co-financing dollars counts, empowering governments to take ownership of their vaccination programmes.</p>
+</blockquote>
+<h2 id="managing-a-portfolio-of-us-215-million">Managing a portfolio of US$ 215 million</h2>
+<p>Take 2023&rsquo;s Co-financing. Gavi has a large portfolio consisting of many kinds of vaccine products, e.g. PCV, HPV, and Penta.
+The portfolio&rsquo;s Co-financing payments amounted US$ 215 million in 2023.
+It brought to US$ 1.7 billion countries total contribution since the introduction of the Co-financing policy in 2008.</p>
+<p>It has become challenging to oversee such large scale of funding streams with an expanding portfolio.
+Close monitoring of countries&rsquo; co-financing status (Outstanding, Partially fulfilled, Fully fulfilled) is key to effective management.</p>
+<p>Thanks to the power of analytics tools and routine practices, here are five methods that we used to get the jobs done: time series, risk table, facet pie, Alluvial/Sankey, and treemap.</p>
+<h3 id="1-time-series-monitoring">1. Time series monitoring</h3>
+<p>We compare this year&rsquo;s Co-financing progress with previous five years as KPIs. The KPIs can be absolute dollar paid or number of countries (partially) fulfilled.</p>
+<p>Timing is a critical factor for Co-financing. For two reasons:</p>
+<ol>
+<li>For countries using calendar years, 31 December are regarded as their deadlines. If countries don&rsquo;t take Co-financing seriously, they could be chronically late payer.</li>
+<li>The co-financed vaccine doses will be shipped and delivered once the co-financing payment is made. In other words, no pay, no gain. Delayed payments may result in vaccine stockouts if the stockpile is lower than the consumption threshold.</li>
+</ol>
+<blockquote>
+<p>No pay, no gain!</p>
+</blockquote>
+<h3 id="2-risk-assessment-table">2. Risk assessment table</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Country</th>
+<th style="text-align:center">Co-financing obligations</th>
+<th style="text-align:center">Co-financing paid</th>
+<th style="text-align:center">Share of paid</th>
+<th style="text-align:center">Co-financing remaining</th>
+<th style="text-align:center">Co-financing status</th>
+<th style="text-align:center">Risk</th>
+<th style="text-align:center">Actions</th>
+<th style="text-align:center">Next steps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Country A</td>
+<td style="text-align:center">$200</td>
+<td style="text-align:center">$196</td>
+<td style="text-align:center">98%</td>
+<td style="text-align:center">NA</td>
+<td style="text-align:center">Fully fulfilled</td>
+<td style="text-align:center">No risk</td>
+<td style="text-align:center">The country has met on doses according to UNICEF&rsquo;s cost estimate.</td>
+<td style="text-align:center">Weekly coordination meeting with the country.</td>
+</tr>
+<tr>
+<td style="text-align:center">Country B</td>
+<td style="text-align:center">$100</td>
+<td style="text-align:center">$80</td>
+<td style="text-align:center">80%</td>
+<td style="text-align:center">$20</td>
+<td style="text-align:center">Partially fulfilled</td>
+<td style="text-align:center">Medium risk</td>
+<td style="text-align:center">Reminding letter has been sent.</td>
+<td style="text-align:center">High level meeting</td>
+</tr>
+</tbody>
+</table>
+<p>This table dives into the individual countries, combining qunatative and qualitative data for Co-financing.
+Since there are serious implications of defualting, i.e. not fully fulfilled, we use this table with another detailed monitoring table (not shown here) to assess which countries/antigens remaining unpaid.</p>
+<ul>
+<li>
+<p>Coutnry A: Why the country only paid 98% but considered fully fulfilled? This is because the country has procured all the required co-financed vaccine doses. There is often a difference between the Co-financing obligation dollars (estimated by Gavi) and the cost estimate (provided by UNICEF or PAHO as the procurement channel). Changing freight costs and insurance are the contributing factors to the cost gap.</p>
+</li>
+<li>
+<p>Country B: For countries that still have outstanding antigens to be paid, Gavi sends an official letter to remind them of the remaining amount.
+Additionally, a higher-level meeting may be arranged with the Ministry of Health or Ministry of Finance to understand the fiscal space and nudge the transaction.
+<em><strong>Opening windows of communication</strong></em> is crucial, as common reasons for outstanding payments include macroeconomic headwinds, government political transitions, and fragile or humanitarian contexts.</p>
+</li>
+</ul>
+<blockquote>
+<p>Qualitative data aids in assessing the probability of successful Co-financing payment for the portfolio.</p>
+</blockquote>
+<h3 id="3-faceted-pie-charts-for-portfolio-composition">3. Faceted pie charts for portfolio composition</h3>
+<p>To fully understand the portfolio picture, it is helpful to visualize the Co-financing by country and by antigens.
+This can be achieved using the <code>facet_grid()</code> argument in <code>ggplot2</code>, allowing people to quickly identify which vaccines are available in each country.</p>
+<p>Additionally, generating <a href="https://r-charts.com/part-whole/pie-chart-ggplot2/?utm_content=cmp-true">pie charts</a> with multiple categorical components can aid in understanding the share of each component.
+For example, in the context of Co-financing, two colors can be used to represent the paid amount and the remaining amount.</p>
+<h3 id="4-alluvial--sankey-diagram-for-multi-level-streams">4. Alluvial / Sankey diagram for multi-level streams</h3>
+<p><a href="https://flourish.studio/blog/animating-sankey-visualisations/#:~:text=In%20a%20nutshell%2C%20the%20main,sankey%2C%20that%27s%20not%20the%20case.">Alluvial and Sankey diagrams</a> are a type of flow diagram showing changes in group composition between category fields.
+The thickness of each stream indicates its proportional value.
+These diagram can help us digest:</p>
+<ul>
+<li>Co-financing amounts by antigen and Co-financing amounts by funding sources. The funding sources can be directly domestic, UNICEF&rsquo;s special mechanism, external (e.g. World Bank)</li>
+<li>A country&rsquo;s linking chain of GDP, GGE(General Genvernment Expenditure)-GDP, GGHE(General Government Health Expenditure)-GGE, immunisation-GGHE.</li>
+</ul>
+<h3 id="5-treemap-for-landscaping">5. Treemap for landscaping</h3>
+<p>A treemap is an excellent way to demonstrate relative quantities and categories simultaneously.
+By building upon your self-defined groups, it can be strategically used to select a subset of data, determining the scope of the portfolio optimasation or strategy that you would like to work on.</p>
+<h2 id="optimizing-data-flow-for-a-complex-data-ecosystem">Optimizing data flow for a complex data ecosystem</h2>
+<p>The majority of the tasks at Gavi are built and transfered on Microsoft Office applications, such as Excel and PowerPoint.
+To make your data life easier and less manual, it is essential to bridge across different data processing steps, including:</p>
+<ul>
+<li>Data sources: Salesforce, SAP, emailed Excel files, websites (e.g. WHO API)</li>
+<li>Saved raw data: often in Excel format or CSV format</li>
+<li>Programming tool for data processing: R (studio) for cleaning and analytics</li>
+<li>Intermediate: cleaned file in Excel format or RData</li>
+<li>Dashboard: in interactive Power BI</li>
+<li>Presentation: using static or live-embedded graphics from Power BI for PowerPoint deck</li>
+<li>Publishing: in paramaterized Quarto report or Power BI pagenated report</li>
+<li>Deliverabels: graphics in PNG file produced from R, or inside Excel</li>
+</ul>
+<p><img src="/images/20241231_portfolio_management/data_pipeline.png" alt="data pipeline"></p>
+<p>I&rsquo;ve applied my <a href="https://haokaitseng.github.io/post/20240101-data-linkage-etl-mimic/">Extract, Transfrom, Load (ETL)</a> skills in a previous post at LSHTM.
+This time at Gavi, the challenge is more complex.
+To optimize the data flow, concepts for reproducibility and interoperability should be the focus, along with simplicity.
+Using R as a centralized programming deployment can improve efficiency, ensure consistency, minimize maintaince efforts while dealing with frequent portfolio changes.
+Notably, building the connection between Power BI and PowerPoint can dramatically save time, where the <a href="https://learn.microsoft.com/en-us/power-bi/transform-model/dataflows/dataflows-create"><strong>data flow</strong></a> can be integrated in Power BI itself.</p>
+<blockquote>
+<p>To make your data life easier and less manual, it is essential to bridge across different data processing steps.</p>
+</blockquote>
+<p>Additionally, this data flow can be used for continuous improvement of operational processes, as data can be collected from SAP sources, consumed into R, and presented in Power BI/Powerpoint visuals.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>I thank Anthony Nguyen for building up the foundation for this post and for his pioneering insights. Yet, I am still exploring how to integrate AI as a text summarizing tool for qualitative data in this pipeline.</em></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+        </div>
+    </div>
+    <a href="#" id="scrollToTopButton">
+        <svg t="1686753152588" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            p-id="3988" width="48" height="48">
+            <path
+                d="M518.5 360.3c-3.2-4.4-9.7-4.4-12.9 0l-178 246c-3.8 5.3 0 12.7 6.5 12.7H381c10.2 0 19.9-4.9 25.9-13.2L512 460.4l105.2 145.4c6 8.3 15.6 13.2 25.9 13.2H690c6.5 0 10.3-7.4 6.5-12.7l-178-246z"
+                p-id="3989" fill="#363636"></path>
+            <path
+                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                p-id="3990" fill="#363636"></path>
+        </svg>
+    </a><hr style="border-top: 1px solid #EEEEEE;">
+<div id="comment"></div>
+<script>
+    const getStoredTheme = () => localStorage.getItem("theme") === "dark" ? "dark" : "light";
+
+    const setGiscusTheme = () => {
+        const sendMessage = (message) => {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (iframe) {
+                iframe.contentWindow.postMessage({giscus: message}, 'https://giscus.app');
+            }
+        }
+        sendMessage({setConfig: {theme: getStoredTheme()}})
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const giscusAttributes = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "hotjuicew\/blog",
+            "data-repo-id": "R_kgDOHHQOuw",
+            "data-category": "Announcements",
+            "data-category-id": "DIC_kwDOHHQOu84CWCQ3",
+            "data-mapping": "og:title",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-input-position": "bottom",
+            "data-theme": getStoredTheme(),
+            "data-lang": "en",
+            "data-loading": "lazy",
+            "crossorigin": "anonymous",
+        };
+
+        
+        const giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(
+            ([key, value]) => giscusScript.setAttribute(key, value));
+        document.getElementById("comment").appendChild(giscusScript);
+
+        
+        const themeToggle = document.querySelector(".theme-toggle");
+        if (themeToggle) {
+            themeToggle.addEventListener("click", setGiscusTheme);
+        }
+    });
+
+</script>
+
+
+<div class="pp-container">
+        <section class="pre-and-post">
+            <div class="has-text-left">
+                
+                <p>Previous post</p>
+                <a href="https://haokaitseng.github.io/post/20240719_polio_poster_vaccine_hesitancy/">Mapping the Relationships: Modelling Immunisation Efforts on the Non-Polio Acute Flaccid Paralysis Rate</a>
+                
+            </div>
+            <div class="has-text-right">
+                
+            </div>
+        </section>
+    </div>
+
+</div>
+
+        </main><footer class="footer">
+    <div class="content has-text-centered">
+    <span>&copy; 2025 <a href="https://haokaitseng.github.io/">Transmission Landscape</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" target="_blank">Hugo</a> &
+        <a href="https://github.com/hotjuicew/hugo-JuiceBar" target="_blank">JuiceBar</a>
+    </span>
+    </div>
+  </footer></body>
+</html>
+
