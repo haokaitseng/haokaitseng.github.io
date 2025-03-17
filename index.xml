@@ -6,8 +6,15 @@
     <description>Recent content on Transmission Landscape</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Tue, 31 Dec 2024 22:11:12 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 13 Mar 2025 22:11:12 +0800</lastBuildDate>
     <atom:link href="https://haokaitseng.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Self-sustained data &amp; measure management in Power BI</title>
+      <link>https://haokaitseng.github.io/post/20250313_powerbi_sustained_data_updating/</link>
+      <pubDate>Thu, 13 Mar 2025 22:11:12 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/post/20250313_powerbi_sustained_data_updating/</guid>
+      <description>This post aims to advance your Power BI skills by:&#xA;Creating a sequence of sustained measures in a new table, rather than having random measures co-existing with variables. Updating longitudinal data when new data is routinely received. [Note that the data used in this post are examples, inspired by my work with the Immunisation Financing &amp;amp; Sustainability (IF&amp;amp;S) team at Gavi. The views expressed here are my own and do not represent those of my former employer, Gavi.</description>
+    </item>
     <item>
       <title>Co-financing for vaccine portfolio: visual tips and data flow</title>
       <link>https://haokaitseng.github.io/post/20241220-cofinancing-portfolio-management/</link>
@@ -77,13 +84,6 @@
       <pubDate>Sat, 06 Jan 2024 22:11:12 +0800</pubDate>
       <guid>https://haokaitseng.github.io/post/20240101-data-linkage-etl-mimic/</guid>
       <description>What can you learn from this article?&#xA;Understand the concepts of data linkage, especially deterministic linakge. Address linkage error in the conjunction of MIMIC III (served in a postgreSQL database) and ODK database. Employ R to design the Extract, Transform, and Load (ETL) pipeline. Use Quarto document to generate a report in PDF format. Concepts of Data Linkage In a data scientist&amp;rsquo;s typical day, the merge/join function is an inevitable task.</description>
-    </item>
-    <item>
-      <title>About Me</title>
-      <link>https://haokaitseng.github.io/about/</link>
-      <pubDate>Thu, 21 Dec 2023 20:18:54 +0300</pubDate>
-      <guid>https://haokaitseng.github.io/about/</guid>
-      <description>Hi! My name is Hao Kai Tseng. I am currently an intern at Gavi on immunisation financing and sustainability. My work involves maintaining countries&amp;rsquo; Co-financing data across multiple databases, supporting key monitoring, analytics, and documentation.&#xA;Before joining Gavi, I studied Health Data Science Programme at the London School of Hygiene &amp;amp; Tropical Medicine (LSHTM). As a Student Liaison Officer of the Vaccine Centre at LSHTM, my career aspirations revolve around streamlining data pipelines in support of immunization initiatives - that&amp;rsquo;s where I am now!</description>
     </item>
     <item>
       <title>Assessing the Non-inferiority of the Single-dose Human Papillomavirus Vaccination Schedule: A Hypothetical Multi-country Cohort Study</title>

@@ -1,0 +1,472 @@
+
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Self-sustained data &amp; measure management in Power BI | Transmission Landscape</title>
+    <meta name="description"
+        content="This post aims to advance your Power BI skills by:
+Creating a sequence of sustained measures in a new table, rather than having random measures co-existing with variables. Updating longitudinal data when new data is routinely received. [Note that the data used in this post are examples, inspired by my work with the Immunisation Financing &amp; Sustainability (IF&amp;S) team at Gavi. The views expressed here are my own and do not represent those of my former employer, Gavi.">
+    <link rel="canonical" href="https://haokaitseng.github.io/post/20250313_powerbi_sustained_data_updating/" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    
+    <link rel="stylesheet" href="https://haokaitseng.github.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
+
+    <meta property="og:title" content="Self-sustained data &amp; measure management in Power BI" />
+<meta property="og:description" content="This post aims to advance your Power BI skills by:
+Creating a sequence of sustained measures in a new table, rather than having random measures co-existing with variables. Updating longitudinal data when new data is routinely received. [Note that the data used in this post are examples, inspired by my work with the Immunisation Financing &amp; Sustainability (IF&amp;S) team at Gavi. The views expressed here are my own and do not represent those of my former employer, Gavi." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://haokaitseng.github.io/post/20250313_powerbi_sustained_data_updating/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2025-03-13T22:11:12+08:00" />
+<meta property="article:modified_time" content="2025-03-13T22:11:12+08:00" /><meta property="og:site_name" content="Kai&#39;s Data Science Blog" />
+
+
+    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Self-sustained data &amp; measure management in Power BI"/>
+<meta name="twitter:description" content="This post aims to advance your Power BI skills by:
+Creating a sequence of sustained measures in a new table, rather than having random measures co-existing with variables. Updating longitudinal data when new data is routinely received. [Note that the data used in this post are examples, inspired by my work with the Immunisation Financing &amp; Sustainability (IF&amp;S) team at Gavi. The views expressed here are my own and do not represent those of my former employer, Gavi."/>
+
+    
+    
+    
+
+</head><body><nav class="navbar is-light" role="navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a href="/" title="home" class="navbar-item">
+                <span class="logo">
+                    <h1>Transmission Landscape</h1>
+                </span>
+            </a>
+
+            
+            <a id="theme-toggle" class="theme-toggle" href="#">
+                <img src="https://haokaitseng.github.io/svg/sun.svg" alt="sun icon" class="theme-icon" />
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                
+                <a href="/about" class="navbar-item">About</a>
+                
+                <a href="/post" class="navbar-item">Blog</a>
+                
+                <a href="/categories" class="navbar-item">Categories</a>
+                
+            </div>
+
+        </div>
+        <div class="search">
+            <div id="fastSearch">
+                <input id="searchInput" tabindex="0" placeholder="Search..">
+                <ul id="searchResults">
+
+                </ul>
+            </div>
+            <a id="search-btn" style="display: inline-block;" href="# ">
+                <div class="icon-search"><svg class="search-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+            </a>
+        </div>
+
+        <script src="/js/fuse.min.js"></script> 
+        <script src="/js/fastsearch.js"></script>
+
+    </div>
+</nav>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var burger = document.querySelector('.navbar-burger');
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('is-active');
+            document.querySelector('.navbar-menu').classList.toggle('is-active');
+        });
+    });
+
+    
+    function setTheme(theme) {
+        let body = document.body;
+        let themeIcon = document.querySelector(".theme-icon");
+        if (theme === "dark") {
+            body.classList.add("dark-mode");
+            themeIcon.src = "https:\/\/haokaitseng.github.io\/svg/moon.svg";
+            themeIcon.alt = "moon icon";
+        } else {
+            body.classList.remove("dark-mode");
+            themeIcon.src = "https:\/\/haokaitseng.github.io\/svg/sun.svg";
+            themeIcon.alt = "sun icon";
+        }
+        
+        localStorage.setItem("theme", theme);
+    }
+
+    
+    let theme = localStorage.getItem("theme") || "light";
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDarkMode) {
+        
+        setTheme('dark');
+
+    } else {
+        
+        setTheme('light');
+    }
+    setTheme(theme);
+
+    
+    document.getElementById("theme-toggle").addEventListener("click", function() {
+        if (theme === "light") {
+            theme = "dark";
+        } else {
+            theme = "light";
+        }
+        setTheme(theme);
+    });
+
+
+
+</script>
+
+</header><main>
+<div class="single-container">
+    <div class="archive">
+        <h1 class="title is-1">Self-sustained data &amp; measure management in Power BI</h1>
+        <div class="title subtitle heading is-6">
+            <div class="author-info columns is-vcentered">
+                <div class="column">
+                    <div class="columns is-vcentered is-mobile">
+                        
+                        <div class="column is-narrow">
+                            <img src="/images/profile.jpg" class="author-image">
+                        </div>
+                        
+                        <div class="column">
+                            <p>Kai</p>
+                            <p><time>March 13, 2025</time>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="small-categories-container">
+                    <a href="/categories/power-bi">Power BI</a>, <a href="/categories/vaccine">Vaccine</a>, <a href="/categories/data-science">Data Science</a>
+                </div>
+            </div>
+        </div>
+        <div class="content article-content">
+            <div class="toc-container">
+                
+    <div class="post-toc">
+        
+            <aside>
+                <button id="tocButton" ><h4 id="contents" style="margin-left: 1vw;color:rgb(96, 134, 180);margin-bottom: 0;">CONTENTS</h4></button>
+                <div id="hide"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#pain-points">Pain points</a></li>
+    <li><a href="#setting-the-scene">Setting the scene</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#a-new-table-that-has-everything">A new table that has everything</a>
+      <ul>
+        <li><a href="#step-1">Step 1</a></li>
+        <li><a href="#step-2">Step 2</a></li>
+        <li><a href="#step-3">Step 3</a></li>
+        <li><a href="#step-4">Step 4</a></li>
+      </ul>
+    </li>
+    <li><a href="#updating-on-a-monthly-basis">Updating on a monthly basis</a>
+      <ul>
+        <li><a href="#sanpshots">Sanpshots</a></li>
+        <li><a href="#updating-from-february-to-march">Updating from February to March</a></li>
+      </ul>
+    </li>
+    <li><a href="#what-do-you-mean-by-self-sustained">What do you mean by &ldquo;self-sustained&rdquo;?</a></li>
+  </ul>
+</nav></div>
+            </aside>
+        
+    </div><script>
+    
+        let button = document.getElementById('tocButton');
+        let hide = document.getElementById("hide");
+        let contents=document.getElementById("contents");
+        button.addEventListener("click", function() {
+        if (hide.style.display!='block') {
+            hide.style.display='block'
+        } else {
+            hide.style.display='none'
+            contents.style.color='rgb(96, 134, 180)'
+        }
+        });
+    
+
+
+
+
+</script>
+            </div>
+            <blockquote>
+<p>This post aims to advance your Power BI skills by:</p>
+<ul>
+<li>Creating a sequence of sustained measures in a new table, rather than having random measures co-existing with variables.</li>
+<li>Updating longitudinal data when new data is routinely received.</li>
+</ul>
+</blockquote>
+<p><em>[Note that the data used in this post are examples, inspired by my work with the Immunisation Financing &amp; Sustainability (IF&amp;S) team at Gavi. The views expressed here are my own and do not represent those of my former employer, Gavi.]</em></p>
+<h2 id="pain-points">Pain points</h2>
+<p>As a daily R user, it took me a few weeks to become <em>handy</em> with Power BI, a business intelligence solution that many global health organizations use to stimulate internal information. One of the pain points I encountered was that <em><strong>variables</strong></em> and created <em><strong>measures</strong></em> coexist under the same data but function quite differently. Let’s define the two:</p>
+<ul>
+<li>
+<p><em><strong>Variable</strong></em>: The original value as imported. It can be seen in both table and report views. It is not recommended to be used directly for report view, as it does not interact with slicers.</p>
+</li>
+<li>
+<p><em><strong>Measure</strong></em>: Created using DAX language, it is marked with a calculator icon. An <em>indivisual</em> measure is attached to the variable and only appears in report view, being invisible in table views.</p>
+</li>
+</ul>
+<p>There are significant differences between variables and measures. Why does Microsoft arrange them together alphabetically, creating a disorganized mess? Even worse, each created measure may undergo similar data processing steps, such as transforming and filtering. Why are we redundantly working on this?</p>
+<p>To address these problems, in this post, I aim to make measures all reside under the same data, similar to creating a new data frame in R. Additionally, there must be a way to enhance measures’ reusability so that Power BI can be used as a data cleaning and management platform.</p>
+<blockquote>
+<p>There must be a way to enhance measures&rsquo; reusibility.</p>
+</blockquote>
+<h2 id="setting-the-scene">Setting the scene</h2>
+<p>Below are two hypothetical datasets, using the context from Gavi&rsquo;s <a href="https://www.gavi.org/programmes-impact/programmatic-policies/co-financing-policy">Co-Financing</a> model:</p>
+<h5 id="data-a">Data A</h5>
+<ul>
+<li>Each country runs several vaccine programmes.</li>
+<li>Each program has Co-Financing obligations in US dollars that must be fulfilled by the end of the year.</li>
+<li>Gavi and UNICEF jointly monitor payments against these obligations on a monthly basis.</li>
+</ul>
+<p><img src="/images/20250313_powerbi_sustained_data_updating/data_a.png" alt="data a"></p>
+<h5 id="data-b">Data B</h5>
+<ul>
+<li>Based on data A, the Co-Financing obligations and payments are aggregated at the country level, with programme-level details removed.</li>
+<li>KPIs, e.g. percent paid and status text, are summarized for each country.</li>
+<li>A monthly snapshot is taken and appended to previous records.</li>
+</ul>
+<p><img src="/images/20250313_powerbi_sustained_data_updating/data_b.png" alt="data b"></p>
+<blockquote>
+<p>In short, every month, when Gavi IF&amp;S team get the new data (data A), it is processed into data B.</p>
+</blockquote>
+<h2 id="a-new-table-that-has-everything">A new table that has everything</h2>
+<p>I promise to provide a table with all the measures that you need. Let&rsquo;s break it into 4 steps:</p>
+<h3 id="step-1">Step 1</h3>
+<p>In Power BI’s Table View, navigate to the Calculations tab in the top panel and click the <em><strong>New Table</strong></em> icon.
+Then, write a DAX expression like the one below to create a new table called <em><strong>New Table A</strong></em>.</p>
+<p>Here, we summarize two variables, <code>total obligation</code> and <code>amount paid</code>, by <code>country</code> name and <code>iso</code> code using data from <em><strong>Data A</strong></em>.
+Note that this summarized information is temporarily stored as <code>table_1</code> using the <code>VAR</code> function.</p>
+<pre tabindex="0"><code>New table A = 
+//Parameters to check/adjust every time:
+VAR month_of_the_report = &#34;01/02/2025&#34;  // DD/MM/YYYY 
+
+VAR table_1 = 
+    SUMMARIZE(
+        //Main data:
+        &#39;Data A&#39;
+        ,
+        //Group By:
+        &#39;Data A&#39;[country],
+        &#39;Data A&#39;[iso],
+        
+        //Variables:
+        &#34;total obligation&#34;, 
+            SUM(&#39;Data A&#39;[total obligation]),
+        &#34;amount paid&#34;,  
+            SUM(&#39;Data A&#39;[amount paid])
+    )
+</code></pre><h3 id="step-2">Step 2</h3>
+<p>Following the DAX expression, we enter the DAX code below. This chunk directly utilizes the two measures created in table_1 in Step 1—<code>[amount paid]</code> and <code>[total obligation]</code>—rather than raw variables from <em><strong>Data A</strong></em>.</p>
+<p>In other words, we reuse these measures to calculate the <code>[percent paid]</code> measure and temporarily store it in another <code>VAR</code> called <code>table_2</code>.</p>
+<pre tabindex="0"><code>VAR table_2 = 
+    ADDCOLUMNS(
+        table_1,
+        &#34;percent paid&#34;, 
+        ROUND( DIVIDE([amount paid], [total obligation]), 2) // ranging 0-1
+    )
+</code></pre><h3 id="step-3">Step 3</h3>
+<p>Within the same DAX expression, we reuse the measure created in the previous step — <code>[percent paid]</code>.</p>
+<p>We then apply the <code>SWITCH</code> function to categorize <code>[percent paid]</code> into different levels, creating a new categorical measure called <code>[status]</code>. This <code>[status]</code> measure is temporarily stored in the <code>VAR</code> <code>table_3</code>.</p>
+<pre tabindex="0"><code>VAR table_3 = 
+    ADDCOLUMNS(
+        table_2,
+        &#34;status&#34;, 
+         SWITCH( 
+          TRUE,
+          [percent paid] &gt;= 1, &#34;Fully paid&#34;,
+          [percent paid] &gt; 0.75, &#34;Partial paid for more than 75%&#34;,
+          [percent paid] &gt; 0.5, &#34;Partial paid for more than 50%&#34;,
+          [percent paid] &gt; 0.25, &#34;Partial paid for more than 25%&#34;,
+          [percent paid] &gt; 0, &#34;Partial paid less than 25%&#34;,
+          [percent paid] = 0, &#34;Not paid yet&#34;,
+          &#34;other&#34;  )
+    )
+</code></pre><h3 id="step-4">Step 4</h3>
+<p>In the final step, we use the <code>RETURN</code> function to output the information temporarily stored in <code>VAR</code>.</p>
+<p>Since we need to generate a table, we also use the <code>SELECTCOLUMNS</code> function to extract the relevant measures.
+Right after the <code>SELECTCOLUMNS</code>, You can adjust the text inside the brackets &quot;&quot; to rename your measures as needed.</p>
+<pre tabindex="0"><code>RETURN
+    SELECTCOLUMNS(
+    table_3,
+      &#34;iso&#34;, [iso],
+      &#34;country&#34;, [country],
+      &#34;status&#34;, [status],
+      &#34;total obligation&#34;, [total obligation],
+      &#34;amount paid&#34;, [amount paid],
+      &#34;percent paid&#34;, [percent paid],
+      &#34;month of the report&#34;, month_of_the_report
+)
+</code></pre><blockquote>
+<p>Important Distinction: VAR vs. Measures</p>
+<ul>
+<li><code>[status]</code> is a measure (denoted by brackets <code>[]</code>), meaning it can be used in the <em><strong>Report View</strong></em>.</li>
+<li><code>month_of_the_report</code> is a <code>VAR</code>, which only exists temporarily within this DAX expression and is NOT available or accessible in <em><strong>Report View</strong></em>.</li>
+</ul>
+</blockquote>
+<p>Below is the resulting table, <em><strong>New Table A</strong></em>, created through these four steps.
+<img src="/images/20250313_powerbi_sustained_data_updating/new_table_a.png" alt="new table a"></p>
+<hr>
+<h2 id="updating-on-a-monthly-basis">Updating on a monthly basis</h2>
+<h3 id="sanpshots">Sanpshots</h3>
+<p>To update table B, we now need to take a snapshot of <em><strong>new table A</strong></em> and append it to table B. This can be easily done using the <code>UNION</code> function.</p>
+<pre tabindex="0"><code>New table B = UNION(&#39;Data B&#39;, &#39;New table A&#39;)
+</code></pre><p>Once <em><strong>new table B</strong></em> is updated, we should export the data from Power BI for historical record.
+In the <em><strong>Table view</strong></em>, right click the <em><strong>new table B</strong></em>, and paste the data into a blank excel file.</p>
+<h3 id="updating-from-february-to-march">Updating from February to March</h3>
+<p>Suppose your Power BI is using February data, and you just received the March data A. Here&rsquo;s how to update the data from February to March. The graph below illustrates the steps:</p>
+<p><img src="/images/20250313_powerbi_sustained_data_updating/monthly_udpate_graph.png" alt="update graph"></p>
+<ol>
+<li>Navigate to the <em><strong>File</strong></em> button in the top-left panel and click <em><strong>Options and settings</strong></em>.</li>
+<li>Select <em><strong>Data source settings</strong></em>.</li>
+<li>Select &ldquo;data a February 2025.xlsx,&rdquo; press the <em><strong>Change source</strong></em> button, and replace it with &ldquo;data a march 2025.xlsx.&rdquo;</li>
+<li>Select &ldquo;data b January 2025.xlsx,&rdquo; press the <em><strong>Change source</strong></em> button, and replace it with &ldquo;data b February 2025.xlsx.&rdquo;</li>
+<li>Go to the <em><strong>new table A</strong></em>&rsquo;s DAX expression. Once the date for <code>month_of_the_report</code> is updated to &ldquo;01/03/2025,&rdquo; the snapshot for March will be automatically completed.</li>
+<li>In parallel, <em><strong>new table B</strong></em> will also be updated, with March data appended.</li>
+<li>Export the <em><strong>new table B</strong></em> from Power BI.</li>
+</ol>
+<p>Note that these steps use <em><strong>Change source</strong></em> rather than <em><strong>refresh</strong></em> function - as <em><strong>refresh</strong></em> only updates the original, fixed data source.</p>
+<h2 id="what-do-you-mean-by-self-sustained">What do you mean by &ldquo;self-sustained&rdquo;?</h2>
+<p>In summary, the way the data is updated is self-sustained because:</p>
+<ol>
+<li>
+<p>In the <em><strong>new table A</strong></em>, measures are set to sustain its usage into next <code>VAR</code>. This is beneficial for a set of order-sensitive measures that rely on the same filtering, thereby saving space by eliminating redundant filtering processes.</p>
+</li>
+<li>
+<p>All data processing steps for updating the <em><strong>new table B</strong></em> are carried out within Power BI, while also preserving a track record. In other words, this self-sustained process can continue autonomously once initiated, as long as new data is fed into it.</p>
+</li>
+</ol>
+<p>With these self-sustained concepts in the <em><strong>Table View</strong></em>, you can create fantastic visuals in <em><strong>Report view</strong></em> while ensuring concise, clear, organized, and less error-prone data management for routine tasks.</p>
+<blockquote>
+<p>This self-sustained concepts align with my core values in data science: data efficiency, integrity, and reproducibility.</p>
+</blockquote>
+<p><em>BTW, after working on this, I do feel developing a Power BI dashboard doesn&rsquo;t mean low-code at all&hellip; Any thoughts?</em></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>This DAX code was collaborated with Copilot. The wording in this post is refined by ChatGPT. Views expressed here are my own and don&rsquo;t represent the views of my former employer, Gavi.</em></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+        </div>
+    </div>
+    <a href="#" id="scrollToTopButton">
+        <svg t="1686753152588" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            p-id="3988" width="48" height="48">
+            <path
+                d="M518.5 360.3c-3.2-4.4-9.7-4.4-12.9 0l-178 246c-3.8 5.3 0 12.7 6.5 12.7H381c10.2 0 19.9-4.9 25.9-13.2L512 460.4l105.2 145.4c6 8.3 15.6 13.2 25.9 13.2H690c6.5 0 10.3-7.4 6.5-12.7l-178-246z"
+                p-id="3989" fill="#363636"></path>
+            <path
+                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                p-id="3990" fill="#363636"></path>
+        </svg>
+    </a><hr style="border-top: 1px solid #EEEEEE;">
+<div id="comment"></div>
+<script>
+    const getStoredTheme = () => localStorage.getItem("theme") === "dark" ? "dark" : "light";
+
+    const setGiscusTheme = () => {
+        const sendMessage = (message) => {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (iframe) {
+                iframe.contentWindow.postMessage({giscus: message}, 'https://giscus.app');
+            }
+        }
+        sendMessage({setConfig: {theme: getStoredTheme()}})
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const giscusAttributes = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "hotjuicew\/blog",
+            "data-repo-id": "R_kgDOHHQOuw",
+            "data-category": "Announcements",
+            "data-category-id": "DIC_kwDOHHQOu84CWCQ3",
+            "data-mapping": "og:title",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-input-position": "bottom",
+            "data-theme": getStoredTheme(),
+            "data-lang": "en",
+            "data-loading": "lazy",
+            "crossorigin": "anonymous",
+        };
+
+        
+        const giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(
+            ([key, value]) => giscusScript.setAttribute(key, value));
+        document.getElementById("comment").appendChild(giscusScript);
+
+        
+        const themeToggle = document.querySelector(".theme-toggle");
+        if (themeToggle) {
+            themeToggle.addEventListener("click", setGiscusTheme);
+        }
+    });
+
+</script>
+
+
+<div class="pp-container">
+        <section class="pre-and-post">
+            <div class="has-text-left">
+                
+                <p>Previous post</p>
+                <a href="https://haokaitseng.github.io/post/20241220-cofinancing-portfolio-management/">Co-financing for vaccine portfolio: visual tips and data flow</a>
+                
+            </div>
+            <div class="has-text-right">
+                
+            </div>
+        </section>
+    </div>
+
+</div>
+
+        </main><footer class="footer">
+    <div class="content has-text-centered">
+    <span>&copy; 2025 <a href="https://haokaitseng.github.io/">Transmission Landscape</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" target="_blank">Hugo</a> &
+        <a href="https://github.com/hotjuicew/hugo-JuiceBar" target="_blank">JuiceBar</a>
+    </span>
+    </div>
+  </footer></body>
+</html>
+

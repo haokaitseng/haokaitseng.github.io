@@ -6,8 +6,15 @@
     <description>Recent content in Vaccine on Transmission Landscape</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Tue, 31 Dec 2024 22:11:12 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 13 Mar 2025 22:11:12 +0800</lastBuildDate>
     <atom:link href="https://haokaitseng.github.io/categories/vaccine/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Self-sustained data &amp; measure management in Power BI</title>
+      <link>https://haokaitseng.github.io/post/20250313_powerbi_sustained_data_updating/</link>
+      <pubDate>Thu, 13 Mar 2025 22:11:12 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/post/20250313_powerbi_sustained_data_updating/</guid>
+      <description>This post aims to advance your Power BI skills by:&#xA;Creating a sequence of sustained measures in a new table, rather than having random measures co-existing with variables. Updating longitudinal data when new data is routinely received. [Note that the data used in this post are examples, inspired by my work with the Immunisation Financing &amp;amp; Sustainability (IF&amp;amp;S) team at Gavi. The views expressed here are my own and do not represent those of my former employer, Gavi.</description>
+    </item>
     <item>
       <title>Co-financing for vaccine portfolio: visual tips and data flow</title>
       <link>https://haokaitseng.github.io/post/20241220-cofinancing-portfolio-management/</link>
