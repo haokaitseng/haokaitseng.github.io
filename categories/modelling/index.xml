@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Modelling on Transmission Landscape</title>
+    <link>https://haokaitseng.github.io/categories/modelling/</link>
+    <description>Recent content in Modelling on Transmission Landscape</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Sat, 30 Mar 2024 22:11:12 +0800</lastBuildDate>
+    <atom:link href="https://haokaitseng.github.io/categories/modelling/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Equity vs. Equality: Modelling Vaccine Distribution Strategies for Outbreak Response Decision-Making</title>
+      <link>https://haokaitseng.github.io/post/20240327_modelling_flu/</link>
+      <pubDate>Sat, 30 Mar 2024 22:11:12 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/post/20240327_modelling_flu/</guid>
+      <description>This group project is a collective effort, with contributions from my teammates Minn Thit Aung, Polly Nightingale, Simon Kent, and Xavier Dunn, listed alphabetically.&#xA;This post aims to:&#xA;Determine the the basic reproduction number (R0) of an hypothetical outbreak Assess the impact of various strategies for vaccination and school closures on accumulative cases and peak cases/timing Provide instructions for constructing a SEIR model using Berkeley Madonna Offer simple R code for converting a ggplot into a GIF Setting the Scene Many countries have recently experienced the first wave of an influenza pandemic caused by the strain HuNz.</description>
+    </item>
+  </channel>
+</rss>

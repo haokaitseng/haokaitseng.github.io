@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bayesian on Transmission Landscape</title>
+    <link>https://haokaitseng.github.io/categories/bayesian/</link>
+    <description>Recent content in Bayesian on Transmission Landscape</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Thu, 18 Jul 2024 22:11:12 +0800</lastBuildDate>
+    <atom:link href="https://haokaitseng.github.io/categories/bayesian/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mapping the Relationships: Modelling Immunisation Efforts on the Non-Polio Acute Flaccid Paralysis Rate</title>
+      <link>https://haokaitseng.github.io/post/20240719_polio_poster_vaccine_hesitancy/</link>
+      <pubDate>Thu, 18 Jul 2024 22:11:12 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/post/20240719_polio_poster_vaccine_hesitancy/</guid>
+      <description>This post shares my poster presentation at the Vaccine Hesitancy Course held by the Croucher Foundation in August, 2024, Hong Kong.&#xA;Download the poster here, which is the milestone of my thesis project at LSHTM. Introduction Global incidence of polio has decreased by 99% since 1988. Non-polio Acute Flaccid Paralysis (NPAFP) is the key indicator for the sensitivity of polio surveillance. While countries with circulating poliovirus consistently report NPAFP rates exceeding the gold-standard indicator*, it is not well-understood what rate should be expected.</description>
+    </item>
+  </channel>
+</rss>

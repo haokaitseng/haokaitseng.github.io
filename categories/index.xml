@@ -37,10 +37,24 @@
       <description></description>
     </item>
     <item>
+      <title>R</title>
+      <link>https://haokaitseng.github.io/categories/r/</link>
+      <pubDate>Tue, 31 Dec 2024 22:11:12 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/r/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Visualisation</title>
       <link>https://haokaitseng.github.io/categories/visualisation/</link>
       <pubDate>Tue, 31 Dec 2024 22:11:12 +0800</pubDate>
       <guid>https://haokaitseng.github.io/categories/visualisation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Bayesian</title>
+      <link>https://haokaitseng.github.io/categories/bayesian/</link>
+      <pubDate>Thu, 18 Jul 2024 22:11:12 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/bayesian/</guid>
       <description></description>
     </item>
     <item>
@@ -65,10 +79,73 @@
       <description></description>
     </item>
     <item>
+      <title>Flu</title>
+      <link>https://haokaitseng.github.io/categories/flu/</link>
+      <pubDate>Mon, 13 May 2024 22:11:12 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/flu/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>RSV</title>
+      <link>https://haokaitseng.github.io/categories/rsv/</link>
+      <pubDate>Mon, 13 May 2024 22:11:12 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/rsv/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Machine Learning</title>
       <link>https://haokaitseng.github.io/categories/machine-learning/</link>
       <pubDate>Fri, 03 May 2024 22:11:12 +0800</pubDate>
       <guid>https://haokaitseng.github.io/categories/machine-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Modelling</title>
+      <link>https://haokaitseng.github.io/categories/modelling/</link>
+      <pubDate>Sat, 30 Mar 2024 22:11:12 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/modelling/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ETL</title>
+      <link>https://haokaitseng.github.io/categories/etl/</link>
+      <pubDate>Sat, 06 Jan 2024 22:11:12 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/etl/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ODK</title>
+      <link>https://haokaitseng.github.io/categories/odk/</link>
+      <pubDate>Sat, 06 Jan 2024 22:11:12 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/odk/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>PostgreSQL</title>
+      <link>https://haokaitseng.github.io/categories/postgresql/</link>
+      <pubDate>Sat, 06 Jan 2024 22:11:12 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/postgresql/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>HPV</title>
+      <link>https://haokaitseng.github.io/categories/hpv/</link>
+      <pubDate>Fri, 15 Dec 2023 22:11:12 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/hpv/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Data governance</title>
+      <link>https://haokaitseng.github.io/categories/data-governance/</link>
+      <pubDate>Mon, 30 Oct 2023 22:11:12 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/data-governance/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>https://haokaitseng.github.io/categories/python/</link>
+      <pubDate>Sat, 09 Sep 2023 22:11:12 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/python/</guid>
       <description></description>
     </item>
   </channel>

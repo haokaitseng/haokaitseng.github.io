@@ -29,8 +29,14 @@
     <loc>https://haokaitseng.github.io/categories/portfolio-management/</loc>
     <lastmod>2024-12-31T22:11:12+08:00</lastmod>
   </url><url>
+    <loc>https://haokaitseng.github.io/categories/r/</loc>
+    <lastmod>2024-12-31T22:11:12+08:00</lastmod>
+  </url><url>
     <loc>https://haokaitseng.github.io/categories/visualisation/</loc>
     <lastmod>2024-12-31T22:11:12+08:00</lastmod>
+  </url><url>
+    <loc>https://haokaitseng.github.io/categories/bayesian/</loc>
+    <lastmod>2024-07-18T22:11:12+08:00</lastmod>
   </url><url>
     <loc>https://haokaitseng.github.io/post/20240719_polio_poster_vaccine_hesitancy/</loc>
     <lastmod>2024-07-18T22:11:12+08:00</lastmod>
@@ -45,6 +51,12 @@
     <lastmod>2024-06-13T22:11:12+08:00</lastmod>
   </url><url>
     <loc>https://haokaitseng.github.io/categories/covid-19/</loc>
+    <lastmod>2024-05-13T22:11:12+08:00</lastmod>
+  </url><url>
+    <loc>https://haokaitseng.github.io/categories/flu/</loc>
+    <lastmod>2024-05-13T22:11:12+08:00</lastmod>
+  </url><url>
+    <loc>https://haokaitseng.github.io/categories/rsv/</loc>
     <lastmod>2024-05-13T22:11:12+08:00</lastmod>
   </url><url>
     <loc>https://haokaitseng.github.io/post/20240514_sanofi_think_global_health/</loc>
@@ -62,22 +74,43 @@
     <loc>https://haokaitseng.github.io/post/20240327_modelling_flu/</loc>
     <lastmod>2024-03-30T22:11:12+08:00</lastmod>
   </url><url>
+    <loc>https://haokaitseng.github.io/categories/modelling/</loc>
+    <lastmod>2024-03-30T22:11:12+08:00</lastmod>
+  </url><url>
     <loc>https://haokaitseng.github.io/post/20240322-survival-analysis/</loc>
     <lastmod>2024-03-23T22:11:12+08:00</lastmod>
   </url><url>
     <loc>https://haokaitseng.github.io/post/20240210-machine-learning-lasso-random-forest/</loc>
     <lastmod>2024-02-10T22:11:12+08:00</lastmod>
   </url><url>
+    <loc>https://haokaitseng.github.io/categories/etl/</loc>
+    <lastmod>2024-01-06T22:11:12+08:00</lastmod>
+  </url><url>
     <loc>https://haokaitseng.github.io/post/20240101-data-linkage-etl-mimic/</loc>
+    <lastmod>2024-01-06T22:11:12+08:00</lastmod>
+  </url><url>
+    <loc>https://haokaitseng.github.io/categories/odk/</loc>
+    <lastmod>2024-01-06T22:11:12+08:00</lastmod>
+  </url><url>
+    <loc>https://haokaitseng.github.io/categories/postgresql/</loc>
     <lastmod>2024-01-06T22:11:12+08:00</lastmod>
   </url><url>
     <loc>https://haokaitseng.github.io/post/20231216-hpv-single-dose-vaccination/</loc>
     <lastmod>2023-12-15T22:11:12+08:00</lastmod>
   </url><url>
+    <loc>https://haokaitseng.github.io/categories/hpv/</loc>
+    <lastmod>2023-12-15T22:11:12+08:00</lastmod>
+  </url><url>
+    <loc>https://haokaitseng.github.io/categories/data-governance/</loc>
+    <lastmod>2023-10-30T22:11:12+08:00</lastmod>
+  </url><url>
     <loc>https://haokaitseng.github.io/post/20231030-data-governance/</loc>
     <lastmod>2023-10-30T22:11:12+08:00</lastmod>
   </url><url>
     <loc>https://haokaitseng.github.io/post/20230907london-rent-cost/</loc>
+    <lastmod>2023-09-09T22:11:12+08:00</lastmod>
+  </url><url>
+    <loc>https://haokaitseng.github.io/categories/python/</loc>
     <lastmod>2023-09-09T22:11:12+08:00</lastmod>
   </url><url>
     <loc>https://haokaitseng.github.io/post/20230901%E5%8F%B0%E7%81%A3%E7%94%9F%E5%8C%96%E5%AF%A6%E9%A9%97%E5%AE%A4/</loc>
