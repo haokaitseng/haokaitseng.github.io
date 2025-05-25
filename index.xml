@@ -9,6 +9,13 @@
     <lastBuildDate>Thu, 13 Mar 2025 22:11:12 +0800</lastBuildDate>
     <atom:link href="https://haokaitseng.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>About Me</title>
+      <link>https://haokaitseng.github.io/about/</link>
+      <pubDate>Sun, 30 Mar 2025 20:18:54 +0300</pubDate>
+      <guid>https://haokaitseng.github.io/about/</guid>
+      <description>Hi! My name is Hao Kai Tseng. I currently work with the Epidemic Intelligence Center at Taiwan Centers for Disease Control (CDC). My daily work involves outbreak monitoring across the globe, specifically on SARS-CoV-2, Polio, Cholera, and other food- and water-borne diseases.&#xA;I was an intern at Gavi, the Vaccine Alliance on immunisation financing and sustainability. My work involved maintaining countries&amp;rsquo; Co-financing data across multiple databases, supporting key monitoring, analytics, and documentation.</description>
+    </item>
+    <item>
       <title>Self-sustained data &amp; measures in Power BI</title>
       <link>https://haokaitseng.github.io/post/20250313_powerbi_sustained_data_updating/</link>
       <pubDate>Thu, 13 Mar 2025 22:11:12 +0800</pubDate>
