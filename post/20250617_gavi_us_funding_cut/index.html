@@ -1,0 +1,337 @@
+
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Future of Global Immunisation at Risk: Gavi’s 6.0 Strategy Faces Funding Uncertainty | Transmission Landscape</title>
+    <meta name="description"
+        content="Without Sustained Funding From the U.S., 75 Million Children May Go Unvaccinated in the Next Five Years.
+The New York Times reported in March that the U.S. planned to halt funding for select foreign programmes - including Gavi, the Vaccine Alliance. The consequences could be dire, as many as 75 million children could miss vaccinations over the next five years, along with 1.2 million deaths from preventable diseases. It is part of a broader “America First” agenda that includes winding down USAID and withdrawing from the WHO.">
+    <link rel="canonical" href="https://haokaitseng.github.io/post/20250617_gavi_us_funding_cut/" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    
+    <link rel="stylesheet" href="https://haokaitseng.github.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
+
+    <meta property="og:title" content="Future of Global Immunisation at Risk: Gavi’s 6.0 Strategy Faces Funding Uncertainty" />
+<meta property="og:description" content="Without Sustained Funding From the U.S., 75 Million Children May Go Unvaccinated in the Next Five Years.
+The New York Times reported in March that the U.S. planned to halt funding for select foreign programmes - including Gavi, the Vaccine Alliance. The consequences could be dire, as many as 75 million children could miss vaccinations over the next five years, along with 1.2 million deaths from preventable diseases. It is part of a broader “America First” agenda that includes winding down USAID and withdrawing from the WHO." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://haokaitseng.github.io/post/20250617_gavi_us_funding_cut/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2025-06-17T22:11:12+08:00" />
+<meta property="article:modified_time" content="2025-06-17T22:11:12+08:00" /><meta property="og:site_name" content="Kai&#39;s Data Science Blog" />
+
+
+    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Future of Global Immunisation at Risk: Gavi’s 6.0 Strategy Faces Funding Uncertainty"/>
+<meta name="twitter:description" content="Without Sustained Funding From the U.S., 75 Million Children May Go Unvaccinated in the Next Five Years.
+The New York Times reported in March that the U.S. planned to halt funding for select foreign programmes - including Gavi, the Vaccine Alliance. The consequences could be dire, as many as 75 million children could miss vaccinations over the next five years, along with 1.2 million deaths from preventable diseases. It is part of a broader “America First” agenda that includes winding down USAID and withdrawing from the WHO."/>
+
+    
+    
+    
+
+</head><body><nav class="navbar is-light" role="navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a href="/" title="home" class="navbar-item">
+                <span class="logo">
+                    <h1>Transmission Landscape</h1>
+                </span>
+            </a>
+
+            
+            <a id="theme-toggle" class="theme-toggle" href="#">
+                <img src="https://haokaitseng.github.io/svg/sun.svg" alt="sun icon" class="theme-icon" />
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                
+                <a href="/about" class="navbar-item">About</a>
+                
+                <a href="/post" class="navbar-item">Blog</a>
+                
+                <a href="/categories" class="navbar-item">Categories</a>
+                
+            </div>
+
+        </div>
+        <div class="search">
+            <div id="fastSearch">
+                <input id="searchInput" tabindex="0" placeholder="Search..">
+                <ul id="searchResults">
+
+                </ul>
+            </div>
+            <a id="search-btn" style="display: inline-block;" href="# ">
+                <div class="icon-search"><svg class="search-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+            </a>
+        </div>
+
+        <script src="/js/fuse.min.js"></script> 
+        <script src="/js/fastsearch.js"></script>
+
+    </div>
+</nav>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var burger = document.querySelector('.navbar-burger');
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('is-active');
+            document.querySelector('.navbar-menu').classList.toggle('is-active');
+        });
+    });
+
+    
+    function setTheme(theme) {
+        let body = document.body;
+        let themeIcon = document.querySelector(".theme-icon");
+        if (theme === "dark") {
+            body.classList.add("dark-mode");
+            themeIcon.src = "https:\/\/haokaitseng.github.io\/svg/moon.svg";
+            themeIcon.alt = "moon icon";
+        } else {
+            body.classList.remove("dark-mode");
+            themeIcon.src = "https:\/\/haokaitseng.github.io\/svg/sun.svg";
+            themeIcon.alt = "sun icon";
+        }
+        
+        localStorage.setItem("theme", theme);
+    }
+
+    
+    let theme = localStorage.getItem("theme") || "light";
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDarkMode) {
+        
+        setTheme('dark');
+
+    } else {
+        
+        setTheme('light');
+    }
+    setTheme(theme);
+
+    
+    document.getElementById("theme-toggle").addEventListener("click", function() {
+        if (theme === "light") {
+            theme = "dark";
+        } else {
+            theme = "light";
+        }
+        setTheme(theme);
+    });
+
+
+
+</script>
+
+</header><main>
+<div class="single-container">
+    <div class="archive">
+        <h1 class="title is-1">Future of Global Immunisation at Risk: Gavi’s 6.0 Strategy Faces Funding Uncertainty</h1>
+        <div class="title subtitle heading is-6">
+            <div class="author-info columns is-vcentered">
+                <div class="column">
+                    <div class="columns is-vcentered is-mobile">
+                        
+                        <div class="column is-narrow">
+                            <img src="/images/profile.jpg" class="author-image">
+                        </div>
+                        
+                        <div class="column">
+                            <p>Kai</p>
+                            <p><time>June 17, 2025</time>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="small-categories-container">
+                    <a href="/categories/health-financing">Health Financing</a>, <a href="/categories/vaccine">Vaccine</a>
+                </div>
+            </div>
+        </div>
+        <div class="content article-content">
+            <div class="toc-container">
+                
+    <div class="post-toc">
+        
+            <aside>
+                <button id="tocButton" ><h4 id="contents" style="margin-left: 1vw;color:rgb(96, 134, 180);margin-bottom: 0;">CONTENTS</h4></button>
+                <div id="hide"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#funding-fallout">Funding fallout</a></li>
+        <li><a href="#a-sustainable-model">A sustainable model</a></li>
+        <li><a href="#addressing-the-gaps">Addressing the gaps</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </aside>
+        
+    </div><script>
+    
+        let button = document.getElementById('tocButton');
+        let hide = document.getElementById("hide");
+        let contents=document.getElementById("contents");
+        button.addEventListener("click", function() {
+        if (hide.style.display!='block') {
+            hide.style.display='block'
+        } else {
+            hide.style.display='none'
+            contents.style.color='rgb(96, 134, 180)'
+        }
+        });
+    
+
+
+
+
+</script>
+            </div>
+            <blockquote>
+<p>Without Sustained Funding From the U.S., 75 Million Children May Go Unvaccinated in the Next Five Years.</p>
+</blockquote>
+<p>The New York Times <a href="https://www.nytimes.com/2025/03/26/health/usaid-cuts-gavi-bird-flu.html">reported</a> in March that the U.S. planned to halt funding for select foreign programmes - including Gavi, the Vaccine Alliance. The consequences could be dire, as many as 75 million children could <a href="https://www.linkedin.com/feed/update/urn:li:activity:7310905077630738433/">miss</a> vaccinations over the next five years, along with 1.2 million deaths from preventable diseases. It is part of a broader “America First” agenda that includes winding down <a href="https://www.devex.com/news/who-s-most-at-risk-from-usaid-cuts-109900">USAID</a> and withdrawing from the <a href="https://www.devex.com/news/devex-checkup-what-the-trump-withdrawal-means-for-who-and-for-americans-109115">WHO</a>.</p>
+<p>Gavi, a public–private partner in global immunization, <a href="https://www.devex.com/news/gavi-delays-9b-replenishment-event-amid-tough-fundraising-environment-109597?consultant_exists=true&amp;oauth_response=success">delayed</a> its high-level replenishment summit from March to <em><strong>25th June</strong></em> due to fundraising challenges. As it pursues its 6.0 strategy (2026–2030) to vaccinate <a href="https://www.gavi.org/sites/default/files/investing/funding/resource-mobilisation/Gavi-Investment-Opportunity-2026-2030.pdf">500 million children</a>, uncertainty looms over continued U.S. support.</p>
+<p>The U.S. has been one of the largest donors to Gavi, underwriting 13% of its overall budget. Of the $10.3 billion in <a href="https://www.gavi.org/sites/default/files/investing/funding/resource-mobilisation/Gavi-Investment-Opportunity-2026-2030.pdf">assured resources 2021-2025</a>, the UK contributed $1.9 billion, the Gates Foundation $1.6 billion, and the US $1.2 billion. Moreover, the U.S. alone provided $4 billion to Gavi’s <a href="https://www.gavi.org/vaccineswork/gavi-covax-amc-explained?gad_source=1&amp;gclid=Cj0KCQjw_dbABhC5ARIsAAh2Z-SCSCExRz7m7KrsofcnIstCEPlq4uPpFB_bqUTbpIRktRJ4KTw7m8IaArHPEALw_wcB">COVAX</a> mechanism, accounting for one-third of its funding and enabling equitable COVID-19 vaccine distribution.</p>
+<p><img src="/images/20250617_Gavi_US_funding_cut/top10.png" alt="Top 10 resources"></p>
+<h3 id="funding-fallout">Funding fallout</h3>
+<blockquote>
+<p>Gavi CEO Sania Nishtar warned TIME, “If that budget is cut, that translates to 75 million children not getting vaccinated.” This could result in 1.2 million preventable deaths.</p>
+</blockquote>
+<p>Most affected children live in countries like DRC, Nigeria, and Ethiopia, where projected demand for funding is highest. Since 2000, there have been <a href="https://www.gavi.org/programmes-impact/our-impact/facts-and-figures">1.1</a> billion children vaccinated over 70 countries across all regions.</p>
+<p>A funding shortfall would affect new initiatives. Gavi&rsquo;s new malaria vaccine programme - launched in 2024 and accounting for <a href="https://www.gavi.org/sites/default/files/investing/funding/resource-mobilisation/Gavi-Investment-Opportunity-2026-2030.pdf">$1.1</a> billion of its $9 billion five-year request - could be jeopardized. New tuberculosis vaccines, now in late-stage trials, may face introduction delays in Gavi-implementing countries.</p>
+<p>Global health security would be compromised without adequate resources. In response to the 2014 Ebola outbreak in West Africa, Gavi established an Ebola vaccine stockpile, later expanded to cover cholera, meningitis, and yellow fever. Former Gavi CEO Seth Berkley <a href="https://time.com/7272078/trump-gavi-vaccine-aid-cuts/">emphasized</a> how stockpiling has played a crucial role in protecting the U.S. Currently, Gavi is working towards the establishment of an emergency stockpile of mpox vaccine. Looking ahead, Gavi aims to respond to 150 more outbreaks.</p>
+<p>Moreover, the ramifications go far beyond childhood immunizations. Cutting U.S. funding for Gavi could disrupt the global vaccine market - which supports <a href="https://time.com/7273414/gavi-vaccine-alliance-sania-nishtar-ceo-funding/">U.S. pharmaceutical companies</a> - and <a href="https://www.thinkglobalhealth.org/article/us-retreat-gavi-cedes-influence-chinas-vaccine-suppliers">cede ground to China</a> in the arena of vaccine diplomacy.</p>
+<h3 id="a-sustainable-model">A sustainable model</h3>
+<blockquote>
+<p>“Gavi’s model is unique in that it helps countries like ours move toward greater autonomy”, <a href="https://www.gavi.org/news/media-room/lower-income-countries-commit-record-us-250-million-towards-immunisation">said</a> Pierre Dimba, Minister of Health, Public Hygiene and Universal Health Coverage, Côte d’Ivoire.</p>
+</blockquote>
+<p>Unlike traditional aids that create dependency, Gavi-eligible countries make a commitment to fund part of vaccine costs, aiming for full self-financing as their incomes grow.</p>
+<p>&ldquo;Gavi supports (such) exits,&rdquo; <a href="https://time.com/7273414/gavi-vaccine-alliance-sania-nishtar-ceo-funding/">explained</a> Sania Nishtar. 19 countries, including India, Indonesia, Viet Nam, and Angola, have successfully graduated. In 2024, countries <a href="https://www.gavi.org/news/media-room/lower-income-countries-commit-record-us-250-million-towards-immunisation">contributed</a> a record US$ 250 million to their own immunisation programmes.</p>
+<p>For 2026-2030, countries are expected to fund US$ 4 billion, nearly half of the costs vaccination programmes introduced with Gavi support.</p>
+<h3 id="addressing-the-gaps">Addressing the gaps</h3>
+<p>In a recent <a href="https://time.com/7273414/gavi-vaccine-alliance-sania-nishtar-ceo-funding/">interview</a>, Sania Nishtar shared: “We are widening our donor base.” <a href="https://www.gavi.org/news/media-room/indonesia-pledges-us-30-million-dollars-support-global-immunisation-efforts-through-gavi">Indonesia</a> has become the first former Gavi-eligible country to now act as a donor, a move that, according to Health Minister Budi Gunadi Sadikin, helps “keep Indonesians safe at a time when infectious diseases are on the rise.” India is also likely to become a donor in 2026.</p>
+<p>Still, replacing the U.S. contribution remains a challenge. This development is particularly alarming as it follows news in February that the <a href="https://www.theguardian.com/global-development/2025/feb/28/cuts-to-uk-vaccine-funding-could-lead-to-huge-numbers-of-child-deaths-overseas">UK</a> government is also planning to cut its overseas aid, including support for Gavi. With no formal withdrawal notice from the U.S., Gavi is actively seeking dialogue with donors.</p>
+<p>In May, MP Emily Darlington emphasized the UK&rsquo;s role in global health, <a href="https://hansard.parliament.uk/Commons/2025-05-15/debates/F01A258B-D4D4-4C4F-B19B-B992EB7CE31F/GaviAndTheGlobalFund">stating</a> in Parliament: “It is about not just cash but the partnership and leadership that the UK Government provide.” She urged the government to at least match its previous commitment to Gavi, despite current budget constraints.</p>
+<blockquote>
+<p>&ldquo;At the end of the day, the responsibility is ours.&rdquo; Nigeria’s Health Minister, Muhammad Ali Pate, <a href="https://www.nytimes.com/2025/05/05/opinion/health-who-membership-trump.html?unlocked_article_code=1.E08.ZqQd.hQT68CF7xyux&amp;smid=nytcore-ios-share&amp;referringSource=articleShare">underscores</a> the urgent need for countries to fill the America-shaped funding gap.</p>
+</blockquote>
+<p>Countries must now take greater accountability and ownership of their people’s needs. Reflecting this shift, the Global Health Incubator convened an <a href="https://www.advocacyincubator.org/news/2025-04-25-parliamentarians-unite-for-immunization-financing-in-africa-and-asia-resulting-in-the-istanbul-call-to-action">forum</a> in April, gathering 21 parliamentary leaders from Africa and Asia to urge their governments to “rapidly adopt policies to mobilize domestic resources for immunization”.</p>
+<p>Meanwhile, the Gates Foundation recently celebrated its 25th anniversary and announced it will <a href="https://www.gatesfoundation.org/ideas/articles/next-chapter?utm_source=linkedin&amp;utm_medium=social&amp;utm_campaign=25th_launch&amp;utm_content=MS">double</a> its giving to US$ 200 billion over the next two decades. With the foundation and the European Union co-hosting Gavi’s pledging summit in June, all signs point to the foundation continuing to play a key role in protecting health.</p>
+<p>Cutting operational costs is also on the table. Sharing a Geneva office with the Global Fund to Fight AIDS, Tuberculosis and Malaria, the two organizations are <a href="https://www.devdiscourse.com/article/health/3421192-global-health-giants-gavi-and-global-fund-explore-merging-functions-amid-funding-crunch">exploring</a> ways to merge parts of their operations.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>Views expressed here are my own and don&rsquo;t represent the views of my former employer, Gavi.</em></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+        </div>
+    </div>
+    <a href="#" id="scrollToTopButton">
+        <svg t="1686753152588" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            p-id="3988" width="48" height="48">
+            <path
+                d="M518.5 360.3c-3.2-4.4-9.7-4.4-12.9 0l-178 246c-3.8 5.3 0 12.7 6.5 12.7H381c10.2 0 19.9-4.9 25.9-13.2L512 460.4l105.2 145.4c6 8.3 15.6 13.2 25.9 13.2H690c6.5 0 10.3-7.4 6.5-12.7l-178-246z"
+                p-id="3989" fill="#363636"></path>
+            <path
+                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                p-id="3990" fill="#363636"></path>
+        </svg>
+    </a><hr style="border-top: 1px solid #EEEEEE;">
+<div id="comment"></div>
+<script>
+    const getStoredTheme = () => localStorage.getItem("theme") === "dark" ? "dark" : "light";
+
+    const setGiscusTheme = () => {
+        const sendMessage = (message) => {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (iframe) {
+                iframe.contentWindow.postMessage({giscus: message}, 'https://giscus.app');
+            }
+        }
+        sendMessage({setConfig: {theme: getStoredTheme()}})
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const giscusAttributes = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "hotjuicew\/blog",
+            "data-repo-id": "R_kgDOHHQOuw",
+            "data-category": "Announcements",
+            "data-category-id": "DIC_kwDOHHQOu84CWCQ3",
+            "data-mapping": "og:title",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-input-position": "bottom",
+            "data-theme": getStoredTheme(),
+            "data-lang": "en",
+            "data-loading": "lazy",
+            "crossorigin": "anonymous",
+        };
+
+        
+        const giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(
+            ([key, value]) => giscusScript.setAttribute(key, value));
+        document.getElementById("comment").appendChild(giscusScript);
+
+        
+        const themeToggle = document.querySelector(".theme-toggle");
+        if (themeToggle) {
+            themeToggle.addEventListener("click", setGiscusTheme);
+        }
+    });
+
+</script>
+
+
+<div class="pp-container">
+        <section class="pre-and-post">
+            <div class="has-text-left">
+                
+                <p>Previous post</p>
+                <a href="https://haokaitseng.github.io/post/20250313_powerbi_sustained_data_updating/">Self-sustained data &amp; measures in Power BI</a>
+                
+            </div>
+            <div class="has-text-right">
+                
+            </div>
+        </section>
+    </div>
+
+</div>
+
+        </main><footer class="footer">
+    <div class="content has-text-centered">
+    <span>&copy; 2025 <a href="https://haokaitseng.github.io/">Transmission Landscape</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" target="_blank">Hugo</a> &
+        <a href="https://github.com/hotjuicew/hugo-JuiceBar" target="_blank">JuiceBar</a>
+    </span>
+    </div>
+  </footer></body>
+</html>
+
