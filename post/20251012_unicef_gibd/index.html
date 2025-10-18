@@ -1,0 +1,367 @@
+
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>A Budget Impact Analysis on Immunisation Coverage: Evidence from UNICEF Global Immunization Budget Database in LMICs, 2021–2025 | Transmission Landscape</title>
+    <meta name="description"
+        content="This study was first presented in the Global Health session at the 2025 Taiwan Public Health Joint Annual Conference on 19 October 2025 in Taipei, Taiwan. The original slide deck has been adapted into this post, highlighting three key points:
+UNICEF’s Global Immunisation Budget Databases (GIBD), launched in June 2025, is an AI-driven breakthrough in immunisation financing. In LMICs, immunisation budget increases showed a positive link with DTP first-dose coverage.">
+    <link rel="canonical" href="https://haokaitseng.github.io/post/20251012_unicef_gibd/" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    
+    <link rel="stylesheet" href="https://haokaitseng.github.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
+
+    <meta property="og:title" content="A Budget Impact Analysis on Immunisation Coverage: Evidence from UNICEF Global Immunization Budget Database in LMICs, 2021–2025" />
+<meta property="og:description" content="This study was first presented in the Global Health session at the 2025 Taiwan Public Health Joint Annual Conference on 19 October 2025 in Taipei, Taiwan. The original slide deck has been adapted into this post, highlighting three key points:
+UNICEF’s Global Immunisation Budget Databases (GIBD), launched in June 2025, is an AI-driven breakthrough in immunisation financing. In LMICs, immunisation budget increases showed a positive link with DTP first-dose coverage." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://haokaitseng.github.io/post/20251012_unicef_gibd/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2025-10-18T22:11:12+08:00" />
+<meta property="article:modified_time" content="2025-10-18T22:11:12+08:00" /><meta property="og:site_name" content="Kai&#39;s Data Science Blog" />
+
+
+    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="A Budget Impact Analysis on Immunisation Coverage: Evidence from UNICEF Global Immunization Budget Database in LMICs, 2021–2025"/>
+<meta name="twitter:description" content="This study was first presented in the Global Health session at the 2025 Taiwan Public Health Joint Annual Conference on 19 October 2025 in Taipei, Taiwan. The original slide deck has been adapted into this post, highlighting three key points:
+UNICEF’s Global Immunisation Budget Databases (GIBD), launched in June 2025, is an AI-driven breakthrough in immunisation financing. In LMICs, immunisation budget increases showed a positive link with DTP first-dose coverage."/>
+
+    
+    
+    
+
+</head><body><nav class="navbar is-light" role="navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a href="/" title="home" class="navbar-item">
+                <span class="logo">
+                    <h1>Transmission Landscape</h1>
+                </span>
+            </a>
+
+            
+            <a id="theme-toggle" class="theme-toggle" href="#">
+                <img src="https://haokaitseng.github.io/svg/sun.svg" alt="sun icon" class="theme-icon" />
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                
+                <a href="/about" class="navbar-item">About</a>
+                
+                <a href="/post" class="navbar-item">Blog</a>
+                
+                <a href="/categories" class="navbar-item">Categories</a>
+                
+            </div>
+
+        </div>
+        <div class="search">
+            <div id="fastSearch">
+                <input id="searchInput" tabindex="0" placeholder="Search..">
+                <ul id="searchResults">
+
+                </ul>
+            </div>
+            <a id="search-btn" style="display: inline-block;" href="# ">
+                <div class="icon-search"><svg class="search-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+            </a>
+        </div>
+
+        <script src="/js/fuse.min.js"></script> 
+        <script src="/js/fastsearch.js"></script>
+
+    </div>
+</nav>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var burger = document.querySelector('.navbar-burger');
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('is-active');
+            document.querySelector('.navbar-menu').classList.toggle('is-active');
+        });
+    });
+
+    
+    function setTheme(theme) {
+        let body = document.body;
+        let themeIcon = document.querySelector(".theme-icon");
+        if (theme === "dark") {
+            body.classList.add("dark-mode");
+            themeIcon.src = "https:\/\/haokaitseng.github.io\/svg/moon.svg";
+            themeIcon.alt = "moon icon";
+        } else {
+            body.classList.remove("dark-mode");
+            themeIcon.src = "https:\/\/haokaitseng.github.io\/svg/sun.svg";
+            themeIcon.alt = "sun icon";
+        }
+        
+        localStorage.setItem("theme", theme);
+    }
+
+    
+    let theme = localStorage.getItem("theme") || "light";
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDarkMode) {
+        
+        setTheme('dark');
+
+    } else {
+        
+        setTheme('light');
+    }
+    setTheme(theme);
+
+    
+    document.getElementById("theme-toggle").addEventListener("click", function() {
+        if (theme === "light") {
+            theme = "dark";
+        } else {
+            theme = "light";
+        }
+        setTheme(theme);
+    });
+
+
+
+</script>
+
+</header><main>
+<div class="single-container">
+    <div class="archive">
+        <h1 class="title is-1">A Budget Impact Analysis on Immunisation Coverage: Evidence from UNICEF Global Immunization Budget Database in LMICs, 2021–2025</h1>
+        <div class="title subtitle heading is-6">
+            <div class="author-info columns is-vcentered">
+                <div class="column">
+                    <div class="columns is-vcentered is-mobile">
+                        
+                        <div class="column is-narrow">
+                            <img src="/images/profile.jpg" class="author-image">
+                        </div>
+                        
+                        <div class="column">
+                            <p>Kai</p>
+                            <p><time>October 18, 2025</time>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="small-categories-container">
+                    <a href="/categories/immunisation-financing">Immunisation Financing</a>, <a href="/categories/gibd">GIBD</a>, <a href="/categories/bayesian">Bayesian</a>, <a href="/categories/inla">INLA</a>, <a href="/categories/wuenic">WUENIC</a>, <a href="/categories/immunisation-coverage">Immunisation coverage</a>
+                </div>
+            </div>
+        </div>
+        <div class="content article-content">
+            <div class="toc-container">
+                
+    <div class="post-toc">
+        
+            <aside>
+                <button id="tocButton" ><h4 id="contents" style="margin-left: 1vw;color:rgb(96, 134, 180);margin-bottom: 0;">CONTENTS</h4></button>
+                <div id="hide"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#methods">Methods</a></li>
+    <li><a href="#results">Results</a>
+      <ul>
+        <li><a href="#fixed-effects">Fixed-effects</a></li>
+        <li><a href="#prediction-for-2025">Prediction for 2025</a></li>
+      </ul>
+    </li>
+    <li><a href="#discussion">Discussion</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav></div>
+            </aside>
+        
+    </div><script>
+    
+        let button = document.getElementById('tocButton');
+        let hide = document.getElementById("hide");
+        let contents=document.getElementById("contents");
+        button.addEventListener("click", function() {
+        if (hide.style.display!='block') {
+            hide.style.display='block'
+        } else {
+            hide.style.display='none'
+            contents.style.color='rgb(96, 134, 180)'
+        }
+        });
+    
+
+
+
+
+</script>
+            </div>
+            <blockquote>
+<p>This study was first presented in the <strong>Global Health</strong> session at the <a href="https://tpha2023.my.canva.site/2025intianmu">2025 Taiwan Public Health Joint Annual Conference</a> on 19 October 2025 in Taipei, Taiwan. The original slide deck has been adapted into this post, highlighting three key points:</p>
+<ul>
+<li>UNICEF’s Global Immunisation Budget Databases (GIBD), launched in June 2025, is an AI-driven breakthrough in immunisation financing.</li>
+<li>In LMICs, immunisation budget increases showed a positive link with DTP first-dose coverage.</li>
+<li>Unlike delayed expenditure data, GIBD offers early coverage outlooks.</li>
+</ul>
+</blockquote>
+<h2 id="introduction">Introduction</h2>
+<p>In the landscape of health financing, general government expenditure (GGE) on immunisation programmes only accounts for a small fraction of general government health expenditure - domestic (GGHED). Take <a href="https://apps.who.int/nha/database">Kenya</a> for example, of the US$ 2 Billion paid for GGHED in 2019, only $US 3 million were allocated for immunisation programmes. In addition to the governmental financing channel, there are also other financial streams in support of immunisation programmes, e.g. out-of-pocket payment, development assistanct - such as Gavi, and prepaid private spending.</p>
+<p><img src="/images/20251018_UNICEF_GIBD/landscape.png" alt="landscape"></p>
+<p>Previous researchers in this field, e.g. <a href="https://linkinghub.elsevier.com/retrieve/pii/S0140-6736(21)01591-9">Gloria Ikilezi</a> and <a href="https://bmjopen.bmj.com/content/14/1/e073789.long">Israel Idris</a>, have primarily relied on expenditure data. See their findings below:</p>
+<p><img src="/images/20251018_UNICEF_GIBD/references.png" alt="ref"></p>
+<p>Following the launch of GIBD in June 2025, this study explores whether budget data can reveal similar patterns to those previously observed using expenditure data.</p>
+<h2 id="methods">Methods</h2>
+<p><img src="/images/20251018_UNICEF_GIBD/ai.png" alt="ai"></p>
+<p>UNICEF GIBD team, led by <a href="https://www.linkedin.com/in/nikhil-mandalia-775a92116/">Nikhil Mandalia</a>, used AI to extract and categorize information from national budget documents. Data are categorized in broader function level 1 and detailed function level 2. I scraped the data from the <a href="https://gibd.unicef.org/dashboards">GIBD dashboard</a> on 5th July 2025.</p>
+<p>I analysed 19 countries in the low- and lower-middle-income countries (LMICs) groups between 2021 and 2024 to explore how changes in immunisation budgets relate to changes in vaccine coverage. 19 Countries include Burkina Faso, Central African Republic, Ghana, Kenya, Liberia, Lesotho, Morocco, Madagascar, Mali, Nigeria, Pakistan, Papua New Guinea, Rwanda, Sao Tome and Principe, Chad, Togo, Tanzania, Uganda, and Zambia.</p>
+<p>This study applied <a href="https://www.r-inla.org/what-is-inla">Integrated Nested Laplace Approximation (INLA)</a> in R - a method for approximate Bayesian inference. INLA serves as an alternative to Markov Chain Monte Carlo (MCMC), but it&rsquo;s much faster.</p>
+<p><img src="/images/20251018_UNICEF_GIBD/method.png" alt="method"></p>
+<p>The model&rsquo;s linear predictor included a fixed effect for the growth rate of the function level 1 immunisation budget and a random effect across years, modelled using a first-order random walk (RW1) to capture gradual year-to-year changes. The likelihood followed a Gaussian likelihood, suitable for continuous outcomes like growth rates.</p>
+<p>In total, I built 9 models, each predicting the growth rate of vaccine coverage for a different antigen - DTP1, DTP3, measles (first and second doses), polio (third dose), IPV1, IPV2, BCG, and PCV3. To maintain model stability, I applied vague (non-informative) priors and penalised complexity (PC) priors.</p>
+<p>The programming code is available on GitHub repository at <a href="https://github.com/haokaitseng/unicef_gibd">haokaitseng/unicef_gibd</a>.</p>
+<h2 id="results">Results</h2>
+<p>The median (IQR) budget allocation was US$5,400,762 (US$1,852,953 to US$12,974,416), with a median increase rate of 1.17% (-24.9% to 29.9%).</p>
+<p><img src="/images/20251018_UNICEF_GIBD/arrow_plots_growth_rates.png" alt="arrow"></p>
+<p>The charts above illustrated the growth rate of immunisation budget v.s. growth rate of immunisation coverage for the 9 pairs. There were some outliers in the growth rates of immunisation budget, while the range of growth rates of immunisation coverages often stayed stable.</p>
+<h3 id="fixed-effects">Fixed-effects</h3>
+<p>Below are the fixed effects from the 9 models, with the red line at zero.
+Most vaccines had positive posterior means, meaning coverage usually rose with higher budgets - except for MCV2 and IPV2, which were negative.</p>
+<p><img src="/images/20251018_UNICEF_GIBD/grid_fixed_effect_95CrL_resized.png" alt="fixed"></p>
+<p>For DTP1, the 95% credible interval didn&rsquo;t cross zero - meaning the effect was statistically significant under the 95% significant level. The posterior mean was 0.42%, with a credible interval from 0.02% to 0.82%.</p>
+<blockquote>
+<p>In other words, for every 1% increase in the immunisation budget, the growth rate of DTP1 coverage rises by 0.42 percentage points, after accounting for year-to-year variations.</p>
+</blockquote>
+<h3 id="prediction-for-2025">Prediction for 2025</h3>
+<p>I further utilize the DTP1 model to predict countries&rsquo; DTP1 coverage in 2025, where 5 countries&rsquo; budget data were available: Kenya, Mali, Zambia, Madagascar, and Togo.</p>
+<p><img src="/images/20251018_UNICEF_GIBD/plot_prediction_2021_2025.png" alt="prediction"></p>
+<p>The 2025 outlook for DTPCV1 coverage in the 5 countries showed an estimated average increase of 0.5% (95% CrI: -4.6% to 5.5%), corresponding to an expected average coverage of 88.6% (95% CrI: 84.2% to 93.0%).</p>
+<h2 id="discussion">Discussion</h2>
+<p>This study found no evidence that the growth rate of the Level 1 immunisation budget is a strong predictor of the growth rates for any of the 8 assessed immunisation coverages (DTP3, MCV1, MCV2, POL3, IPV1, IPV2, BCG, and PCV3). This outcome is plausible, given the following factors that complicate the link between budget and coverage:</p>
+<ul>
+<li>Budget data are aggregated and not antigen-specific</li>
+<li>Budget revisions v.s. actual expenditures</li>
+<li>Apart from gov budget, Gavi plays a key role</li>
+<li>Subnational variations</li>
+<li>COVID-19 pandemic</li>
+<li>Currency headwinds</li>
+<li>Accessibility, confidence, policy</li>
+</ul>
+<p>My analysis revealed that the annual immunisation budget demonstrates a statistically significant predictive relationship with the MCV1 coverage of. However, the 95% credible interval for the effect size (0.02% to 0.82%) indicates that the magnitude of this influence is notably small.</p>
+<blockquote>
+<p>Nevertheless, this predictive relationship offers a valuable early outlook for programme planning due to the timely availability of budget data.</p>
+</blockquote>
+<p>This finding can support programme planning for National Immunisation Programmes, NITAGs, and Ministries of Health and Finance in LMICs. By leveraging this founding, these entities can better plan immunisation strategies and strengthen the mobilization of domestic resources required to sustain DTP coverage levels.</p>
+<p>Furthermore, this work provides insights for global health initiatives, including the WHO, UNICEF, and Gavi. The results can be applied to enhance M&amp;E exercises, improve the tracking of government financial commitments, inform strategic financing decisions, and refine operational forecasts.</p>
+<p>For researchers, this work demonstrates the utility of GIBD for economic and predictive modelling. Potential pathways for further analysis include: exploring discrepancies between budgets and expenditures, links to reaching zero-dose children, and integrating other health financing indicators.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Immunisation function L1 budget increases demonstrate a small but consistent influence on DTP1 coverage in LMICs. Unlike lagging expenditure data, budget data are available prior to programme implementation, making GIBD a valuable tool for early coverage outlooks.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>Views expressed here are my own and don&rsquo;t represent the views of my employer, Taiwan Centers for Disease Control. This post is adapated with the help of Google Gemini flash 2.5.</em></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+        </div>
+    </div>
+    <a href="#" id="scrollToTopButton">
+        <svg t="1686753152588" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            p-id="3988" width="48" height="48">
+            <path
+                d="M518.5 360.3c-3.2-4.4-9.7-4.4-12.9 0l-178 246c-3.8 5.3 0 12.7 6.5 12.7H381c10.2 0 19.9-4.9 25.9-13.2L512 460.4l105.2 145.4c6 8.3 15.6 13.2 25.9 13.2H690c6.5 0 10.3-7.4 6.5-12.7l-178-246z"
+                p-id="3989" fill="#363636"></path>
+            <path
+                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                p-id="3990" fill="#363636"></path>
+        </svg>
+    </a><hr style="border-top: 1px solid #EEEEEE;">
+<div id="comment"></div>
+<script>
+    const getStoredTheme = () => localStorage.getItem("theme") === "dark" ? "dark" : "light";
+
+    const setGiscusTheme = () => {
+        const sendMessage = (message) => {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (iframe) {
+                iframe.contentWindow.postMessage({giscus: message}, 'https://giscus.app');
+            }
+        }
+        sendMessage({setConfig: {theme: getStoredTheme()}})
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const giscusAttributes = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "hotjuicew\/blog",
+            "data-repo-id": "R_kgDOHHQOuw",
+            "data-category": "Announcements",
+            "data-category-id": "DIC_kwDOHHQOu84CWCQ3",
+            "data-mapping": "og:title",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-input-position": "bottom",
+            "data-theme": getStoredTheme(),
+            "data-lang": "en",
+            "data-loading": "lazy",
+            "crossorigin": "anonymous",
+        };
+
+        
+        const giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(
+            ([key, value]) => giscusScript.setAttribute(key, value));
+        document.getElementById("comment").appendChild(giscusScript);
+
+        
+        const themeToggle = document.querySelector(".theme-toggle");
+        if (themeToggle) {
+            themeToggle.addEventListener("click", setGiscusTheme);
+        }
+    });
+
+</script>
+
+
+<div class="pp-container">
+        <section class="pre-and-post">
+            <div class="has-text-left">
+                
+                <p>Previous post</p>
+                <a href="https://haokaitseng.github.io/post/20250712_pandemic_agreement_including_taiwan/">The WHO Pandemic Agreement: No True Health Security Without Taiwan</a>
+                
+            </div>
+            <div class="has-text-right">
+                
+            </div>
+        </section>
+    </div>
+
+</div>
+
+        </main><footer class="footer">
+    <div class="content has-text-centered">
+    <span>&copy; 2025 <a href="https://haokaitseng.github.io/">Transmission Landscape</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" target="_blank">Hugo</a> &
+        <a href="https://github.com/hotjuicew/hugo-JuiceBar" target="_blank">JuiceBar</a>
+    </span>
+    </div>
+  </footer></body>
+</html>
+
