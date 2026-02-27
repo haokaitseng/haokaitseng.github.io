@@ -6,8 +6,15 @@
     <description>Recent content in Data Science on Transmission Landscape</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Thu, 13 Mar 2025 22:11:12 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 27 Feb 2026 00:00:00 +0800</lastBuildDate>
     <atom:link href="https://haokaitseng.github.io/categories/data-science/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Agentic AI adoption for app development: Global Outbreak Intelligence Hub</title>
+      <link>https://haokaitseng.github.io/post/20260226_global_outbreak_intelligence_antigravity/</link>
+      <pubDate>Fri, 27 Feb 2026 00:00:00 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/post/20260226_global_outbreak_intelligence_antigravity/</guid>
+      <description>In this post, I’ll share a step-by-step guide on how I leveraged Google Antigravity and Gemini 3.0 model to modernize a mission-critical workflow. This React-based application prototype transforms raw epidemic signals into a seamless, interactive geospatial narrative, reimagining how we visualize global health intelligence. Link to the application Global Outbreak Intelligence Hub and the Github repo&#xA;Step by step guide: Prompt engineering in Antigravity In my first attempt, I manually drafted a Markdown file describing the app&amp;rsquo;s requirements.</description>
+    </item>
     <item>
       <title>Self-sustained data &amp; measures in Power BI</title>
       <link>https://haokaitseng.github.io/post/20250313_powerbi_sustained_data_updating/</link>

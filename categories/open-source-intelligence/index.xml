@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Open source intelligence on Transmission Landscape</title>
+    <link>https://haokaitseng.github.io/categories/open-source-intelligence/</link>
+    <description>Recent content in Open source intelligence on Transmission Landscape</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Fri, 27 Feb 2026 00:00:00 +0800</lastBuildDate>
+    <atom:link href="https://haokaitseng.github.io/categories/open-source-intelligence/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Agentic AI adoption for app development: Global Outbreak Intelligence Hub</title>
+      <link>https://haokaitseng.github.io/post/20260226_global_outbreak_intelligence_antigravity/</link>
+      <pubDate>Fri, 27 Feb 2026 00:00:00 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/post/20260226_global_outbreak_intelligence_antigravity/</guid>
+      <description>In this post, I’ll share a step-by-step guide on how I leveraged Google Antigravity and Gemini 3.0 model to modernize a mission-critical workflow. This React-based application prototype transforms raw epidemic signals into a seamless, interactive geospatial narrative, reimagining how we visualize global health intelligence. Link to the application Global Outbreak Intelligence Hub and the Github repo&#xA;Step by step guide: Prompt engineering in Antigravity In my first attempt, I manually drafted a Markdown file describing the app&amp;rsquo;s requirements.</description>
+    </item>
+  </channel>
+</rss>

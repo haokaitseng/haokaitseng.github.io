@@ -6,8 +6,50 @@
     <description>Recent content in Categories on Transmission Landscape</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sat, 18 Oct 2025 22:11:12 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 27 Feb 2026 00:00:00 +0800</lastBuildDate>
     <atom:link href="https://haokaitseng.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI</title>
+      <link>https://haokaitseng.github.io/categories/ai/</link>
+      <pubDate>Fri, 27 Feb 2026 00:00:00 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Data Science</title>
+      <link>https://haokaitseng.github.io/categories/data-science/</link>
+      <pubDate>Fri, 27 Feb 2026 00:00:00 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/data-science/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Open source intelligence</title>
+      <link>https://haokaitseng.github.io/categories/open-source-intelligence/</link>
+      <pubDate>Fri, 27 Feb 2026 00:00:00 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/open-source-intelligence/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>React.js</title>
+      <link>https://haokaitseng.github.io/categories/react.js/</link>
+      <pubDate>Fri, 27 Feb 2026 00:00:00 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/react.js/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Surveillance</title>
+      <link>https://haokaitseng.github.io/categories/surveillance/</link>
+      <pubDate>Fri, 27 Feb 2026 00:00:00 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/surveillance/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Taiwan</title>
+      <link>https://haokaitseng.github.io/categories/taiwan/</link>
+      <pubDate>Fri, 27 Feb 2026 00:00:00 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/taiwan/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Bayesian</title>
       <link>https://haokaitseng.github.io/categories/bayesian/</link>
@@ -72,13 +114,6 @@
       <description></description>
     </item>
     <item>
-      <title>Taiwan</title>
-      <link>https://haokaitseng.github.io/categories/taiwan/</link>
-      <pubDate>Sat, 12 Jul 2025 22:11:12 +0800</pubDate>
-      <guid>https://haokaitseng.github.io/categories/taiwan/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>WHO</title>
       <link>https://haokaitseng.github.io/categories/who/</link>
       <pubDate>Sat, 12 Jul 2025 22:11:12 +0800</pubDate>
@@ -97,13 +132,6 @@
       <link>https://haokaitseng.github.io/categories/vaccine/</link>
       <pubDate>Tue, 17 Jun 2025 22:11:12 +0800</pubDate>
       <guid>https://haokaitseng.github.io/categories/vaccine/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Data Science</title>
-      <link>https://haokaitseng.github.io/categories/data-science/</link>
-      <pubDate>Thu, 13 Mar 2025 22:11:12 +0800</pubDate>
-      <guid>https://haokaitseng.github.io/categories/data-science/</guid>
       <description></description>
     </item>
     <item>
