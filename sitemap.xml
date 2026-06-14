@@ -2,22 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://haokaitseng.github.io/categories/ai/</loc>
+    <lastmod>2026-06-13T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://haokaitseng.github.io/categories/</loc>
+    <lastmod>2026-06-13T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://haokaitseng.github.io/categories/event-based-surveillance/</loc>
+    <lastmod>2026-06-13T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://haokaitseng.github.io/categories/global-health/</loc>
+    <lastmod>2026-06-13T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://haokaitseng.github.io/categories/open-source-intelligence/</loc>
+    <lastmod>2026-06-13T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://haokaitseng.github.io/post/</loc>
+    <lastmod>2026-06-13T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://haokaitseng.github.io/post/20260614_interntional_outbreak_intelligence_pilippines/</loc>
+    <lastmod>2026-06-13T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://haokaitseng.github.io/</loc>
+    <lastmod>2026-06-13T00:00:00+08:00</lastmod>
+  </url><url>
     <loc>https://haokaitseng.github.io/post/20260226_global_outbreak_intelligence_antigravity/</loc>
     <lastmod>2026-02-27T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://haokaitseng.github.io/categories/ai/</loc>
-    <lastmod>2026-02-27T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://haokaitseng.github.io/categories/</loc>
-    <lastmod>2026-02-27T00:00:00+08:00</lastmod>
-  </url><url>
     <loc>https://haokaitseng.github.io/categories/data-science/</loc>
-    <lastmod>2026-02-27T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://haokaitseng.github.io/categories/open-source-intelligence/</loc>
-    <lastmod>2026-02-27T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://haokaitseng.github.io/post/</loc>
     <lastmod>2026-02-27T00:00:00+08:00</lastmod>
   </url><url>
     <loc>https://haokaitseng.github.io/categories/react.js/</loc>
@@ -27,9 +39,6 @@
     <lastmod>2026-02-27T00:00:00+08:00</lastmod>
   </url><url>
     <loc>https://haokaitseng.github.io/categories/taiwan/</loc>
-    <lastmod>2026-02-27T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://haokaitseng.github.io/</loc>
     <lastmod>2026-02-27T00:00:00+08:00</lastmod>
   </url><url>
     <loc>https://haokaitseng.github.io/post/20251012_unicef_gibd/</loc>
@@ -55,9 +64,6 @@
   </url><url>
     <loc>https://haokaitseng.github.io/categories/wuenic/</loc>
     <lastmod>2025-10-18T22:11:12+08:00</lastmod>
-  </url><url>
-    <loc>https://haokaitseng.github.io/categories/global-health/</loc>
-    <lastmod>2025-07-12T22:11:12+08:00</lastmod>
   </url><url>
     <loc>https://haokaitseng.github.io/categories/pandemic-agreement/</loc>
     <lastmod>2025-07-12T22:11:12+08:00</lastmod>

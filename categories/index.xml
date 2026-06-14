@@ -6,13 +6,34 @@
     <description>Recent content in Categories on Transmission Landscape</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Fri, 27 Feb 2026 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 13 Jun 2026 00:00:00 +0800</lastBuildDate>
     <atom:link href="https://haokaitseng.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI</title>
       <link>https://haokaitseng.github.io/categories/ai/</link>
-      <pubDate>Fri, 27 Feb 2026 00:00:00 +0800</pubDate>
+      <pubDate>Sat, 13 Jun 2026 00:00:00 +0800</pubDate>
       <guid>https://haokaitseng.github.io/categories/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Event-Based Surveillance</title>
+      <link>https://haokaitseng.github.io/categories/event-based-surveillance/</link>
+      <pubDate>Sat, 13 Jun 2026 00:00:00 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/event-based-surveillance/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Global Health</title>
+      <link>https://haokaitseng.github.io/categories/global-health/</link>
+      <pubDate>Sat, 13 Jun 2026 00:00:00 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/global-health/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Open source intelligence</title>
+      <link>https://haokaitseng.github.io/categories/open-source-intelligence/</link>
+      <pubDate>Sat, 13 Jun 2026 00:00:00 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/open-source-intelligence/</guid>
       <description></description>
     </item>
     <item>
@@ -20,13 +41,6 @@
       <link>https://haokaitseng.github.io/categories/data-science/</link>
       <pubDate>Fri, 27 Feb 2026 00:00:00 +0800</pubDate>
       <guid>https://haokaitseng.github.io/categories/data-science/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Open source intelligence</title>
-      <link>https://haokaitseng.github.io/categories/open-source-intelligence/</link>
-      <pubDate>Fri, 27 Feb 2026 00:00:00 +0800</pubDate>
-      <guid>https://haokaitseng.github.io/categories/open-source-intelligence/</guid>
       <description></description>
     </item>
     <item>
@@ -97,13 +111,6 @@
       <link>https://haokaitseng.github.io/categories/wuenic/</link>
       <pubDate>Sat, 18 Oct 2025 22:11:12 +0800</pubDate>
       <guid>https://haokaitseng.github.io/categories/wuenic/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Global Health</title>
-      <link>https://haokaitseng.github.io/categories/global-health/</link>
-      <pubDate>Sat, 12 Jul 2025 22:11:12 +0800</pubDate>
-      <guid>https://haokaitseng.github.io/categories/global-health/</guid>
       <description></description>
     </item>
     <item>
