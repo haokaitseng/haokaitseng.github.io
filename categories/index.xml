@@ -6,13 +6,34 @@
     <description>Recent content in Categories on Transmission Landscape</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sat, 13 Jun 2026 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 18 Jul 2026 00:00:00 +0800</lastBuildDate>
     <atom:link href="https://haokaitseng.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI</title>
       <link>https://haokaitseng.github.io/categories/ai/</link>
-      <pubDate>Sat, 13 Jun 2026 00:00:00 +0800</pubDate>
+      <pubDate>Sat, 18 Jul 2026 00:00:00 +0800</pubDate>
       <guid>https://haokaitseng.github.io/categories/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Communication</title>
+      <link>https://haokaitseng.github.io/categories/communication/</link>
+      <pubDate>Sat, 18 Jul 2026 00:00:00 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/communication/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Information system development</title>
+      <link>https://haokaitseng.github.io/categories/information-system-development/</link>
+      <pubDate>Sat, 18 Jul 2026 00:00:00 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/information-system-development/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Systems architecture</title>
+      <link>https://haokaitseng.github.io/categories/systems-architecture/</link>
+      <pubDate>Sat, 18 Jul 2026 00:00:00 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/systems-architecture/</guid>
       <description></description>
     </item>
     <item>

@@ -1,0 +1,335 @@
+
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>A new system is a mirror of how you talk: what the business-IT fight is really about | Transmission Landscape</title>
+    <meta name="description"
+        content="Again!? You wanna build another new system? If you are a data scientist working closely with IT team, you have probably heard this complaint. &ldquo;Why does everyone in the house want to build their own new system?&rdquo; — an IT manager said this to me.
+He wanted to persuade us — a data-facing team that already runs many surveillance systems alongside IT — to build on an existing platform instead. The claim is fair: a new system means a new vendor, long procurement, contract management, compliance review, architecture rework, and a lot of new things to maintain.">
+    <link rel="canonical" href="https://haokaitseng.github.io/post/20260712_collaboration_paradox/" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    
+    <link rel="stylesheet" href="https://haokaitseng.github.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
+
+    <meta property="og:title" content="A new system is a mirror of how you talk: what the business-IT fight is really about" />
+<meta property="og:description" content="Again!? You wanna build another new system? If you are a data scientist working closely with IT team, you have probably heard this complaint. &ldquo;Why does everyone in the house want to build their own new system?&rdquo; — an IT manager said this to me.
+He wanted to persuade us — a data-facing team that already runs many surveillance systems alongside IT — to build on an existing platform instead. The claim is fair: a new system means a new vendor, long procurement, contract management, compliance review, architecture rework, and a lot of new things to maintain." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://haokaitseng.github.io/post/20260712_collaboration_paradox/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2026-07-18T00:00:00+08:00" />
+<meta property="article:modified_time" content="2026-07-18T00:00:00+08:00" /><meta property="og:site_name" content="Kai&#39;s Data Science Blog" />
+
+
+    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="A new system is a mirror of how you talk: what the business-IT fight is really about"/>
+<meta name="twitter:description" content="Again!? You wanna build another new system? If you are a data scientist working closely with IT team, you have probably heard this complaint. &ldquo;Why does everyone in the house want to build their own new system?&rdquo; — an IT manager said this to me.
+He wanted to persuade us — a data-facing team that already runs many surveillance systems alongside IT — to build on an existing platform instead. The claim is fair: a new system means a new vendor, long procurement, contract management, compliance review, architecture rework, and a lot of new things to maintain."/>
+
+    
+    
+    
+
+</head><body><nav class="navbar is-light" role="navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a href="/" title="home" class="navbar-item">
+                <span class="logo">
+                    <h1>Transmission Landscape</h1>
+                </span>
+            </a>
+
+            
+            <a id="theme-toggle" class="theme-toggle" href="#">
+                <img src="https://haokaitseng.github.io/svg/sun.svg" alt="sun icon" class="theme-icon" />
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                
+                <a href="/about" class="navbar-item">About</a>
+                
+                <a href="/post" class="navbar-item">Blog</a>
+                
+                <a href="/categories" class="navbar-item">Categories</a>
+                
+            </div>
+
+        </div>
+        <div class="search">
+            <div id="fastSearch">
+                <input id="searchInput" tabindex="0" placeholder="Search..">
+                <ul id="searchResults">
+
+                </ul>
+            </div>
+            <a id="search-btn" style="display: inline-block;" href="# ">
+                <div class="icon-search"><svg class="search-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+            </a>
+        </div>
+
+        <script src="/js/fuse.min.js"></script> 
+        <script src="/js/fastsearch.js"></script>
+
+    </div>
+</nav>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var burger = document.querySelector('.navbar-burger');
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('is-active');
+            document.querySelector('.navbar-menu').classList.toggle('is-active');
+        });
+    });
+
+    
+    function setTheme(theme) {
+        let body = document.body;
+        let themeIcon = document.querySelector(".theme-icon");
+        if (theme === "dark") {
+            body.classList.add("dark-mode");
+            themeIcon.src = "https:\/\/haokaitseng.github.io\/svg/moon.svg";
+            themeIcon.alt = "moon icon";
+        } else {
+            body.classList.remove("dark-mode");
+            themeIcon.src = "https:\/\/haokaitseng.github.io\/svg/sun.svg";
+            themeIcon.alt = "sun icon";
+        }
+        
+        localStorage.setItem("theme", theme);
+    }
+
+    
+    let theme = localStorage.getItem("theme") || "light";
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDarkMode) {
+        
+        setTheme('dark');
+
+    } else {
+        
+        setTheme('light');
+    }
+    setTheme(theme);
+
+    
+    document.getElementById("theme-toggle").addEventListener("click", function() {
+        if (theme === "light") {
+            theme = "dark";
+        } else {
+            theme = "light";
+        }
+        setTheme(theme);
+    });
+
+
+
+</script>
+
+</header><main>
+<div class="single-container">
+    <div class="archive">
+        <h1 class="title is-1">A new system is a mirror of how you talk: what the business-IT fight is really about</h1>
+        <div class="title subtitle heading is-6">
+            <div class="author-info columns is-vcentered">
+                <div class="column">
+                    <div class="columns is-vcentered is-mobile">
+                        
+                        <div class="column is-narrow">
+                            <img src="/images/profile.jpg" class="author-image">
+                        </div>
+                        
+                        <div class="column">
+                            <p>Kai</p>
+                            <p><time>July 18, 2026</time>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="small-categories-container">
+                    <a href="/categories/communication">Communication</a>, <a href="/categories/information-system-development">Information system development</a>, <a href="/categories/systems-architecture">Systems architecture</a>, <a href="/categories/ai">AI</a>
+                </div>
+            </div>
+        </div>
+        <div class="content article-content">
+            <div class="toc-container">
+                
+    <div class="post-toc">
+        
+            <aside>
+                <button id="tocButton" ><h4 id="contents" style="margin-left: 1vw;color:rgb(96, 134, 180);margin-bottom: 0;">CONTENTS</h4></button>
+                <div id="hide"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#why-does-every-department-want-its-own-system">Why does every department want its own system?</a></li>
+    <li><a href="#systems-are-the-outcome-of-communication-structures">Systems are the outcome of communication structures</a></li>
+    <li><a href="#govern-the-conversation-not-the-systems">Govern the conversation, not the systems</a></li>
+    <li><a href="#so-should-you-build-a-new-one">So, should you build a new one?</a></li>
+  </ul>
+</nav></div>
+            </aside>
+        
+    </div><script>
+    
+        let button = document.getElementById('tocButton');
+        let hide = document.getElementById("hide");
+        let contents=document.getElementById("contents");
+        button.addEventListener("click", function() {
+        if (hide.style.display!='block') {
+            hide.style.display='block'
+        } else {
+            hide.style.display='none'
+            contents.style.color='rgb(96, 134, 180)'
+        }
+        });
+    
+
+
+
+
+</script>
+            </div>
+            <h1 id="again-you-wanna-build-another-new-system">Again!? You wanna build another new system?</h1>
+<p>If you are a data scientist working closely with IT team, you have probably heard this complaint. <strong>&ldquo;Why does everyone in the house want to build their own new system?&rdquo;</strong> — an IT manager said this to me.</p>
+<p>He wanted to persuade us — a data-facing team that already runs many surveillance systems alongside IT — to build on an existing platform instead. The claim is fair: a new system means a new vendor, long procurement, contract management, compliance review, architecture rework, and <em>a lot of new things to maintain</em>.</p>
+<p>And yet we still had a hundred reasons to build our own. To be clear, that never meant skipping IT — the real question was never <em>whether</em> to involve them, but who <em>drives</em> the system.</p>
+<p>This got me thinking. In the age of agentic AI, where the number of applications can skyrocket, this conflict will only show up more often. So rather than take a side, I want to ask where the tension between a business unit and IT comes from — starting with the argument I was having myself.</p>
+<h2 id="why-does-every-department-want-its-own-system">Why does every department want its own system?</h2>
+<p>In short: we recently secured funding to build an AI agent system for monitoring international outbreaks. IT&rsquo;s reasonable question was: why can&rsquo;t you add these functions to an existing system and avoid duplication? Our answers were:</p>
+<ol>
+<li><strong>Proven mission with a mandate.</strong> We have monitored international outbreaks manually for nearly two decades — work of real value to the agency, now formally approved in the next five-year national strategy.</li>
+<li><strong>A genuinely different function.</strong> Our existing systems watch local cases and are mostly <em>indicator-based</em>. The new one is <em>event-based</em>: the diseases it captures and the sources it draws on are far wider.</li>
+<li><strong>A technology-readiness gap.</strong> AI adoption is an international trend we need to follow — and the legacy systems simply aren&rsquo;t AI-ready.</li>
+<li><strong>An accountability indicator.</strong> &ldquo;An event management system is established&rdquo; is itself a monitoring-and-evaluation indicator we&rsquo;re measured against.</li>
+<li><strong>The honest one — politics.</strong> Extending someone else&rsquo;s system means negotiating their roadmap, inheriting their debt, and waiting for their priorities. Building <em>together</em> means shared budgets and endless coordination. Starting fresh looks cheaper for the department — at the cost of the organisation&rsquo;s coherence.</li>
+<li><strong>Expertise we don&rsquo;t have in-house.</strong> Our team knows the domain, but with limited staff we cannot build and run everything ourselves. A new system lets us hire that capability from a vendor: often a system integrator (SI) team that builds a customized system to our specification.</li>
+<li><strong>A sustainability path.</strong> This is not an ad hoc build. We are committing to maintain it, with a long-term roadmap and dedicated funding behind it.</li>
+</ol>
+<p>The seven reasons settle one question: a new system deserves to exist. But they leave the harder one my IT manager was really asking — <em>who drives it?</em> A justified system could still be IT-led, yet departments everywhere want the wheel, pulled by three forces:</p>
+<ul>
+<li><strong>Speed</strong>: you stop waiting in someone else&rsquo;s queue.</li>
+<li><strong>Fit</strong>: the people closest to the work know the requirements best.</li>
+<li><strong>Autonomy</strong>: clear ownership, your own budget, no negotiating access rights every time you need a new field.</li>
+</ul>
+<p>Look at these forces, and at reasons 5 and 6: every one is a cost of communication. IT&rsquo;s queue is paid in <em>time</em>. Translating requirements to outsiders is paid in <em>accuracy</em> — something is always lost. Negotiating budgets, roadmaps, and access rights is paid in <em>political capital</em>. Even hiring a vendor buys your way out of one conversation at the price of another: procurement, contracts, lock-in. A department building its own system is not really buying software — it is buying its way out of talking. And that instinct has a name; someone described the mechanism sixty years ago.</p>
+<h2 id="systems-are-the-outcome-of-communication-structures">Systems are the outcome of communication structures</h2>
+<p>Melvin E. Conway made this observation back in 1968:</p>
+<blockquote>
+<p>Organizations which design systems&hellip; are constrained to produce designs which are copies of the communication structures of these organizations.</p>
+</blockquote>
+<p>When departments don&rsquo;t talk much, they build silo systems that avoid sharing functions, data, or access rights. The architecture simply reveals the organisation chart.</p>
+<p>This is the IT department&rsquo;s nightmare: everybody owns a customized system and the system count keeps climbing. But Conway&rsquo;s Law tells us the sprawl is a symptom, not the disease. The disease is how the organisation communicates.</p>
+<p>When every department has its own system — each reaching out to its own vendor, all loosely orbiting a stretched-thin IT core — the architecture ends up looking like this:</p>
+<p><img src="/images/20260718_system_comms/it-business-vendor-ring.svg" alt="A central IT core surrounded by three business-unit segments, each connected outward to its own separate vendor"></p>
+<h2 id="govern-the-conversation-not-the-systems">Govern the conversation, not the systems</h2>
+<p>So the real problem was never the number of systems — it was the communication that shaped them. That reframes the fix: <strong>optimize the communication structure first.</strong> Fix the talking and the architecture follows; fix the architecture without the talking and you just get a well-documented copy of the same silos.</p>
+<p>In practice, that means starting with the organisation, not the software. Put cross-functional teams in charge of the missions that must not fail, then give them a federated paved road: IT supplies shared standards, common data definitions, security guardrails, and an approved vendor list; business units build freely on top.</p>
+<h2 id="so-should-you-build-a-new-one">So, should you build a new one?</h2>
+<p>If you&rsquo;re about to propose yet another system, the seven reasons above double as a checklist: a real mandate, a genuinely different function, a technology gap the legacy stack can&rsquo;t reach, an accountability hook, an honest read on the politics, the capacity to build and run it, and a plan to sustain it once the launch budget is gone. If you can answer most of these, you probably have a real case.</p>
+<p>If you can&rsquo;t, you&rsquo;re likely better off building on what already exists — and saving your IT manager from asking &ldquo;again?&rdquo;</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+</table>
+<p><em>Views expressed here are my own and do not represent the views of my employer, Taiwan Centers for Disease Control. This post was collobrated with Claude.</em></p>
+
+        </div>
+    </div>
+    <a href="#" id="scrollToTopButton">
+        <svg t="1686753152588" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            p-id="3988" width="48" height="48">
+            <path
+                d="M518.5 360.3c-3.2-4.4-9.7-4.4-12.9 0l-178 246c-3.8 5.3 0 12.7 6.5 12.7H381c10.2 0 19.9-4.9 25.9-13.2L512 460.4l105.2 145.4c6 8.3 15.6 13.2 25.9 13.2H690c6.5 0 10.3-7.4 6.5-12.7l-178-246z"
+                p-id="3989" fill="#363636"></path>
+            <path
+                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                p-id="3990" fill="#363636"></path>
+        </svg>
+    </a><hr style="border-top: 1px solid #EEEEEE;">
+<div id="comment"></div>
+<script>
+    const getStoredTheme = () => localStorage.getItem("theme") === "dark" ? "dark" : "light";
+
+    const setGiscusTheme = () => {
+        const sendMessage = (message) => {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (iframe) {
+                iframe.contentWindow.postMessage({giscus: message}, 'https://giscus.app');
+            }
+        }
+        sendMessage({setConfig: {theme: getStoredTheme()}})
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const giscusAttributes = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "hotjuicew\/blog",
+            "data-repo-id": "R_kgDOHHQOuw",
+            "data-category": "Announcements",
+            "data-category-id": "DIC_kwDOHHQOu84CWCQ3",
+            "data-mapping": "og:title",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-input-position": "bottom",
+            "data-theme": getStoredTheme(),
+            "data-lang": "en",
+            "data-loading": "lazy",
+            "crossorigin": "anonymous",
+        };
+
+        
+        const giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(
+            ([key, value]) => giscusScript.setAttribute(key, value));
+        document.getElementById("comment").appendChild(giscusScript);
+
+        
+        const themeToggle = document.querySelector(".theme-toggle");
+        if (themeToggle) {
+            themeToggle.addEventListener("click", setGiscusTheme);
+        }
+    });
+
+</script>
+
+
+<div class="pp-container">
+        <section class="pre-and-post">
+            <div class="has-text-left">
+                
+                <p>Previous post</p>
+                <a href="https://haokaitseng.github.io/post/20260614_interntional_outbreak_intelligence_pilippines/">Six AI Frontiers as Global Public Good</a>
+                
+            </div>
+            <div class="has-text-right">
+                
+            </div>
+        </section>
+    </div>
+
+</div>
+
+        </main><footer class="footer">
+    <div class="content has-text-centered">
+    <span>&copy; 2026 <a href="https://haokaitseng.github.io/">Transmission Landscape</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" target="_blank">Hugo</a> &
+        <a href="https://github.com/hotjuicew/hugo-JuiceBar" target="_blank">JuiceBar</a>
+    </span>
+    </div>
+  </footer></body>
+</html>
+
