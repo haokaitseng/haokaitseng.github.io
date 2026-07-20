@@ -4,27 +4,27 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>A new system is a mirror of how you talk: what the business-IT fight is really about | Transmission Landscape</title>
+    <title>Building a new system mirrors how you talk | Transmission Landscape</title>
     <meta name="description"
-        content="Again!? You wanna build another new system? If you are a data scientist working closely with IT team, you have probably heard this complaint. &ldquo;Why does everyone in the house want to build their own new system?&rdquo; — an IT manager said this to me.
-He wanted to persuade us — a data-facing team that already runs many surveillance systems alongside IT — to build on an existing platform instead. The claim is fair: a new system means a new vendor, long procurement, contract management, compliance review, architecture rework, and a lot of new things to maintain.">
+        content="In this post, I use Conway&rsquo;s Law to explain why departments keep building their own systems — and share a checklist for deciding whether you should.
+Again!? You wanna build another new system? If you are a data scientist working closely with IT team, you have probably heard this complaint. &ldquo;Why does everyone in the house want to build their own new system?&rdquo; — an IT manager said this to me.">
     <link rel="canonical" href="https://haokaitseng.github.io/post/20260712_collaboration_paradox/" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
     
     <link rel="stylesheet" href="https://haokaitseng.github.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
 
-    <meta property="og:title" content="A new system is a mirror of how you talk: what the business-IT fight is really about" />
-<meta property="og:description" content="Again!? You wanna build another new system? If you are a data scientist working closely with IT team, you have probably heard this complaint. &ldquo;Why does everyone in the house want to build their own new system?&rdquo; — an IT manager said this to me.
-He wanted to persuade us — a data-facing team that already runs many surveillance systems alongside IT — to build on an existing platform instead. The claim is fair: a new system means a new vendor, long procurement, contract management, compliance review, architecture rework, and a lot of new things to maintain." />
+    <meta property="og:title" content="Building a new system mirrors how you talk" />
+<meta property="og:description" content="In this post, I use Conway&rsquo;s Law to explain why departments keep building their own systems — and share a checklist for deciding whether you should.
+Again!? You wanna build another new system? If you are a data scientist working closely with IT team, you have probably heard this complaint. &ldquo;Why does everyone in the house want to build their own new system?&rdquo; — an IT manager said this to me." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://haokaitseng.github.io/post/20260712_collaboration_paradox/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2026-07-18T00:00:00+08:00" />
 <meta property="article:modified_time" content="2026-07-18T00:00:00+08:00" /><meta property="og:site_name" content="Kai&#39;s Data Science Blog" />
 
 
-    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="A new system is a mirror of how you talk: what the business-IT fight is really about"/>
-<meta name="twitter:description" content="Again!? You wanna build another new system? If you are a data scientist working closely with IT team, you have probably heard this complaint. &ldquo;Why does everyone in the house want to build their own new system?&rdquo; — an IT manager said this to me.
-He wanted to persuade us — a data-facing team that already runs many surveillance systems alongside IT — to build on an existing platform instead. The claim is fair: a new system means a new vendor, long procurement, contract management, compliance review, architecture rework, and a lot of new things to maintain."/>
+    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Building a new system mirrors how you talk"/>
+<meta name="twitter:description" content="In this post, I use Conway&rsquo;s Law to explain why departments keep building their own systems — and share a checklist for deciding whether you should.
+Again!? You wanna build another new system? If you are a data scientist working closely with IT team, you have probably heard this complaint. &ldquo;Why does everyone in the house want to build their own new system?&rdquo; — an IT manager said this to me."/>
 
     
     
@@ -138,7 +138,7 @@ He wanted to persuade us — a data-facing team that already runs many surveilla
 </header><main>
 <div class="single-container">
     <div class="archive">
-        <h1 class="title is-1">A new system is a mirror of how you talk: what the business-IT fight is really about</h1>
+        <h1 class="title is-1">Building a new system mirrors how you talk</h1>
         <div class="title subtitle heading is-6">
             <div class="author-info columns is-vcentered">
                 <div class="column">
@@ -169,10 +169,10 @@ He wanted to persuade us — a data-facing team that already runs many surveilla
                 <button id="tocButton" ><h4 id="contents" style="margin-left: 1vw;color:rgb(96, 134, 180);margin-bottom: 0;">CONTENTS</h4></button>
                 <div id="hide"><nav id="TableOfContents">
   <ul>
-    <li><a href="#why-does-every-department-want-its-own-system">Why does every department want its own system?</a></li>
+    <li><a href="#the-rationale">The rationale</a></li>
     <li><a href="#systems-are-the-outcome-of-communication-structures">Systems are the outcome of communication structures</a></li>
     <li><a href="#govern-the-conversation-not-the-systems">Govern the conversation, not the systems</a></li>
-    <li><a href="#so-should-you-build-a-new-one">So, should you build a new one?</a></li>
+    <li><a href="#a-checklist">A checklist</a></li>
   </ul>
 </nav></div>
             </aside>
@@ -197,21 +197,24 @@ He wanted to persuade us — a data-facing team that already runs many surveilla
 
 </script>
             </div>
-            <h1 id="again-you-wanna-build-another-new-system">Again!? You wanna build another new system?</h1>
+            <blockquote>
+<p>In this post, I use Conway&rsquo;s Law to explain why departments keep building their own systems — and share a checklist for deciding whether you should.</p>
+</blockquote>
+<h1 id="again-you-wanna-build-another-new-system">Again!? You wanna build another new system?</h1>
 <p>If you are a data scientist working closely with IT team, you have probably heard this complaint. <strong>&ldquo;Why does everyone in the house want to build their own new system?&rdquo;</strong> — an IT manager said this to me.</p>
 <p>He wanted to persuade us — a data-facing team that already runs many surveillance systems alongside IT — to build on an existing platform instead. The claim is fair: a new system means a new vendor, long procurement, contract management, compliance review, architecture rework, and <em>a lot of new things to maintain</em>.</p>
 <p>And yet we still had a hundred reasons to build our own. To be clear, that never meant skipping IT — the real question was never <em>whether</em> to involve them, but who <em>drives</em> the system.</p>
 <p>This got me thinking. In the age of agentic AI, where the number of applications can skyrocket, this conflict will only show up more often. So rather than take a side, I want to ask where the tension between a business unit and IT comes from — starting with the argument I was having myself.</p>
-<h2 id="why-does-every-department-want-its-own-system">Why does every department want its own system?</h2>
+<h2 id="the-rationale">The rationale</h2>
 <p>In short: we recently secured funding to build an AI agent system for monitoring international outbreaks. IT&rsquo;s reasonable question was: why can&rsquo;t you add these functions to an existing system and avoid duplication? Our answers were:</p>
 <ol>
 <li><strong>Proven mission with a mandate.</strong> We have monitored international outbreaks manually for nearly two decades — work of real value to the agency, now formally approved in the next five-year national strategy.</li>
 <li><strong>A genuinely different function.</strong> Our existing systems watch local cases and are mostly <em>indicator-based</em>. The new one is <em>event-based</em>: the diseases it captures and the sources it draws on are far wider.</li>
 <li><strong>A technology-readiness gap.</strong> AI adoption is an international trend we need to follow — and the legacy systems simply aren&rsquo;t AI-ready.</li>
 <li><strong>An accountability indicator.</strong> &ldquo;An event management system is established&rdquo; is itself a monitoring-and-evaluation indicator we&rsquo;re measured against.</li>
-<li><strong>The honest one — politics.</strong> Extending someone else&rsquo;s system means negotiating their roadmap, inheriting their debt, and waiting for their priorities. Building <em>together</em> means shared budgets and endless coordination. Starting fresh looks cheaper for the department — at the cost of the organisation&rsquo;s coherence.</li>
-<li><strong>Expertise we don&rsquo;t have in-house.</strong> Our team knows the domain, but with limited staff we cannot build and run everything ourselves. A new system lets us hire that capability from a vendor: often a system integrator (SI) team that builds a customized system to our specification.</li>
 <li><strong>A sustainability path.</strong> This is not an ad hoc build. We are committing to maintain it, with a long-term roadmap and dedicated funding behind it.</li>
+<li><strong>Expertise we don&rsquo;t have in-house.</strong> Our team knows the domain, but with limited staff we cannot build and run everything ourselves. A new system lets us hire that capability from a vendor: often a system integrator (SI) team that builds a customized system to our specification.</li>
+<li><strong>The honest one — politics.</strong> Extending someone else&rsquo;s system means negotiating their roadmap, inheriting their debt, and waiting for their priorities. Building <em>together</em> means shared budgets and endless coordination. Starting fresh looks cheaper for the department — at the cost of the organisation&rsquo;s coherence.</li>
 </ol>
 <p>The seven reasons settle one question: a new system deserves to exist. But they leave the harder one my IT manager was really asking — <em>who drives it?</em> A justified system could still be IT-led, yet departments everywhere want the wheel, pulled by three forces:</p>
 <ul>
@@ -219,7 +222,7 @@ He wanted to persuade us — a data-facing team that already runs many surveilla
 <li><strong>Fit</strong>: the people closest to the work know the requirements best.</li>
 <li><strong>Autonomy</strong>: clear ownership, your own budget, no negotiating access rights every time you need a new field.</li>
 </ul>
-<p>Look at these forces, and at reasons 5 and 6: every one is a cost of communication. IT&rsquo;s queue is paid in <em>time</em>. Translating requirements to outsiders is paid in <em>accuracy</em> — something is always lost. Negotiating budgets, roadmaps, and access rights is paid in <em>political capital</em>. Even hiring a vendor buys your way out of one conversation at the price of another: procurement, contracts, lock-in. A department building its own system is not really buying software — it is buying its way out of talking. And that instinct has a name; someone described the mechanism sixty years ago.</p>
+<p>Look at these forces, and at reasons 6 and 7: every one is a cost of communication. IT&rsquo;s queue is paid in <em>time</em>. Translating requirements to outsiders is paid in <em>accuracy</em> — something is always lost. Negotiating budgets, roadmaps, and access rights is paid in <em>political capital</em>. Even hiring a vendor buys your way out of one conversation at the price of another: procurement, contracts, lock-in. A department building its own system is not really buying software — it is buying its way out of talking. And that instinct has a name; someone described the mechanism sixty years ago.</p>
 <h2 id="systems-are-the-outcome-of-communication-structures">Systems are the outcome of communication structures</h2>
 <p>Melvin E. Conway made this observation back in 1968:</p>
 <blockquote>
@@ -232,8 +235,8 @@ He wanted to persuade us — a data-facing team that already runs many surveilla
 <h2 id="govern-the-conversation-not-the-systems">Govern the conversation, not the systems</h2>
 <p>So the real problem was never the number of systems — it was the communication that shaped them. That reframes the fix: <strong>optimize the communication structure first.</strong> Fix the talking and the architecture follows; fix the architecture without the talking and you just get a well-documented copy of the same silos.</p>
 <p>In practice, that means starting with the organisation, not the software. Put cross-functional teams in charge of the missions that must not fail, then give them a federated paved road: IT supplies shared standards, common data definitions, security guardrails, and an approved vendor list; business units build freely on top.</p>
-<h2 id="so-should-you-build-a-new-one">So, should you build a new one?</h2>
-<p>If you&rsquo;re about to propose yet another system, the seven reasons above double as a checklist: a real mandate, a genuinely different function, a technology gap the legacy stack can&rsquo;t reach, an accountability hook, an honest read on the politics, the capacity to build and run it, and a plan to sustain it once the launch budget is gone. If you can answer most of these, you probably have a real case.</p>
+<h2 id="a-checklist">A checklist</h2>
+<p>If you&rsquo;re about to propose yet another system, the seven reasons above as a checklist: a real mandate, a genuinely different function, a technology gap the legacy stack can&rsquo;t reach, an accountability hook, an honest read on the politics, the capacity to build and run it, and a plan to sustain it once the launch budget is gone. If you can answer most of these, you probably have a real case.</p>
 <p>If you can&rsquo;t, you&rsquo;re likely better off building on what already exists — and saving your IT manager from asking &ldquo;again?&rdquo;</p>
 <table>
 <thead>
