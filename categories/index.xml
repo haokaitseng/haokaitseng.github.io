@@ -6,8 +6,50 @@
     <description>Recent content in Categories on Transmission Landscape</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sat, 18 Jul 2026 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 11 Aug 2026 00:00:00 +0800</lastBuildDate>
     <atom:link href="https://haokaitseng.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>APAC</title>
+      <link>https://haokaitseng.github.io/categories/apac/</link>
+      <pubDate>Tue, 11 Aug 2026 00:00:00 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/apac/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Global Health</title>
+      <link>https://haokaitseng.github.io/categories/global-health/</link>
+      <pubDate>Tue, 11 Aug 2026 00:00:00 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/global-health/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>HFMD</title>
+      <link>https://haokaitseng.github.io/categories/hfmd/</link>
+      <pubDate>Tue, 11 Aug 2026 00:00:00 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/hfmd/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>NPEV</title>
+      <link>https://haokaitseng.github.io/categories/npev/</link>
+      <pubDate>Tue, 11 Aug 2026 00:00:00 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/npev/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>OSINT</title>
+      <link>https://haokaitseng.github.io/categories/osint/</link>
+      <pubDate>Tue, 11 Aug 2026 00:00:00 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/osint/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Surveillance</title>
+      <link>https://haokaitseng.github.io/categories/surveillance/</link>
+      <pubDate>Tue, 11 Aug 2026 00:00:00 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/surveillance/</guid>
+      <description></description>
+    </item>
     <item>
       <title>AI</title>
       <link>https://haokaitseng.github.io/categories/ai/</link>
@@ -44,13 +86,6 @@
       <description></description>
     </item>
     <item>
-      <title>Global Health</title>
-      <link>https://haokaitseng.github.io/categories/global-health/</link>
-      <pubDate>Sat, 13 Jun 2026 00:00:00 +0800</pubDate>
-      <guid>https://haokaitseng.github.io/categories/global-health/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Open source intelligence</title>
       <link>https://haokaitseng.github.io/categories/open-source-intelligence/</link>
       <pubDate>Sat, 13 Jun 2026 00:00:00 +0800</pubDate>
@@ -69,13 +104,6 @@
       <link>https://haokaitseng.github.io/categories/react.js/</link>
       <pubDate>Fri, 27 Feb 2026 00:00:00 +0800</pubDate>
       <guid>https://haokaitseng.github.io/categories/react.js/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Surveillance</title>
-      <link>https://haokaitseng.github.io/categories/surveillance/</link>
-      <pubDate>Fri, 27 Feb 2026 00:00:00 +0800</pubDate>
-      <guid>https://haokaitseng.github.io/categories/surveillance/</guid>
       <description></description>
     </item>
     <item>

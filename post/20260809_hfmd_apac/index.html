@@ -1,0 +1,384 @@
+
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>A big HFMD season in APAC | Transmission Landscape</title>
+    <meta name="description"
+        content="Hand, foot and mouth disease (HFMD) seldom makes headlines. The 2026 Asia-Pacific season deserves a closer look anyway. Several countries in APAC are running an unusually large year, with a mix of enterovirus types circulating.
+As of the end of June this year, Vietnam had recorded 57,599 cases and 10 deaths, a 96.7% increase on the same period in 2025. China logged 538,675 cases over the same six months, roughly double the 263,696 reported in the first half of 2025.">
+    <link rel="canonical" href="https://haokaitseng.github.io/post/20260809_hfmd_apac/" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    
+    <link rel="stylesheet" href="https://haokaitseng.github.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
+
+    <meta property="og:title" content="A big HFMD season in APAC" />
+<meta property="og:description" content="Hand, foot and mouth disease (HFMD) seldom makes headlines. The 2026 Asia-Pacific season deserves a closer look anyway. Several countries in APAC are running an unusually large year, with a mix of enterovirus types circulating.
+As of the end of June this year, Vietnam had recorded 57,599 cases and 10 deaths, a 96.7% increase on the same period in 2025. China logged 538,675 cases over the same six months, roughly double the 263,696 reported in the first half of 2025." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://haokaitseng.github.io/post/20260809_hfmd_apac/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2026-08-11T00:00:00+08:00" />
+<meta property="article:modified_time" content="2026-08-11T00:00:00+08:00" /><meta property="og:site_name" content="Kai&#39;s Data Science Blog" />
+
+
+    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="A big HFMD season in APAC"/>
+<meta name="twitter:description" content="Hand, foot and mouth disease (HFMD) seldom makes headlines. The 2026 Asia-Pacific season deserves a closer look anyway. Several countries in APAC are running an unusually large year, with a mix of enterovirus types circulating.
+As of the end of June this year, Vietnam had recorded 57,599 cases and 10 deaths, a 96.7% increase on the same period in 2025. China logged 538,675 cases over the same six months, roughly double the 263,696 reported in the first half of 2025."/>
+
+    
+    
+    
+
+</head><body><nav class="navbar is-light" role="navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a href="/" title="home" class="navbar-item">
+                <span class="logo">
+                    <h1>Transmission Landscape</h1>
+                </span>
+            </a>
+
+            
+            <a id="theme-toggle" class="theme-toggle" href="#">
+                <img src="https://haokaitseng.github.io/svg/sun.svg" alt="sun icon" class="theme-icon" />
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                
+                <a href="/about" class="navbar-item">About</a>
+                
+                <a href="/post" class="navbar-item">Blog</a>
+                
+                <a href="/categories" class="navbar-item">Categories</a>
+                
+            </div>
+
+        </div>
+        <div class="search">
+            <div id="fastSearch">
+                <input id="searchInput" tabindex="0" placeholder="Search..">
+                <ul id="searchResults">
+
+                </ul>
+            </div>
+            <a id="search-btn" style="display: inline-block;" href="# ">
+                <div class="icon-search"><svg class="search-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+            </a>
+        </div>
+
+        <script src="/js/fuse.min.js"></script> 
+        <script src="/js/fastsearch.js"></script>
+
+    </div>
+</nav>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var burger = document.querySelector('.navbar-burger');
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('is-active');
+            document.querySelector('.navbar-menu').classList.toggle('is-active');
+        });
+    });
+
+    
+    function setTheme(theme) {
+        let body = document.body;
+        let themeIcon = document.querySelector(".theme-icon");
+        if (theme === "dark") {
+            body.classList.add("dark-mode");
+            themeIcon.src = "https:\/\/haokaitseng.github.io\/svg/moon.svg";
+            themeIcon.alt = "moon icon";
+        } else {
+            body.classList.remove("dark-mode");
+            themeIcon.src = "https:\/\/haokaitseng.github.io\/svg/sun.svg";
+            themeIcon.alt = "sun icon";
+        }
+        
+        localStorage.setItem("theme", theme);
+    }
+
+    
+    let theme = localStorage.getItem("theme") || "light";
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDarkMode) {
+        
+        setTheme('dark');
+
+    } else {
+        
+        setTheme('light');
+    }
+    setTheme(theme);
+
+    
+    document.getElementById("theme-toggle").addEventListener("click", function() {
+        if (theme === "light") {
+            theme = "dark";
+        } else {
+            theme = "light";
+        }
+        setTheme(theme);
+    });
+
+
+
+</script>
+
+</header><main>
+<div class="single-container">
+    <div class="archive">
+        <h1 class="title is-1">A big HFMD season in APAC</h1>
+        <div class="title subtitle heading is-6">
+            <div class="author-info columns is-vcentered">
+                <div class="column">
+                    <div class="columns is-vcentered is-mobile">
+                        
+                        <div class="column is-narrow">
+                            <img src="/images/profile.jpg" class="author-image">
+                        </div>
+                        
+                        <div class="column">
+                            <p>Kai</p>
+                            <p><time>August 11, 2026</time>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="small-categories-container">
+                    <a href="/categories/hfmd">HFMD</a>, <a href="/categories/global-health">Global Health</a>, <a href="/categories/osint">OSINT</a>, <a href="/categories/apac">APAC</a>, <a href="/categories/npev">NPEV</a>, <a href="/categories/surveillance">Surveillance</a>
+                </div>
+            </div>
+        </div>
+        <div class="content article-content">
+            <div class="toc-container">
+                
+    <div class="post-toc">
+        
+            <aside>
+                <button id="tocButton" ><h4 id="contents" style="margin-left: 1vw;color:rgb(96, 134, 180);margin-bottom: 0;">CONTENTS</h4></button>
+                <div id="hide"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#a-shifting-annual-and-climatic-pattern">A shifting annual and climatic pattern</a></li>
+    <li><a href="#big-numbers-different-viruses">Big numbers, different viruses</a></li>
+    <li><a href="#what-would-help">What would help</a></li>
+  </ul>
+</nav></div>
+            </aside>
+        
+    </div><script>
+    
+        let button = document.getElementById('tocButton');
+        let hide = document.getElementById("hide");
+        let contents=document.getElementById("contents");
+        button.addEventListener("click", function() {
+        if (hide.style.display!='block') {
+            hide.style.display='block'
+        } else {
+            hide.style.display='none'
+            contents.style.color='rgb(96, 134, 180)'
+        }
+        });
+    
+
+
+
+
+</script>
+            </div>
+            <p>Hand, foot and mouth disease (HFMD) seldom makes headlines. The 2026 Asia-Pacific season deserves a closer look anyway. Several countries in APAC are running an unusually large year, with a mix of enterovirus types circulating.</p>
+<p>As of the end of June this year, <a href="https://thanhnien.vn/nguy-co-dich-chong-dich-voi-sot-xuat-huyet-nao-mo-cau-tay-chan-mieng-185260727151911439.htm">Vietnam</a> had recorded 57,599 cases and 10 deaths, a 96.7% increase on the same period in 2025. <a href="https://www.chinacdc.cn/jksj/jksj01/">China</a> logged 538,675 cases over the same six months, roughly double the 263,696 reported in the first half of 2025. <a href="https://id-info.jihs.go.jp/surveillance/idwr/provisional/2026/index.html">Japan</a> had recorded 113,762 cases by 26 July; its week 30 sentinel average of 6.98 cases per site was down from the season peak but remains the second highest reading since 2021. <a href="https://eng.phwr.org/journal/archives_Supple.html">South Korea</a>&rsquo;s sentinel clinics reported 35 suspected cases per 1,000 outpatient visits in week 31, among the highest readings of recent seasons.</p>
+<p><img src="/images/20260809_hfmd_apac/hfmd_three_country_trends.png" alt="epi curve"></p>
+<p>Japan, China, South Korea, and Thailand have all just turned the corner — either at or barely past their peaks. <a href="https://www.chp.gov.hk/tc/statistics/data/10/26/44/601/495.html">Hong Kong</a> is among the few still rising. <a href="https://www.cda.gov.sg/resources/weekly-infectious-diseases-bulletin-2026/">Singapore</a> also saw higher cases in week 29 than last year, though the trend is now downward.</p>
+<table>
+<thead>
+<tr>
+<th>Country / area</th>
+<th>Trend</th>
+<th>HFMD cases</th>
+<th>Dominant serotype</th>
+<th>Reporting period</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vietnam</td>
+<td>Rising</td>
+<td>57,599 cumulative; 10 deaths</td>
+<td>EV-A71 (C1)</td>
+<td>1 Jan – 30 Jun</td>
+</tr>
+<tr>
+<td>Hong Kong</td>
+<td>Rising</td>
+<td>1 per 1,000 ED attendances</td>
+<td>Not published</td>
+<td>26 Jul – 1 Aug</td>
+</tr>
+<tr>
+<td>China</td>
+<td>Peak</td>
+<td>538,675 cumulative</td>
+<td>CV-A16</td>
+<td>1 Jan – 30 Jun</td>
+</tr>
+<tr>
+<td>Japan</td>
+<td>Just past peak</td>
+<td>113,762 cumulative; 6.98 per sentinel site</td>
+<td>CV-A6</td>
+<td>1 Jan – 26 Jul</td>
+</tr>
+<tr>
+<td>South Korea</td>
+<td>Just past peak</td>
+<td>35 per 1,000 outpatient consultations</td>
+<td>CV-A4</td>
+<td>26 Jul – 1 Aug</td>
+</tr>
+<tr>
+<td>Thailand</td>
+<td>Just past peak</td>
+<td>37,520 cumulative</td>
+<td>CV-A16</td>
+<td>1 Jan – 7 Aug</td>
+</tr>
+<tr>
+<td>Singapore</td>
+<td>Falling</td>
+<td>29 mean daily cases</td>
+<td>Not published</td>
+<td>19 – 25 Jul</td>
+</tr>
+<tr>
+<td>Taiwan</td>
+<td>Falling</td>
+<td>6,165 weekly clinic and ED visits</td>
+<td>CV-A6</td>
+<td>19 – 25 Jul</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://www.cdc.gov.tw/File/Get/qM5YPEP2JGw3I4Dv0EeofQ">Taiwan</a> is the outlier, and instructive for a different reason. Its data recorded 6,165 clinic and emergency visits in week 30, roughly half the national epidemic threshold of 12,000. <a href="https://dvis3.ddc.moph.go.th/t/DDC_CENTER_DOE/views/priority_v2/Dashboard2?%3Aembed=y&amp;%3AisGuestRedirectFromVizportal=y">Thailand</a> saw more than 37,000 cases this year, around 30% below last year.</p>
+<h2 id="a-shifting-annual-and-climatic-pattern">A shifting annual and climatic pattern</h2>
+<p>HFMD is usually mild, resolves within a week, and falls overwhelmingly on children under five. In Vietnam, that age group accounted for 92.7% of this year&rsquo;s cases. The seasonal pattern runs from spring into summer across most of the region.</p>
+<p>The multi-year pattern matters more. Vietnamese authorities note that 2026 falls within the roughly three-year cycle that historically produces the country&rsquo;s largest enterovirus A71 (EV-A71) waves, and warn transmission may persist past the usual mid-year decline. Japan and South Korea show a comparable rhythm — a strong 2024, a quiet 2025, a rebound now — driven by the accumulation of susceptible children between waves.</p>
+<p>Heat waves can be an contributing factor to the big HFMD waves. A recent <a href="https://www.sciencedirect.com/science/article/pii/S1674927826000419">nationwide Chinese study</a> found that high temperature and high humidity act on transmission together, and that the sharpest rise in disease burden is occurring in traditionally low-incidence regions such as Northeast China as the climate warms.</p>
+<blockquote>
+<p>Amid the heatwave in <a href="https://news.kbs.co.kr/news/pc/view/view.do?ncd=8632141">Korea</a>, water playgrounds and ground fountains have opened across the cities, raising concerns about the spread of hand, foot and mouth disease, which transmits easily at such facilities.</p>
+</blockquote>
+<h2 id="big-numbers-different-viruses">Big numbers, different viruses</h2>
+<p>EV-A71 has long been the serotype the region worries about. It is the enterovirus most strongly associated with brainstem encephalitis, cardiopulmonary failure and death in young children, and it is back in Vietnam&rsquo;s southern provinces at 56% of typed specimens, the C1 subgenotype in Ho Chi Minh City.</p>
+<p>Elsewhere the dominant viruses are milder ones from the coxsackievirus family: coxsackievirus A6 in <a href="https://id-info.jihs.go.jp/surveillance/iasr/graph/virus/index.html">Japan</a> and <a href="https://www.cdc.gov.tw/File/Get/qM5YPEP2JGw3I4Dv0EeofQ">Taiwan</a>, coxsackievirus A4 in <a href="https://dportal.kdca.go.kr/pot/bbs/BD_selectBbs.do?q_bbsSn=1010&amp;q_bbsDocNo=20260806162120709&amp;q_clsfNo=2">South Korea</a>, coxsackievirus A16 in China and Thailand.</p>
+<h2 id="what-would-help">What would help</h2>
+<p>In response to this big HFMD wave, the evidence base is thinner than the case counts suggest. A <a href="https://www.sciencedirect.com/science/article/abs/pii/S2468045126000192">recent review</a> by Muhamad Nur Naim Ishak and colleagues found regional HFMD research concentrated on incidence and outbreak counts, with little attention to severity, hospitalisation or policy impact.</p>
+<p>Three changes to reporting would go a long way. Publishing serotype alongside case counts would tell clinicians what they actually need to know, since a wave of EV-A71 demands a different level of preparedness from a wave of CV-A6. Publishing a denominator, and where possible a threshold as Taiwan does, would make the figures interpretable. And a shared regional reference page, consolidating each country&rsquo;s data, would strengthen regional evaluation, early warning, and network collaboration — increasingly so if it incorporates the climatic triggers that are redrawing the risk map.</p>
+<p>The vaccine pipeline needs widening too. Five inactivated EV-A71 vaccines are now licensed across China and Taiwan, and Vietnam has just <a href="https://news.laodong.vn/suc-khoe/vaccine-phong-tay-chan-mieng-duoc-cap-phep-tai-viet-nam-1670875.ldo">approved one of them</a> — timely, given the EV-A71 resurgence in its southern provinces. But none of the five covers CV-A6, CV-A16 or CV-A4, the serotypes driving most of this year&rsquo;s waves elsewhere. Parents should vaccinate where they can. Health authorities should assess and fund candidates against the serotypes that actually circulated this year.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+</table>
+<p><em>Hao-Kai Tseng is a contract assistant at Epidemic Intelligence Center, Taiwan Centers of Disease Control. Views expressed here are my own and do not represent the views of my employer, Taiwan Centers for Disease Control. This post was collobrated with Claude.</em></p>
+
+        </div>
+    </div>
+    <a href="#" id="scrollToTopButton">
+        <svg t="1686753152588" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            p-id="3988" width="48" height="48">
+            <path
+                d="M518.5 360.3c-3.2-4.4-9.7-4.4-12.9 0l-178 246c-3.8 5.3 0 12.7 6.5 12.7H381c10.2 0 19.9-4.9 25.9-13.2L512 460.4l105.2 145.4c6 8.3 15.6 13.2 25.9 13.2H690c6.5 0 10.3-7.4 6.5-12.7l-178-246z"
+                p-id="3989" fill="#363636"></path>
+            <path
+                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                p-id="3990" fill="#363636"></path>
+        </svg>
+    </a><hr style="border-top: 1px solid #EEEEEE;">
+<div id="comment"></div>
+<script>
+    const getStoredTheme = () => localStorage.getItem("theme") === "dark" ? "dark" : "light";
+
+    const setGiscusTheme = () => {
+        const sendMessage = (message) => {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (iframe) {
+                iframe.contentWindow.postMessage({giscus: message}, 'https://giscus.app');
+            }
+        }
+        sendMessage({setConfig: {theme: getStoredTheme()}})
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const giscusAttributes = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "hotjuicew\/blog",
+            "data-repo-id": "R_kgDOHHQOuw",
+            "data-category": "Announcements",
+            "data-category-id": "DIC_kwDOHHQOu84CWCQ3",
+            "data-mapping": "og:title",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-input-position": "bottom",
+            "data-theme": getStoredTheme(),
+            "data-lang": "en",
+            "data-loading": "lazy",
+            "crossorigin": "anonymous",
+        };
+
+        
+        const giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(
+            ([key, value]) => giscusScript.setAttribute(key, value));
+        document.getElementById("comment").appendChild(giscusScript);
+
+        
+        const themeToggle = document.querySelector(".theme-toggle");
+        if (themeToggle) {
+            themeToggle.addEventListener("click", setGiscusTheme);
+        }
+    });
+
+</script>
+
+
+<div class="pp-container">
+        <section class="pre-and-post">
+            <div class="has-text-left">
+                
+                <p>Previous post</p>
+                <a href="https://haokaitseng.github.io/post/20260712_collaboration_paradox/">Making the case for a new system: why it&#39;s really about how we talk</a>
+                
+            </div>
+            <div class="has-text-right">
+                
+            </div>
+        </section>
+    </div>
+
+</div>
+
+        </main><footer class="footer">
+    <div class="content has-text-centered">
+    <span>&copy; 2026 <a href="https://haokaitseng.github.io/">Transmission Landscape</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" target="_blank">Hugo</a> &
+        <a href="https://github.com/hotjuicew/hugo-JuiceBar" target="_blank">JuiceBar</a>
+    </span>
+    </div>
+  </footer></body>
+</html>
+
