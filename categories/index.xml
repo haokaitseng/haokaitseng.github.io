@@ -6,8 +6,50 @@
     <description>Recent content in Categories on Transmission Landscape</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Tue, 11 Aug 2026 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 12 Nov 2026 00:00:00 +0800</lastBuildDate>
     <atom:link href="https://haokaitseng.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI</title>
+      <link>https://haokaitseng.github.io/categories/ai/</link>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Data Science</title>
+      <link>https://haokaitseng.github.io/categories/data-science/</link>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/data-science/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Social Listening</title>
+      <link>https://haokaitseng.github.io/categories/social-listening/</link>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/social-listening/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Taiwan</title>
+      <link>https://haokaitseng.github.io/categories/taiwan/</link>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/taiwan/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Vaccine</title>
+      <link>https://haokaitseng.github.io/categories/vaccine/</link>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/vaccine/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Visualisation</title>
+      <link>https://haokaitseng.github.io/categories/visualisation/</link>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 +0800</pubDate>
+      <guid>https://haokaitseng.github.io/categories/visualisation/</guid>
+      <description></description>
+    </item>
     <item>
       <title>APAC</title>
       <link>https://haokaitseng.github.io/categories/apac/</link>
@@ -51,13 +93,6 @@
       <description></description>
     </item>
     <item>
-      <title>AI</title>
-      <link>https://haokaitseng.github.io/categories/ai/</link>
-      <pubDate>Sat, 18 Jul 2026 00:00:00 +0800</pubDate>
-      <guid>https://haokaitseng.github.io/categories/ai/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Communication</title>
       <link>https://haokaitseng.github.io/categories/communication/</link>
       <pubDate>Sat, 18 Jul 2026 00:00:00 +0800</pubDate>
@@ -93,24 +128,10 @@
       <description></description>
     </item>
     <item>
-      <title>Data Science</title>
-      <link>https://haokaitseng.github.io/categories/data-science/</link>
-      <pubDate>Fri, 27 Feb 2026 00:00:00 +0800</pubDate>
-      <guid>https://haokaitseng.github.io/categories/data-science/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>React.js</title>
       <link>https://haokaitseng.github.io/categories/react.js/</link>
       <pubDate>Fri, 27 Feb 2026 00:00:00 +0800</pubDate>
       <guid>https://haokaitseng.github.io/categories/react.js/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Taiwan</title>
-      <link>https://haokaitseng.github.io/categories/taiwan/</link>
-      <pubDate>Fri, 27 Feb 2026 00:00:00 +0800</pubDate>
-      <guid>https://haokaitseng.github.io/categories/taiwan/</guid>
       <description></description>
     </item>
     <item>
@@ -184,13 +205,6 @@
       <description></description>
     </item>
     <item>
-      <title>Vaccine</title>
-      <link>https://haokaitseng.github.io/categories/vaccine/</link>
-      <pubDate>Tue, 17 Jun 2025 22:11:12 +0800</pubDate>
-      <guid>https://haokaitseng.github.io/categories/vaccine/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Power BI</title>
       <link>https://haokaitseng.github.io/categories/power-bi/</link>
       <pubDate>Thu, 13 Mar 2025 22:11:12 +0800</pubDate>
@@ -209,13 +223,6 @@
       <link>https://haokaitseng.github.io/categories/r/</link>
       <pubDate>Tue, 31 Dec 2024 22:11:12 +0800</pubDate>
       <guid>https://haokaitseng.github.io/categories/r/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Visualisation</title>
-      <link>https://haokaitseng.github.io/categories/visualisation/</link>
-      <pubDate>Tue, 31 Dec 2024 22:11:12 +0800</pubDate>
-      <guid>https://haokaitseng.github.io/categories/visualisation/</guid>
       <description></description>
     </item>
     <item>

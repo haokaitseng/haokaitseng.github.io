@@ -2,6 +2,36 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://haokaitseng.github.io/categories/ai/</loc>
+    <lastmod>2026-11-12T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://haokaitseng.github.io/categories/</loc>
+    <lastmod>2026-11-12T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://haokaitseng.github.io/categories/data-science/</loc>
+    <lastmod>2026-11-12T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://haokaitseng.github.io/post/</loc>
+    <lastmod>2026-11-12T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://haokaitseng.github.io/categories/social-listening/</loc>
+    <lastmod>2026-11-12T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://haokaitseng.github.io/categories/taiwan/</loc>
+    <lastmod>2026-11-12T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://haokaitseng.github.io/</loc>
+    <lastmod>2026-11-12T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://haokaitseng.github.io/categories/vaccine/</loc>
+    <lastmod>2026-11-12T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://haokaitseng.github.io/post/20261112_taiwan_immunization_radar/</loc>
+    <lastmod>2026-11-12T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://haokaitseng.github.io/categories/visualisation/</loc>
+    <lastmod>2026-11-12T00:00:00+08:00</lastmod>
+  </url><url>
     <loc>https://haokaitseng.github.io/about/</loc>
     <lastmod>2026-11-09T10:00:00+08:00</lastmod>
   </url><url>
@@ -9,9 +39,6 @@
     <lastmod>2026-08-11T00:00:00+08:00</lastmod>
   </url><url>
     <loc>https://haokaitseng.github.io/categories/apac/</loc>
-    <lastmod>2026-08-11T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://haokaitseng.github.io/categories/</loc>
     <lastmod>2026-08-11T00:00:00+08:00</lastmod>
   </url><url>
     <loc>https://haokaitseng.github.io/categories/global-health/</loc>
@@ -26,17 +53,8 @@
     <loc>https://haokaitseng.github.io/categories/osint/</loc>
     <lastmod>2026-08-11T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://haokaitseng.github.io/post/</loc>
-    <lastmod>2026-08-11T00:00:00+08:00</lastmod>
-  </url><url>
     <loc>https://haokaitseng.github.io/categories/surveillance/</loc>
     <lastmod>2026-08-11T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://haokaitseng.github.io/</loc>
-    <lastmod>2026-08-11T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://haokaitseng.github.io/categories/ai/</loc>
-    <lastmod>2026-07-18T00:00:00+08:00</lastmod>
   </url><url>
     <loc>https://haokaitseng.github.io/categories/communication/</loc>
     <lastmod>2026-07-18T00:00:00+08:00</lastmod>
@@ -62,13 +80,7 @@
     <loc>https://haokaitseng.github.io/post/20260226_global_outbreak_intelligence_antigravity/</loc>
     <lastmod>2026-02-27T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://haokaitseng.github.io/categories/data-science/</loc>
-    <lastmod>2026-02-27T00:00:00+08:00</lastmod>
-  </url><url>
     <loc>https://haokaitseng.github.io/categories/react.js/</loc>
-    <lastmod>2026-02-27T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://haokaitseng.github.io/categories/taiwan/</loc>
     <lastmod>2026-02-27T00:00:00+08:00</lastmod>
   </url><url>
     <loc>https://haokaitseng.github.io/post/20251012_unicef_gibd/</loc>
@@ -110,9 +122,6 @@
     <loc>https://haokaitseng.github.io/post/20250617_gavi_us_funding_cut/</loc>
     <lastmod>2025-06-17T22:11:12+08:00</lastmod>
   </url><url>
-    <loc>https://haokaitseng.github.io/categories/vaccine/</loc>
-    <lastmod>2025-06-17T22:11:12+08:00</lastmod>
-  </url><url>
     <loc>https://haokaitseng.github.io/categories/power-bi/</loc>
     <lastmod>2025-03-13T22:11:12+08:00</lastmod>
   </url><url>
@@ -126,9 +135,6 @@
     <lastmod>2024-12-31T22:11:12+08:00</lastmod>
   </url><url>
     <loc>https://haokaitseng.github.io/categories/r/</loc>
-    <lastmod>2024-12-31T22:11:12+08:00</lastmod>
-  </url><url>
-    <loc>https://haokaitseng.github.io/categories/visualisation/</loc>
     <lastmod>2024-12-31T22:11:12+08:00</lastmod>
   </url><url>
     <loc>https://haokaitseng.github.io/post/20240719_polio_poster_vaccine_hesitancy/</loc>

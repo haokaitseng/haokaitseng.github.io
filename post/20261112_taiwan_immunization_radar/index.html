@@ -1,0 +1,371 @@
+
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Vaccine policy and social listening in Taiwan: a dashboard | Transmission Landscape</title>
+    <meta name="description"
+        content="This post shares my independent project, a public, bilingual dashboard that tracks vaccine policy and public conversation in Taiwan every day. It covers:
+What the dashboard shows for flu, RSV, Tdap and COVID-19 vaccines How an AI pipeline collects, tags and summarises the signals Link to the dashboard and the GitHub repo.
+Why a radar? Every vaccine season, the same questions come up.
+What did Taiwan CDC announce this week?">
+    <link rel="canonical" href="https://haokaitseng.github.io/post/20261112_taiwan_immunization_radar/" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    
+    <link rel="stylesheet" href="https://haokaitseng.github.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
+
+    <meta property="og:title" content="Vaccine policy and social listening in Taiwan: a dashboard" />
+<meta property="og:description" content="This post shares my independent project, a public, bilingual dashboard that tracks vaccine policy and public conversation in Taiwan every day. It covers:
+What the dashboard shows for flu, RSV, Tdap and COVID-19 vaccines How an AI pipeline collects, tags and summarises the signals Link to the dashboard and the GitHub repo.
+Why a radar? Every vaccine season, the same questions come up.
+What did Taiwan CDC announce this week?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://haokaitseng.github.io/post/20261112_taiwan_immunization_radar/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2026-11-12T00:00:00+08:00" />
+<meta property="article:modified_time" content="2026-11-12T00:00:00+08:00" /><meta property="og:site_name" content="Kai&#39;s Blog for Immunisation &amp; Data Science" />
+
+
+    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Vaccine policy and social listening in Taiwan: a dashboard"/>
+<meta name="twitter:description" content="This post shares my independent project, a public, bilingual dashboard that tracks vaccine policy and public conversation in Taiwan every day. It covers:
+What the dashboard shows for flu, RSV, Tdap and COVID-19 vaccines How an AI pipeline collects, tags and summarises the signals Link to the dashboard and the GitHub repo.
+Why a radar? Every vaccine season, the same questions come up.
+What did Taiwan CDC announce this week?"/>
+
+    
+    
+    
+
+</head><body><nav class="navbar is-light" role="navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a href="/" title="home" class="navbar-item">
+                <span class="logo">
+                    <h1>Transmission Landscape</h1>
+                </span>
+            </a>
+
+            
+            <a id="theme-toggle" class="theme-toggle" href="#">
+                <img src="https://haokaitseng.github.io/svg/sun.svg" alt="sun icon" class="theme-icon" />
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                
+                <a href="/about" class="navbar-item">About</a>
+                
+                <a href="/post" class="navbar-item">Blog</a>
+                
+                <a href="/categories" class="navbar-item">Categories</a>
+                
+            </div>
+
+        </div>
+        <div class="search">
+            <div id="fastSearch">
+                <input id="searchInput" tabindex="0" placeholder="Search..">
+                <ul id="searchResults">
+
+                </ul>
+            </div>
+            <a id="search-btn" style="display: inline-block;" href="# ">
+                <div class="icon-search"><svg class="search-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+            </a>
+        </div>
+
+        <script src="/js/fuse.min.js"></script> 
+        <script src="/js/fastsearch.js"></script>
+
+    </div>
+</nav>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var burger = document.querySelector('.navbar-burger');
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('is-active');
+            document.querySelector('.navbar-menu').classList.toggle('is-active');
+        });
+    });
+
+    
+    function setTheme(theme) {
+        let body = document.body;
+        let themeIcon = document.querySelector(".theme-icon");
+        if (theme === "dark") {
+            body.classList.add("dark-mode");
+            themeIcon.src = "https:\/\/haokaitseng.github.io\/svg/moon.svg";
+            themeIcon.alt = "moon icon";
+        } else {
+            body.classList.remove("dark-mode");
+            themeIcon.src = "https:\/\/haokaitseng.github.io\/svg/sun.svg";
+            themeIcon.alt = "sun icon";
+        }
+        
+        localStorage.setItem("theme", theme);
+    }
+
+    
+    let theme = localStorage.getItem("theme") || "light";
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDarkMode) {
+        
+        setTheme('dark');
+
+    } else {
+        
+        setTheme('light');
+    }
+    setTheme(theme);
+
+    
+    document.getElementById("theme-toggle").addEventListener("click", function() {
+        if (theme === "light") {
+            theme = "dark";
+        } else {
+            theme = "light";
+        }
+        setTheme(theme);
+    });
+
+
+
+</script>
+
+</header><main>
+<div class="single-container">
+    <div class="archive">
+        <h1 class="title is-1">Vaccine policy and social listening in Taiwan: a dashboard</h1>
+        <div class="title subtitle heading is-6">
+            <div class="author-info columns is-vcentered">
+                <div class="column">
+                    <div class="columns is-vcentered is-mobile">
+                        
+                        <div class="column is-narrow">
+                            <img src="/images/profile.jpg" class="author-image">
+                        </div>
+                        
+                        <div class="column">
+                            <p>Kai</p>
+                            <p><time>November 12, 2026</time>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="small-categories-container">
+                    <a href="/categories/vaccine">Vaccine</a>, <a href="/categories/social-listening">Social Listening</a>, <a href="/categories/ai">AI</a>, <a href="/categories/data-science">Data Science</a>, <a href="/categories/visualisation">Visualisation</a>, <a href="/categories/taiwan">Taiwan</a>
+                </div>
+            </div>
+        </div>
+        <div class="content article-content">
+            <div class="toc-container">
+                
+    <div class="post-toc">
+        
+            <aside>
+                <button id="tocButton" ><h4 id="contents" style="margin-left: 1vw;color:rgb(96, 134, 180);margin-bottom: 0;">CONTENTS</h4></button>
+                <div id="hide"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#why-a-radar">Why a radar?</a></li>
+    <li><a href="#whats-on-the-dashboard">What&rsquo;s on the dashboard</a></li>
+    <li><a href="#how-it-works">How it works</a></li>
+  </ul>
+</nav></div>
+            </aside>
+        
+    </div><script>
+    
+        let button = document.getElementById('tocButton');
+        let hide = document.getElementById("hide");
+        let contents=document.getElementById("contents");
+        button.addEventListener("click", function() {
+        if (hide.style.display!='block') {
+            hide.style.display='block'
+        } else {
+            hide.style.display='none'
+            contents.style.color='rgb(96, 134, 180)'
+        }
+        });
+    
+
+
+
+
+</script>
+            </div>
+            <blockquote>
+<p>This post shares my independent project, a public, bilingual dashboard that tracks vaccine policy and public conversation in Taiwan every day. It covers:</p>
+<ul>
+<li>What the dashboard shows for flu, RSV, Tdap and COVID-19 vaccines</li>
+<li>How an AI pipeline collects, tags and summarises the signals</li>
+</ul>
+</blockquote>
+<p>Link to the <a href="https://haokaitseng.github.io/sanofi_taiwan_immunization_radar/">dashboard</a> and the <a href="https://github.com/haokaitseng/sanofi_taiwan_immunization_radar">GitHub repo</a>.</p>
+<h2 id="why-a-radar">Why a radar?</h2>
+<blockquote>
+<p>Every vaccine season, the same questions come up.</p>
+</blockquote>
+<p>What did Taiwan CDC announce this week? Are people talking about publicly funded or self-pay doses? Is a rumour or misinformation gaining ground, and where? The answers are scattered across press releases, media news sites, and various social platforms like Threads.</p>
+<p>I wanted one page that answers these questions on a daily basis - in support of my marketing and communication strategy.</p>
+<h2 id="whats-on-the-dashboard">What&rsquo;s on the dashboard</h2>
+<p>The dashboard has four tabs, all available in English and Traditional Mandarin:</p>
+<ol>
+<li><strong>Today:</strong> an AI-written (Claude Haiku model) <em><strong>daily brief</strong></em> of the 4–6 most important developments in the last 72 hours. Each item comes with a confidence level, a &ldquo;why it matters&rdquo; line and links to its sources. Next to it are a watch list of upcoming dates, headline figures, and conversation volume with official actions marked on the timeline.</li>
+</ol>
+<p><img src="/images/20261112_taiwan_immunization_radar/daily.png" alt="Taiwan Immunization Radar"></p>
+<ol start="2">
+<li><strong>Policy:</strong> a timeline of Taiwan CDC and TFDA actions, such as press releases, letters to physicians and rumour rebuttals.</li>
+</ol>
+<p><img src="/images/20261112_taiwan_immunization_radar/policy.png" alt="Policy"></p>
+<ol start="3">
+<li><strong>Social listening:</strong> mentions by channel, a county-level map, spike alerts, a misinformation watch and a narrative explorer.</li>
+</ol>
+<p><img src="/images/20261112_taiwan_immunization_radar/social.png" alt="Social"></p>
+<ol start="4">
+<li><strong>Methodology:</strong> sources and their live status, definitions, limitations and AI-use rules.</li>
+</ol>
+<p>The filters combine freely: date range, vaccine, who pays, COVID-19 brand, and any of Taiwan&rsquo;s 22 cities and counties.</p>
+<h2 id="how-it-works">How it works</h2>
+<p>Every day GitHub Actions runs a pipeline:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Step</th>
+<th style="text-align:left">What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Collect</td>
+<td style="text-align:left">Taiwan CDC, TFDA, Google News, PTT, Threads, Facebook page comments, Wikipedia pageviews using Apify</td>
+</tr>
+<tr>
+<td style="text-align:left">Tag</td>
+<td style="text-align:left">Claude Haiku labels relevance, vaccine, who pays, place, issue and stance</td>
+</tr>
+<tr>
+<td style="text-align:left">Scrub</td>
+<td style="text-align:left">Verbatim social text is deleted; only paraphrases, tags and links stay</td>
+</tr>
+<tr>
+<td style="text-align:left">Analyse</td>
+<td style="text-align:left">Claude Haiku writes the brief, narratives and misinformation notes, then translates them</td>
+</tr>
+<tr>
+<td style="text-align:left">Publish</td>
+<td style="text-align:left">Data is committed to git, so the history doubles as an archive, and the site deploys to GitHub Pages</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>This is an independent portfolio project, not affiliated with or endorsed by any company or agency named. Views expressed here are my own. This post was collaborated with Claude.</em></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+        </div>
+    </div>
+    <a href="#" id="scrollToTopButton">
+        <svg t="1686753152588" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            p-id="3988" width="48" height="48">
+            <path
+                d="M518.5 360.3c-3.2-4.4-9.7-4.4-12.9 0l-178 246c-3.8 5.3 0 12.7 6.5 12.7H381c10.2 0 19.9-4.9 25.9-13.2L512 460.4l105.2 145.4c6 8.3 15.6 13.2 25.9 13.2H690c6.5 0 10.3-7.4 6.5-12.7l-178-246z"
+                p-id="3989" fill="#363636"></path>
+            <path
+                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                p-id="3990" fill="#363636"></path>
+        </svg>
+    </a><hr style="border-top: 1px solid #EEEEEE;">
+<div id="comment"></div>
+<script>
+    const getStoredTheme = () => localStorage.getItem("theme") === "dark" ? "dark" : "light";
+
+    const setGiscusTheme = () => {
+        const sendMessage = (message) => {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (iframe) {
+                iframe.contentWindow.postMessage({giscus: message}, 'https://giscus.app');
+            }
+        }
+        sendMessage({setConfig: {theme: getStoredTheme()}})
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const giscusAttributes = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "hotjuicew\/blog",
+            "data-repo-id": "R_kgDOHHQOuw",
+            "data-category": "Announcements",
+            "data-category-id": "DIC_kwDOHHQOu84CWCQ3",
+            "data-mapping": "og:title",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-input-position": "bottom",
+            "data-theme": getStoredTheme(),
+            "data-lang": "en",
+            "data-loading": "lazy",
+            "crossorigin": "anonymous",
+        };
+
+        
+        const giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(
+            ([key, value]) => giscusScript.setAttribute(key, value));
+        document.getElementById("comment").appendChild(giscusScript);
+
+        
+        const themeToggle = document.querySelector(".theme-toggle");
+        if (themeToggle) {
+            themeToggle.addEventListener("click", setGiscusTheme);
+        }
+    });
+
+</script>
+
+
+<div class="pp-container">
+        <section class="pre-and-post">
+            <div class="has-text-left">
+                
+                <p>Previous post</p>
+                <a href="https://haokaitseng.github.io/post/20260809_hfmd_apac/">A big HFMD season in APAC</a>
+                
+            </div>
+            <div class="has-text-right">
+                
+            </div>
+        </section>
+    </div>
+
+</div>
+
+        </main><footer class="footer">
+    <div class="content has-text-centered">
+    <span>&copy; 2026 <a href="https://haokaitseng.github.io/">Transmission Landscape</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" target="_blank">Hugo</a> &
+        <a href="https://github.com/hotjuicew/hugo-JuiceBar" target="_blank">JuiceBar</a>
+    </span>
+    </div>
+  </footer></body>
+</html>
+
